@@ -1,0 +1,325 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body  {
+	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
+	padding: 0;
+	text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+	color: #CCCCCC;
+	font-family: "Trebuchet MS", Tahoma, Helvetica;
+	font-size: 12px;
+	background-image: url(assets/bg_light_tile.png);
+	background-repeat: repeat;
+	font-weight: lighter;
+	background-color: #303030;
+}
+
+/* Tips for Elastic layouts 
+1. Since the elastic layouts overall sizing is based on the user's default fonts size, they are more unpredictable. Used correctly, they are also more accessible for those that need larger fonts size since the line length remains proportionate.
+2. Sizing of divs in this layout are based on the 100% font size in the body element. If you decrease the text size overall by using a font-size: 80% on the body element or the #container, remember that the entire layout will downsize proportionately. You may want to increase the widths of the various divs to compensate for this.
+3. If font sizing is changed in differing amounts on each div instead of on the overall design (ie: #sidebar1 is given a 70% font size and #mainContent is given an 85% font size), this will proportionately change each of the divs overall size. You may want to adjust based on your final font sizing.
+*/
+.twoColElsLtHdr #container {
+	width: 70em;
+	text-align: left; /* this overrides the text-align: center on the body element. */
+	margin-top: 10px;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	font-weight: lighter;
+} 
+img,  #header { behavior: url(iepngfix.htc); }
+
+.twoColElsLtHdr #header {
+	background-image: url(assets/number.png);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	height: 180px;
+	padding-top: 0;
+	padding-right: 10px;
+	padding-bottom: 0;
+	padding-left: 10px;
+} 
+a:link {
+	color: #0099CC;
+	text-decoration: none;
+	font-weight: lighter;
+}
+a:visited {
+	text-decoration: none;
+	color: #0099CC;
+	font-weight: lighter;
+}
+a:hover {
+	text-decoration: none;
+	color: #0099CC;
+	font-weight: lighter;
+	background-color: #333333;
+}
+a:active {
+	text-decoration: none;
+	color: #0099CC;
+	font-weight: lighter;
+}
+
+.twoColElsLtHdr #header ul{
+	float: right;
+	padding-top: 60px;
+	padding-right: 30px;
+
+
+}
+
+.twoColElsLtHdr #header li{
+	display: inline;
+	padding-right: 7px;
+	padding-left: 7px;
+
+
+
+}
+.twoColElsLtHdr #header li a{
+	color: #0099CC;
+	text-decoration: none;
+	font-weight: lighter;
+	
+}
+
+.twoColElsLtHdr #header li a:hover{
+	text-decoration: none;
+	color: #0099CC;
+	font-weight: lighter;
+	background-color: #333333;
+}
+
+/*.twoColElsLtHdr #sidebar1 {
+	float: right;
+	width: 11em;  top and bottom padding create visual space within this div 
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 15px;
+	padding-left: 10;
+}
+.twoColElsLtHdr #sidebar1 h3, .twoColElsLtHdr #sidebar1 p 
+	margin-left: 10px; the left and right margin should be given to every element that will be placed in the side columns 
+	margin-right: 10px;
+}
+.twoColElsLtHdr #sidebar1 ul{
+	padding-bottom: 0px;
+	display: none;
+}
+.twoColElsLtHdr #sidebar1 li{
+	list-style-type: none;
+	padding-top: 0px;
+	padding-bottom: 5px;
+}
+.twoColElsLtHdr #sidebar1 li a{
+	color: #0099CC;
+	text-decoration: none;
+	font-weight: lighter;
+	font-size: 14px;
+}
+.twoColElsLtHdr #sidebar1 li a:hover{
+	text-decoration: none;
+	color: #0099CC;
+	font-weight: lighter;
+	background-color: #333333;
+}*/
+img,  #mainContent { behavior: url(iepngfix.htc); }
+
+.twoColElsLtHdr #mainContent {
+	margin-top: 0;
+	margin-right: 2em;
+	margin-bottom: 0;
+	margin-left: 2em;
+	padding-left: 10px;
+}
+
+.twoColElsLtHdr #mainContent ul{
+
+}
+ img,  #mainContent li { behavior: url(iepngfix.htc); }
+.twoColElsLtHdr #mainContent li{
+	list-style-image: url(assets/arrow.png);
+	padding-left: 0px;
+}
+.twoColElsLtHdr #content {
+	padding-top: 30px;
+}
+
+h1 {
+	color: #CC0066;
+	font-size: 18px;
+	font-weight: lighter;
+}
+h2{
+	font-size: 16px;
+	font-weight: lighter;
+	color: #CC0066;
+	text-align: center;
+	background-image: url(assets/headings.png);
+	background-repeat: repeat-x;
+	height: 36px;
+	padding-top: 5px;
+}
+h3{
+	font-size: 12px;
+	font-weight: lighter;
+	color: #CC0066;
+	text-transform: uppercase;
+}
+
+.ref {
+	font-size: 10px;
+	font-weight: lighter;
+	color: #CC0066;
+}
+.italics{
+	font-style: italic;
+}
+.bolds{
+	font-weight: bold;
+}
+.desc{
+	font-size: 10px;
+
+}
+
+
+.twoColElsLtHdr #footer {
+	background-image: url(assets/footer.png);
+	background-repeat: no-repeat;
+	font-size: 10px;
+	padding-bottom: 0;
+	padding-left: 10px;
+	padding-right: 15px;
+	height: 70px;
+	padding-top: 7px;
+} 
+.twoColElsLtHdr #footer p {
+	margin: 0; /* padding on this element will create space, just as the the margin would have, without the margin collapse issue */
+	text-align: right;
+	font-size: 10px;
+	color: #CC0066;
+	padding-right: 0;
+	padding-bottom: 0px;
+	padding-left: 0;
+	padding-top: 5px;
+}
+.credits{
+	color: #CC0066;
+	padding-right: 10px;
+	padding-top: 0px;
+	text-align: right;
+	clear: right;
+}
+.twoColElsLtHdr #footer ul{
+	padding-top: 0px;
+	text-align: right;
+	padding-bottom: 0px;
+}
+
+.twoColElsLtHdr #footer li{
+	display: inline;
+	padding-right: 10px;
+	padding-bottom: 0px;
+}
+.twoColElsLtHdr #footer li a{
+	color: #0099CC;
+	text-decoration: none;
+	font-weight: lighter;
+	
+}
+
+.twoColElsLtHdr #footer li a:hover{
+	text-decoration: none;
+	color: #0099CC;
+	font-weight: lighter;
+	background-color: #333333;
+}
+.bottomright{
+	float: right;
+	margin: 0px;
+	padding: 0px;
+}
+
+/* Miscellaneous classes for reuse */
+.fltrt { /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 30px;
+	margin-top: 45px;
+	background-image: url(assets/frame_solo.png);
+	background-repeat: no-repeat;
+	text-align: center;
+	width: 235px;
+	height: 190px;
+	font-size: 11px;
+	line-height: 1.2em;
+}
+.fltlft { /* this class can be used to float an element left in your page */
+	float: left;
+	background-image: url(assets/downl_icon.png);
+	background-repeat: no-repeat;
+	background-position: left;
+	text-indent: 22px;
+	word-spacing: normal;
+	padding-top: 5px;
+	clip: rect(20px,auto,auto,auto);
+	margin-left: 25px;
+	margin-top: 7px;
+}
+.left{
+	float: left;
+}
+
+.centre{
+	float: none;
+}
+
+.right{
+	float: left;
+}
+#center{
+	float: left;
+	width: 780px;
+	height: 290px;
+}
+#center ul{
+	text-align: center;
+	color: #666699;
+	font-weight: lighter;
+	padding-top: 5px;
+	padding-right: 5px;
+}
+#center li{
+	float: right;
+	padding-top: 10px;
+	list-style-type: none;
+	background-repeat: repeat-x;
+	background-position: center bottom;
+	top: 20px;
+	padding-bottom: 26px;
+	padding-right: 24px;
+}
+#center li a:link{
+	color: #0099CC;
+	text-decoration: none;
+}
+#center li a:visited{
+	color: #0099CC;
+	text-decoration: none;
+}
+
+#center li a:hover, #centered li a:active{
+	color: #0099CC;
+	text-decoration: none;
+	background-color: #333333;
+}
+
+
+.clearfloat { /* this class should be placed on a div or break element and should be the final element before the close of a container that should fully contain a float */
+	text-align: center;
+	padding-left: 8px;
+	margin-bottom: 15px;
+	padding-top: 25px;
+}

@@ -1,0 +1,184 @@
+* {
+	/* old-style reset here :) */
+	border: 0px;
+	padding: 0px;
+}
+
+.calendar table {
+	border-collapse: separate;
+	border: 1px solid #9DABCE;
+	border-width: 0px 0px 1px 1px;
+	font-size: 10px;
+	margin: 5px;
+}
+.calendar td, th {
+	width: 22px;
+	height: 20px;
+	text-align: center;
+	color: #333;
+	position: relative;
+	background-image: url(assets/cells.png);
+	font-size: 9px;
+	vertical-align: middle;
+	padding-top: 5px;
+}
+.calendar th {
+	height: 10px;
+	font-weight: bold;
+	font-size: 10px;
+}
+.calendar td:hover, th:hover {
+	background-position: 0px 51px;
+	color: #222;
+}
+.calendar td.date_has_event {
+	background-position: 50px 0px;
+	color: white;
+}
+.calendar td.date_has_event:hover {
+	background-position: 50px 51px;
+}
+.calendar td.padding {
+	background-image: url(assets/calpad.jpg);
+}
+.calendar td.today {
+	background-position: 51px 0px;
+	color: white;
+}
+.calendar td.today:hover {
+	background-position: 51px -51px;
+}
+.events {
+	position: relative;
+}
+.events ul {
+	text-align: left;
+	position: absolute;
+	display: none;
+	z-index: 1;
+	color: white;
+	border: 1px solid white;
+	font-size: 11px;
+	width: 100px;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-border-radius: 3px;
+	list-style: none;
+	color: #FFF;
+	-webkit-box-shadow: 0px 8px 8px #333;
+	background-color: #666;
+	/*	background-image: url(assets/popup.png);*/
+	background-repeat: no-repeat;
+	margin-left: 45px;
+	padding-top: 5px;
+	padding-right: 0px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.events li {
+	list-style-type: none;
+	padding-top: 5px;
+	padding-right: 0px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+.events li span {
+	display: block;
+	font-size: 11px;
+	text-align: left;
+	color: #FFF;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.events li span.title {
+	font-weight: bold;
+	color: #FFF;
+	list-style-type: none;
+}
+ .calendar{
+	float:left;
+	width: 115px;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	text-align: left;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	color: #666;
+ }
+.calendar a{
+		color:#F00;
+		text-decoration:none;
+	}
+	
+.calendar a:hover{
+		color:#FFF;
+		background-color:#F00;
+		text-decoration:none;
+	}
+
+.todolist{
+	float:left;
+	width: 97%;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	padding: 5px;
+ }
+ .todolist a{
+	color:#DB2128;
+	text-decoration:none;
+	}
+
+.todolist a:hover{
+	color:#FFF;
+	background-color:#DB2128;
+	text-decoration:none;
+	}
+
+.todolist th, td, tr{
+	background-color: #FFF;
+	font-size: 10px;
+}
+
+.todolist td{
+	color: #666;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom-width: .5px;
+	border-bottom-style: dashed;
+	border-bottom-color: #666;
+ }
+
+.todolist table{
+	background-color:#FFF;
+	margin-top: -10px;
+	margin-left: -3px;
+}
+ .emailmodule{
+	float:left;
+	text-align: left;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	color: #666;
+	background-image: url(img/inbox.png);
+	background-repeat: no-repeat;
+	background-position: 10px 35px;
+	padding: 5px;
+	height: 150px;
+	width: 330px;
+ }
+ .emailmodule p{
+	background-image: url(assets/icons/email_icon.png);
+	background-repeat: no-repeat;
+	text-indent: 20px;	 
+ }
+ 
+ .emailmodule a{
+	color: #DB2128;
+	text-decoration: none;
+ }
+ 
+  .emailmodule a:hover{
+	color: #FFF;
+	text-decoration: none;
+	background-color: #DB2128;
+  }{

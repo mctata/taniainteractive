@@ -1,0 +1,359 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
+	padding: 0;
+	text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+	color: #666666;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	background-color: #CCCCCC;
+	background-image: url(assets/whiteStripBk.gif);
+	background-repeat: repeat;
+}
+a:link {
+	color: #cc6633;
+	text-decoration: none;
+}
+a:visited {
+	color: #cc6633;
+	text-decoration: none;
+}
+a:hover {
+	color: #666699;
+}
+a:active {
+	color: #cc6633;
+}
+
+
+
+
+h1 {
+	font-size: 14px;
+	color: #999933;
+	padding-left: 5px;
+}
+h2 {
+	font-size: 12px;
+	color: #0033FF;
+}
+
+.oneColLiqCtrHdr #container {
+	width: 800px; /* the auto margins (in conjunction with a width) center the page */
+	border: 0.5px solid #CCCCCC;
+	text-align: left; /* this overrides the text-align: center on the body element. */
+	margin-top: 10px;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	background-color: #FFFFFF;
+}
+.oneColLiqCtrHdr #header {
+	height: 100px;
+	padding-top: 0;
+	padding-right: 10px;
+	padding-bottom: 0;
+	padding-left: 20px;
+	text-align: right;
+	background-image: url(assets/border_h.gif);
+	background-repeat: repeat-x;
+	background-position: left bottom;
+}
+
+.menu{
+	float:left;
+	width: 15%;
+	text-align: left;
+	padding-top: 0px;
+	font-size: 12px;
+	padding-left: 0px;
+	margin-left: 0px;
+}
+
+.menu ul{
+	margin-top: 4px;
+	padding-left: 5px;
+	margin-bottom: 4px;
+}
+
+.menu li{
+	padding-top: 5px;
+	list-style-type: none;
+	padding-bottom: 3px;
+}
+
+.menu li a{
+	color: #cc6633;
+	text-decoration: none;
+}
+
+.menu li a:hover{
+	text-decoration: none;
+	color: #666699;
+	border-bottom-width: thin;
+	border-bottom-style: dotted;
+	border-bottom-color: #666699;
+}
+
+
+.logo {
+	float:right;
+	height: 80px;
+	width: 150px;
+	margin-top: 0px;
+	padding-right: 75px;
+}
+.oneColLiqCtrHdr #mainContent {
+	background: #FFFFFF;
+	margin-top: 5px;
+	padding-top: 0;
+	padding-right: 20px;
+	padding-bottom: 0;
+	padding-left: 20px;
+}
+
+
+.breadcrumbs{
+	height: 15px;
+	padding-top: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	font-size: 10px;
+}
+#content{
+	margin-top: 10px;
+	padding-left: 15px;
+}
+
+#content li{
+	list-style-type: square;
+}
+
+
+#photo{
+	width:250px;
+	height:200px;
+	float: right;
+	text-align: center;
+}
+.rightimage{
+	float:right;
+	background-repeat: no-repeat;
+	padding: 10px;
+}
+
+
+#topcontent{
+	width:780px;
+	height:225px;
+}
+
+#topcontent a{
+	font-size: 12px;
+	color:#84C762;
+	padding-left: 5px;
+	text-decoration: none;
+}
+#topcontent a:hover {
+	color:#cc6633;
+	padding-left: 5px;
+	border-bottom-width: thin;
+	border-bottom-style: dotted;
+	border-bottom-color: #cc6633;
+}
+#topcontent p{
+	font-size: 10px;
+	line-height: 1.40em;
+	margin: 5px;
+}
+
+.top{
+	float:left;
+	width: 20%;
+	text-align: left;
+	height: 205px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: #F4F4F4;
+	background-image: url(assets/border.gif);
+	background-repeat: no-repeat;
+	background-position: right top;
+}
+.mainphoto{
+	float:left;
+	height:225px;
+	width: 39%;
+	background-image: url(assets/Friendz.jpg);
+	background-repeat: no-repeat;
+	border: 0.25px solid #CCCCCC;
+	background-color: #999999;
+	background-position: left top;
+}
+
+#bottomcontent{
+	width:760px;
+}
+#bottomcontent a{
+	font-size: 10px;
+	color:#cc6633;
+	padding-left: 5px;
+	text-decoration: none;
+}
+#bottomcontent a:hover {
+	color:#84C762;
+	padding-left: 5px;
+}
+#bottomcontent p{
+	font-size: 10px;
+	line-height: 1.4em;
+	margin: 5px;
+}
+
+.bottom{
+	font-size: 10px;
+	float:left;
+	width: 250px;
+	text-align: left;
+	height: 250px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	padding-right: 0px;
+	background-image: url(assets/border.gif);
+	background-repeat: no-repeat;
+	background-position: right top;
+	background-color: #F4F4F4;
+}
+
+.title{
+	font-size: 14px;
+	color: #666699;
+	padding-left: 5px;
+	padding-bottom: 2px;
+}
+
+.description{
+	font-size: 10px;
+	padding-left: 5px;
+}
+
+.middle{
+	height:112px;
+	padding-right: 5px;
+}
+
+.photo{
+	width:150px;
+	height:100px;
+	float: right;
+	text-align: center;
+	border: 0.25px solid #999999;
+	padding-top: 5px;
+	padding-right: 5px;
+}
+.image{
+	float: right;
+	height: 70px;
+	width: 100px;
+	text-align: center;
+	margin: 0px;
+	padding: 5px;
+}
+
+#centered{
+	width: 760px;
+	float: none;
+	font-size: 12px;
+}
+#centered ul{
+	text-align: center;
+	color: #666699;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding-top: 10px;
+}
+#centered li{
+	float: left;
+	list-style-type: none;
+	padding-right: 35px;
+	padding-top: 20px;
+	padding-bottom: 5px;
+	padding-left: 35px;
+}
+#centered li a:link{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+#centered li a:visited{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#centered li a:hover, #centered li a:active{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+#centered p{
+	font-size:12px;
+
+}
+
+.divider{
+	height:1px;
+	background-image: url(assets/border_h.gif);
+	background-repeat: repeat-x;
+}
+
+
+.links{
+	height:60px;
+	background-color: #3399FF;
+	margin-top: 5px;
+	width: 760px;
+	float: none;
+}
+
+.more{
+	float:right;
+	background-image: url(assets/Readmore.png);
+	background-repeat: no-repeat;
+	background-position: right center;
+	padding-top: 0px;
+	padding-right: 20px;
+	font-style: normal;
+}
+
+.oneColLiqCtrHdr #footer {
+	background: #CCCCCC;  /* this padding matches the left alignment of the elements in the divs that appear beneath it. If an image is used in the #header instead of text, you may want to remove the padding. */
+	height: 55px;
+	padding-top: 10px;
+	padding-bottom: 0;
+	padding-left: 0px;
+} 
+
+#footer a{
+	font-size: 10px;
+	color:#cc6633;
+	padding-left: 5px;
+	text-decoration: none;
+}
+#footer a:hover {
+	color:#666699;
+	padding-left: 5px;
+	border-bottom-width: thin;
+	border-bottom-style: dotted;
+	border-bottom-color: #666699;
+}
+
+.validation{
+	float:right;
+	text-align: right;
+	padding-right: 20px;
+}
+.college{
+	float:left;
+	padding-left: 20px;
+	width: 500px;
+	font-size: 10px;
+}

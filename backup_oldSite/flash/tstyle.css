@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/* CSS Document */
+body {
+	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
+	padding: 0;
+	text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+	color: #333;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 100%;
+	background-color: #333;
+	background-image: url(images/back.jpg);
+	background-repeat: repeat;
+	background-position: left top;
+}
+.oneColElsCtr #container {
+	width: 766px;
+	margin: 0 auto;
+	text-align: left;
+}
+.oneColElsCtr #mainContent {
+	padding: 0; /* remember that padding is the space inside the div box and margin is the space outside the div box */
+}

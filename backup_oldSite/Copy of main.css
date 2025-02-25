@@ -1,0 +1,723 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* General
+------------------------------------------------------------------------------*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font,
+img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i,
+center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption,
+tbody, tfoot, thead, tr, th, td, button {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+	text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  display: block;
+  cursor: pointer;
+}
+
+div.clear {
+  font-size: 1px;
+  line-height: 1px;
+  height: 1px;
+  position: relative;
+  clear: both;
+}
+
+a span, button span, li span, h1 span, h2 span, button span {
+  display: none;
+  border:none;
+}
+
+body {
+	margin: 0 auto;
+	padding-bottom: 40px;
+	position: relative;
+	color: #666;
+	text-align: center;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 0.9em;
+	font-style: normal;
+	line-height: 1.6em;
+	font-weight: lighter;
+	font-variant: normal;
+	background-color: #fff;
+	background-image: url(assets/bk.png);
+	background-repeat: repeat;
+	background-position: left top;
+}
+
+/* Typographic
+------------------------------------------------------------------------------*/
+
+h1 {
+	margin-left: 3px;
+	height: 30px;
+	margin-top: 5px;
+	color: #993300;
+	font-size: 14px;
+	text-transform: uppercase;
+	font-weight: lighter;
+}
+
+
+h2.sidebar-title{
+	color: #993300;
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: lighter;
+	background-image: url(assets/buttons/twitter_up_over.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 30px;
+	width: 154px;
+	margin:0;
+}
+p.large {
+	color: #666;
+	font-size: 24px;
+	font-style: normal;
+	line-height: 30px;
+	margin-top: 60px;
+	margin-right: 0;
+	margin-bottom: 30px;
+	margin-left: 3px;
+	font-weight: lighter;
+	font-family: Arial, Helvetica, sans-serif;
+	background-image: url(assets/intro.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 129px;
+}
+
+
+
+
+.left_column p,
+.right_column p {
+  margin: 18px 3px 0 3px;
+}
+
+.left_column p.top,
+.right_column p.top {
+  margin: 10px 3px 0 3px;
+}
+
+
+p.copyright {
+  float: right;
+  padding-right: 33px;
+  text-align: right;
+}
+
+/* Linkage
+------------------------------------------------------------------------------*/
+
+p a,
+.footer_panel li a {
+	color: #993300;
+	border-bottom: 1px solid #dce8d2;
+}
+
+p a:hover,
+.footer_panel li a:hover {
+	color: #993300;
+	text-decoration: underline;
+}
+
+
+
+/* General Layout
+------------------------------------------------------------------------------*/
+
+#content_wrapper {
+	width: 948px;
+	margin: 0 auto;
+	text-align: left;
+	background-color: #FFF;
+	-webkit-box-shadow: 0px -5px 5px rgba(14, 19, 12, 0.44);
+-moz-box-shadow:    0px -5px 5px rgba(14, 19, 12, 0.44);
+box-shadow:         0px -5px 5px rgba(14, 19, 12, 0.44);
+border-bottom:1px dashed #999;
+}
+
+.panel {
+	margin-top: 15px;
+}
+
+.panel_top {
+}
+
+.panel_bottom {
+  padding: 26px 0 10px 0;
+  height: 1%;
+}
+
+.section {
+	width: 888px;
+	margin-left: 30px;
+}
+
+/* Header Layout
+------------------------------------------------------------------------------*/
+
+.header {
+  height: 67px;
+}
+
+#logo {
+  float: left;
+  width: 403px;
+  padding-left: 0px;
+  display: inline;
+}
+
+ul#nav {
+	float: right;
+	margin-top: 25px;
+}
+
+ul#nav li {
+	float: left;
+}
+
+#nav li a {
+	display: block;
+	height: 30px;
+	cursor: pointer;
+	color: #666;
+	font-size: 14px;
+	text-transform: uppercase;
+	font-weight: lighter;
+}
+#nav li.home a {
+	margin-right: 10px;
+	background-image: url(assets/buttons/home.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	width:60px;
+}
+
+#nav li.portfolio a{
+	margin-right: 10px;
+	background-image: url(assets/buttons/portfolio.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	width:75px;
+}
+
+
+#nav li.about a {
+	background-image: url(assets/buttons/about.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	width:60px;
+}
+	
+#nav li.contact a {
+	background-image: url(assets/buttons/contact.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	width:60px;
+}
+		
+		
+
+#nav li.home a:hover{
+	background-image: url(assets/buttons/home_over.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	width:60px;
+	
+}
+#nav li.portfolio a:hover{
+	background-image: url(assets/buttons/portfolio_over.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	width:75px;	
+}
+#nav li.about a:hover{
+	background-image: url(assets/buttons/about_over.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	width:60px;
+	
+}
+#nav li.contact a:hover{
+	background-image: url(assets/buttons/contact_over.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	width:60px;
+}
+
+
+/* Intro Layout
+------------------------------------------------------------------------------*/
+
+#intro {
+  width: 582px;
+  float: left;
+}
+
+#twitter_div {
+	width: 276px;
+	float: right;
+	margin-top: 0px;
+	margin-right: 0;
+	margin-bottom: 30px;
+	margin-left: 0;
+}
+
+#twitter_div_top {
+  background: url(assets/twitter_box_top.png) 0 top no-repeat;
+}
+
+#twitter_div_bottom {
+	background: url(assets/twitter_box_bottom.png) 0 bottom no-repeat;
+	height: 1%;
+	padding-top: 36px;
+	padding-right: 14px;
+	padding-bottom: 29px;
+	padding-left: 15px;
+}
+
+ul#twitter_update_list {
+	color: #666;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 11px;
+	font-style: normal;
+	line-height: 17px;
+	font-weight: normal;
+	font-variant: normal;
+}
+
+#twitter_div a {
+	color: #930;
+	font-size: 11px;
+	font-style: normal;
+	line-height: 17px;
+	font-weight: normal;
+	font-variant: normal;
+}
+
+#twitter_div a:hover {
+	color: #930;
+	border: none;
+	text-decoration:underline;
+}
+#twitter_div a#twitter-link{
+	display:block;
+	text-align:right;
+	background-image: url(assets/buttons/follow.png);
+	background-repeat: no-repeat;
+	background-position: right top;
+	height: 30px;
+	width: 260px;
+}
+#twitter_div a#twitter-link:hover{
+	display:block;
+	text-align:right;
+	background-image: url(assets/buttons/follow_over.png);
+	background-repeat: no-repeat;
+	background-position: right top;
+	height: 30px;
+	width: 260px;
+}
+.work_section {
+	width: 892px;
+	margin-left: 30px;
+	padding-bottom: 29px;
+	background-image: url(assets/shadow.png);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}
+
+.work_section span a{
+	background-image: url(assets/top.png);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	height: 27px;
+	width: 150px;
+	float: right;
+}
+.work_section span a:hover{
+	background-image: url(assets/top_over.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height: 27px;
+	width: 150px;
+	float: right;
+}
+
+.work_preview {
+	position: relative;
+	background: url(assets/work_preview.gif) 0 0 no-repeat;	
+	background-color: #fff;
+ width: 279px;
+	float: left;
+	margin: 27px 27px 0 0;
+}
+
+.work_preview img {
+	width: 268px;
+	height: 152px;
+	padding-top: 7px;
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-left: 4px;
+}
+
+.work_preview p {
+	margin-top: 7px;
+	margin-right: 3px;
+	margin-bottom: 0;
+	margin-left: 3px;
+}
+
+.work_preview p.link {
+	margin: 14px 3px 0 3px;
+	font-size: 0.9em;
+}
+.work_preview p.link a{
+	border:none;
+	color: #993300;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 1.1em;
+}
+.about_preview {
+  position: relative;
+  width: auto;
+  float: left;
+  margin: 27px 27px 0 0;
+}
+
+.end_row {
+  margin: 27px 0 0 0;
+}
+
+.left_column {
+  width: 582px;
+  float: left;
+  padding-left: 30px;
+}
+
+.work_bg {
+  background: url(assets/work.gif) 0 0 repeat-y;
+  margin-top: 26px;
+}
+
+.standard_bg {
+  background: url(assets/work.gif) 0 0 repeat-y;
+  margin-top: 13px;
+}
+
+.work_bg_top {
+  background: url(assets/work_top.gif) top left no-repeat;
+}
+
+.work_bg_bottom {
+  background: url(assets/work_bottom.gif) bottom left no-repeat;
+  height: 1%;
+}
+
+.work_bg img,
+.standard_bg img {
+  width: 574px;
+  padding: 4px;
+}
+
+ul.sub-nav {
+  float: right;
+  padding-right: 30px;
+  margin-top: 53px;
+  width: 276px;
+}
+
+
+
+ul.sub-nav li a {
+  display: block;
+}
+
+
+.right_column {
+  width: 276px;
+  float: right;
+  padding-right: 30px;
+}
+
+/* Contact Form
+------------------------------------------------------------------------------*/
+
+form {
+  margin-top: 33px;
+}
+
+form label {
+  display: block;
+  font-weight: bold;
+  padding: 0 0 4px 3px;
+}
+
+form button {
+  background: url(assets/send_message.gif) 0 0 no-repeat;
+  width: 102px;
+  height: 29px;
+  margin-top: 2px;
+}
+
+form button:hover {
+  background-position: 0 -29px;
+}
+
+#error {
+	color:red;
+	font-size:10px;
+	display:none;
+}
+.needsfilled {
+	background:red;
+	color:white;
+}
+.sent_message
+{
+	font-size: 14px;
+	font-weight: lighter;
+	color: #930;
+	text-align: center;
+}
+
+.form_fonts
+{
+	font-size: 14px;
+	color: #930;
+	font-family: "Courier New", Courier, monospace;
+	vertical-align: top;
+}
+DIV.contactf
+{
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 2px;
+	text-align: left;
+	border:none;
+	width: 830px;
+}
+
+input, textarea, select {
+	font-size: 14px;
+	color: #666;
+	font-family: "Courier New", Courier, monospace;
+	border:none;
+	vertical-align: top;
+	width: auto;
+}
+.inputs {
+	background-color: #F2F2F2;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 14px;
+	color: #666;
+	border:0.5px solid #999;
+	padding: 0px;
+	margin-top: -10px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+.inputs-focus {
+	padding: 0px;
+	border:0.5px solid #930;
+	margin-top: -10px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+.submit{
+	margin-right: -25px;
+	color: #930;
+	font-size: 14px;
+}
+td{
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 0px;
+}
+.reset {
+	color: #930;
+	font-size: 14px;
+}
+
+
+/* Footer Layout
+------------------------------------------------------------------------------*/
+
+.footer_panel {
+	margin-top: 8px;
+	color: #666;
+	font-size: 11px;
+	font-style: normal;
+	line-height: 17px;
+	font-weight: normal;
+	font-variant: normal;
+}
+
+.footer_panel_top {
+}
+
+.footer_panel_bottom {
+	padding: 30px;
+	height: 1%;
+}
+ul#contact_details  {
+  margin-left: 33px;
+}
+ul#contact_details  li {
+	float:left;
+	margin-right: 15px;
+	color: #666;
+	padding-top:2px;
+}
+ul#contact_details  li a{
+ border:none;	
+}
+
+ul#contact_details  li.phone {
+  background: url(assets/phone.png) 0 0px no-repeat;
+  padding-left: 20px;
+  height:27px;
+}
+
+ul#contact_details  li.email {
+	padding-left: 25px;
+	background-image: url(assets/email.png);
+	background-repeat: no-repeat;
+	background-position: 0 4px;
+}
+ul#social_details  {
+}
+ul#social_details  li {
+	float: left;
+	margin-right: 11px;
+	color: #393939;
+	border:none;
+	padding-top: 2px;
+}
+ul#social_details  li a{
+	border:none;
+
+}
+
+ul#social_details  li.twitter {
+	padding-left: 30px;
+	border:none;
+	background-image: url(assets/icons/twitter.png);
+	background-repeat: no-repeat;
+	background-position: 0 0px;
+	height: 22px;
+}
+
+ul#social_details  li.skype {
+	padding-left: 30px;
+	border:none;
+	background-image: url(assets/icons/skype.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	height: 20px;
+}
+ul#social_details li.linkedin {
+	padding-left: 30px;
+	border:none;
+	background-image: url(assets/icons/linkedin.png);
+	background-repeat: no-repeat;
+	background-position: 0 0px;
+	height: 20px;
+}
+
+
+#toTop {
+	width:110px;
+	position:fixed;
+	right:0;
+	bottom:10%;
+	cursor:pointer;
+	text-decoration:none;
+	height: 25px;
+	}
+#wrapper { width: 750px; margin: 0 auto; padding:0; }
+/** form stuff */
+form { display: block; padding-bottom: 65px; }
+form label { font-size: 1em; font-weight: bold; color: #4a4a4a; display: block; margin-bottom: 2px; }
+
+form .err { color: #fff; background: #9d5050; border-radius: 4px; display: none; position: relative; left: 330px; top: 25px; padding: 4px 7px; }
+form .capter { left: 280px !important; }
+form .txarea { left: 340px !important; }
+form .topp { left: 350px; }
+
+form #captchaimg { display: block; border: 1px solid #a1a1a1; margin-bottom: 7px; }
+
+form .sendbtn { display: block; font-size: 26px; padding: 3px 6px; }
+
+form .textinput { display: block; outline: none; width: 360px; border: 1px solid #ddd; padding: 7px 11px; margin-bottom: 25px; font-size: 1.4em; color: #888; }
+form .textcaptcha { display: block; outline: none; width: 360px; border: 1px solid #ddd; padding: 7px 11px; margin-bottom: 30px; font-size: 1.4em; color: #888; }
+form .textinput:focus, form .textcaptcha:focus { color: #565656; border-color: #c6c6c6; }
+
+form .msgtextarea { display: block; outline: none; font-size: 1.5em; padding: 3px 11px; width: 360px; height: 180px; border: 1px solid #ddd; color: #888; margin-bottom: 20px; }
+form .msgtextarea:focus { color: #565656; border-color: #c6c6c6; }
+
+
+form a.btn {
+background-color: #eee;
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eee), color-stop(100%, #ccc));
+background-image: -webkit-linear-gradient(top, #eee, #ccc);
+background-image: -moz-linear-gradient(top, #eee, #ccc);
+background-image: -ms-linear-gradient(top, #eee, #ccc);
+background-image: -o-linear-gradient(top, #eee, #ccc);
+background-image: linear-gradient(top, #eee, #ccc);
+border: 1px solid #ccc;
+border-bottom: 1px solid #bbb;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+color: #333;
+font-size: 1em;
+font-weight: bold;
+text-decoration: none;
+padding: 12px 22px;
+text-align: center;
+text-shadow: 0 1px 0 #eee;
+margin-left:240px;
+}
+
+form a.btn:hover { 
+background-color: #ddd;
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ddd), color-stop(100%, #bbb));
+background-image: -webkit-linear-gradient(top, #ddd, #bbb);
+background-image: -moz-linear-gradient(top, #ddd, #bbb);
+background-image: -ms-linear-gradient(top, #ddd, #bbb);
+background-image: -o-linear-gradient(top, #ddd, #bbb);
+background-image: linear-gradient(top, #ddd, #bbb);
+border: 1px solid #bbb;
+border-bottom: 1px solid #999;
+cursor: pointer;
+text-shadow: 0 1px 0 #ddd;
+}
+form a.btn:active {
+border: 1px solid #aaa;
+border-bottom: 1px solid #888;
+-webkit-box-shadow: inset 0 0 5px 2px #aaa, 0 1px 0 0 #eee;
+-moz-box-shadow: inset 0 0 5px 2px #aaa, 0 1px 0 0 #eee;
+box-shadow: inset 0 0 5px 2px #aaa, 0 1px 0 0 #eee;
+}
