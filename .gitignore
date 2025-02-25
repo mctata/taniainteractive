@@ -1,0 +1,21 @@
+# Project-specific ignores
+ind-backup.html
+index-bk.html
+*mm
+*notes
+test/
+
+# General ignores
+.DS_Store
+node_modules/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE/Editor folders
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
