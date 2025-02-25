@@ -1,4 +1,4 @@
-# 🌐 <taniainteractive></taniainteractive>>
+# 🌐 <code>taniainteractive</code>
 
 A modern collection of interactive web development projects and experiments.
 
