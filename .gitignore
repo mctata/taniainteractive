@@ -1,9 +1,12 @@
 # Project-specific ignores
 ind-backup.html
 index-bk.html
-*mm
-*notes
+Web_Design_Contracts_Bundle.zip 
+_mm/
+_notes/
 test/
+backup_oldSite/
+bat/
 
 # General ignores
 .DS_Store
