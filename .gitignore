@@ -1,13 +1,9 @@
 # Project-specific ignores
-ind-backup.html
-index-bk.html
-Web_Design_Contracts_Bundle.zip 
 _mm/
 _notes/
 test/
-backup_oldSite/
 bat/
-
+misc/
 # General ignores
 .DS_Store
 node_modules/
