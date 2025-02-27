@@ -156,25 +156,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <h4>Contact</h4>
               <div class="inner-1">
                 <form id="contact-form">
-                  <label>Name:</label>
-                  <input type="text" id="name" name="name">
+                  <!-- Honeypot Field -->
+                  <div style="position: absolute; left: -5000px;">
+                      <label for="honeypot">Leave this field empty</label>
+                      <input type="text" id="honeypot" name="honeypot">
+                  </div>
+              
+                  <!-- Regular Form Fields -->
+                  <label for="name">Name:</label>
+                  <input type="text" id="name" name="name" required>
                   <span class="error" id="name-error">* Name is required</span>
-          
-                  <label>Email:</label>
-                  <input type="email" id="email" name="email">
+              
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
                   <span class="error" id="email-error">* Valid email is required</span>
-          
-                  <label>Phone (Optional):</label>
+              
+                  <label for="phone">Phone (Optional):</label>
                   <input type="tel" id="phone" name="phone">
-          
-                  <label>Message:</label>
-                  <textarea id="message" name="message"></textarea>
+              
+                  <label for="message">Message:</label>
+                  <textarea id="message" name="message" required></textarea>
                   <span class="error" id="message-error">* Message is required</span>
-          
+              
                   <button type="submit">Send</button>
               </form>
-          
-              <p id="response-message"></p>
           </div>
             </article>
         <article class="span4">
@@ -223,55 +228,72 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script type="text/javascript" src="js/touchTouch.jquery.js"></script>
   <script type="text/javascript">if($(window).width()>1024){document.write("<"+"script src='js/jquery.preloader.js'></"+"script>");}  </script>
   <script>
-    document.getElementById("contact-form").addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent page reload
+    document.getElementById("contact-form").addEventListener("submit", function (event) {
+    event.preventDefault();
 
-        // Clear previous errors
-        document.querySelectorAll(".error").forEach(el => el.style.display = "none");
+    // Check honeypot field
+    let honeypot = document.getElementById("honeypot").value;
+    if (honeypot !== "") {
+        console.log("Spam detected!"); // Log or handle spam submissions
+        return; // Stop form submission
+    }
 
-        // Get input values
-        let name = document.getElementById("name").value.trim();
-        let email = document.getElementById("email").value.trim();
-        let phone = document.getElementById("phone").value.trim();
-        let message = document.getElementById("message").value.trim();
-        let hasError = false;
+    // Clear previous errors
+    document.querySelectorAll(".error").forEach(el => el.style.display = "none");
 
-        // Basic validation
-        if (name === "") {
-            document.getElementById("name-error").style.display = "block";
-            hasError = true;
-        }
-        if (email === "" || !email.includes("@")) {
-            document.getElementById("email-error").style.display = "block";
-            hasError = true;
-        }
-        if (message === "") {
-            document.getElementById("message-error").style.display = "block";
-            hasError = true;
-        }
+    // Get input values
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let message = document.getElementById("message").value.trim();
+    let hasError = false;
 
-        if (hasError) return; // Stop form submission if errors exist
+    // Validation
+    if (name === "") {
+        document.getElementById("name-error").style.display = "block";
+        hasError = true;
+    }
+    if (email === "" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById("email-error").style.display = "block";
+        hasError = true;
+    }
+    if (message === "") {
+        document.getElementById("message-error").style.display = "block";
+        hasError = true;
+    }
 
-        // Prepare data
-        let formData = new FormData();
-        formData.append("name", name);
-        formData.append("email", email);
-        formData.append("phone", phone);
-        formData.append("message", message);
+    if (hasError) return;
 
-        // Send data via AJAX
-        fetch("https://tangible-studios.com/mctata/sendmessage.php", {
-            method: "POST",
-            body: formData
-        })
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById("response-message").innerText = "Message sent successfully!";
-        })
-        .catch(error => {
-            document.getElementById("response-message").innerText = "Error sending message.";
-        });
+    // Disable submit button and show loading state
+    let submitButton = document.querySelector("#contact-form button[type='submit']");
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+
+    // Prepare data
+    let formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("message", message);
+
+    // Send data via AJAX
+    fetch("https://tangible-studios.com/mctata/sendmessage.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("response-message").innerText = "Message sent successfully!";
+    })
+    .catch(error => {
+        document.getElementById("response-message").innerText = "Error sending message.";
+    })
+    .finally(() => {
+        // Re-enable submit button
+        submitButton.disabled = false;
+        submitButton.textContent = "Send";
     });
+});
 </script>
 
 </body>
