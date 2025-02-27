@@ -233,10 +233,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script type="text/javascript" src="js/jquery.flexslider-min.js"></script> 
   <script type="text/javascript" src="js/touchTouch.jquery.js"></script>
   <script type="text/javascript">if($(window).width()>1024){document.write("<"+"script src='js/jquery.preloader.js'></"+"script>");}  </script>
-  <script>$('#contact-form').on('submit', function(e) {
-    if ($('#phone').val() === 'Telephone' || $('#phone').val() === '') {
-      $('#phone').val('nope'); // Send "nope" as placeholder if empty
-    }
+  <script>
+    $('#contact-form').on('submit', function(e) {
+      let phoneInput = $('#phone').val().trim();
+      
+      if (phoneInput === '' || phoneInput === 'Telephone') {
+        $('#phone').val(''); // Ensure it's empty instead of "nope"
+      }
   });
 </script>
 </body>
