@@ -155,7 +155,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="span8">
               <h4>Contact</h4>
               <div class="inner-1">
-            <form id="contact-form">
+                <form id="contact-form" action="https://tangible-studios.com/mctata/sendmessage.php" method="POST">
                   <div class="success"> Your message has been sent! I will be in touch soon.</div>
                   <fieldset>
                 <div>
@@ -166,7 +166,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                   <div>
                     <label for="phone" class="phone">
-                    <input type="tel" id="phone" name="phone" value="Telephone">
+                      <input type="tel" id="phone" name="phone" value="Telephone" 
+                      onfocus="if(this.value=='Telephone') this.value='';">
                     <br>
                     <span class="error">*This is not a valid phone number.</span> <span class="empty">*This field is required.</span> </label>
                     </div>
@@ -219,7 +220,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><a class="icon-4" href="https://www.linkedin.com/in/taniainteractive"></a></li>
         </ul>
     <div class="privacy pull-left">
-    &copy; 2004 - 2024 <code>/* taniainteractive */</code>&nbsp;
+    &copy; 2004 - 2025 <code>/* taniainteractive */</code>&nbsp;
     <a href="https://www.taniainteractive.co.uk">Web Development Manager | Senior Front-End Developer</a>
 </div>
 
@@ -228,7 +229,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/plugins.min.js"></script>
+  <script type="text/javascript" src="js/plugins.min.js"></script>
   <script type="text/javascript" src="js/jquery.flexslider-min.js"></script> 
   <script type="text/javascript" src="js/touchTouch.jquery.js"></script>
   <script type="text/javascript">if($(window).width()>1024){document.write("<"+"script src='js/jquery.preloader.js'></"+"script>");}  </script>
