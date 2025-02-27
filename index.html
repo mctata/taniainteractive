@@ -166,8 +166,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                   <div>
                     <label for="phone" class="phone">
-                      <input type="tel" id="phone" name="phone" value="Telephone" 
-                      onfocus="if(this.value=='Telephone') this.value='';">
+                      <input type="tel" id="phone" name="phone" value="Telephone">
                     <br>
                     <span class="error">*This is not a valid phone number.</span> <span class="empty">*This field is required.</span> </label>
                     </div>
@@ -234,12 +233,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script type="text/javascript" src="js/touchTouch.jquery.js"></script>
   <script type="text/javascript">if($(window).width()>1024){document.write("<"+"script src='js/jquery.preloader.js'></"+"script>");}  </script>
   <script>
+  $(document).ready(function() {
     $('#contact-form').on('submit', function(e) {
       let phoneInput = $('#phone').val().trim();
-      
-      if (phoneInput === '' || phoneInput === 'Telephone') {
-        $('#phone').val(''); // Ensure it's empty instead of "nope"
+      // If phone field is empty or default, reset it to empty
+      if (phoneInput === '' || phoneInput.toLowerCase() === 'telephone') {
+        $('#phone').val(''); 
       }
+      $('.phone .empty').hide(); 
+      $('.phone .error').hide();
+    });
+  });
+</script>
+<script>
+  $(document).ready(function() {
+    $('#contact-form').validate({
+      rules: {
+        phone: {
+          required: false
+        }
+      }
+    });
   });
 </script>
 </body>
