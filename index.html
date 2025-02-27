@@ -155,36 +155,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="span8">
               <h4>Contact</h4>
               <div class="inner-1">
-                <form id="contact-form" action="https://tangible-studios.com/mctata/sendmessage.php" method="POST">
-                  <div class="success"> Your message has been sent! I will be in touch soon.</div>
-                  <fieldset>
-                <div>
-                    <label for="name" class="name">
-                    <input type="text" id="name" name="name" value="Your name">
-                  <br>
-                    <span class="error">*This is not a valid name.</span> <span class="empty">*This field is required.</span> </label>
-                    </div>
-                  <div>
-                    <label for="phone" class="phone">
-                      <input type="tel" id="phone" name="phone" value="Telephone">
-                    <br>
-                    <span class="error">*This is not a valid phone number.</span> <span class="empty">*This field is required.</span> </label>
-                    </div>
-                <div>
-                    <label for="email" class="email">
-                    <input type="email" id="email" name="email" value="Email">
-                    <br>
-                    <span class="error">*This is not a valid email address.</span> <span class="empty">*This field is required.</span> </label>
-                    </div>
-                <div>
-                    <label for="msg" class="message">
-                    <textarea id="msg" name="msg">Message</textarea>
-                    <br>
-                    <span class="error">*The message is too short.</span> <span class="empty">*This field is required.</span> </label>
-                    </div>
-                <div class="buttons-wrapper"> <a class="btn btn-1" data-type="reset">Clear</a> <a class="btn btn-1" data-type="submit">Send</a></div>
-              </fieldset>
-                </form>
+                <form id="contact-form">
+                  <label>Name:</label>
+                  <input type="text" id="name" name="name">
+                  <span class="error" id="name-error">* Name is required</span>
+          
+                  <label>Email:</label>
+                  <input type="email" id="email" name="email">
+                  <span class="error" id="email-error">* Valid email is required</span>
+          
+                  <label>Phone (Optional):</label>
+                  <input type="tel" id="phone" name="phone">
+          
+                  <label>Message:</label>
+                  <textarea id="message" name="message"></textarea>
+                  <span class="error" id="message-error">* Message is required</span>
+          
+                  <button type="submit">Send</button>
+              </form>
+          
+              <p id="response-message"></p>
           </div>
             </article>
         <article class="span4">
@@ -233,28 +223,56 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script type="text/javascript" src="js/touchTouch.jquery.js"></script>
   <script type="text/javascript">if($(window).width()>1024){document.write("<"+"script src='js/jquery.preloader.js'></"+"script>");}  </script>
   <script>
-  $(document).ready(function() {
-    $('#contact-form').on('submit', function(e) {
-      let phoneInput = $('#phone').val().trim();
-      // If phone field is empty or default, reset it to empty
-      if (phoneInput === '' || phoneInput.toLowerCase() === 'telephone') {
-        $('#phone').val(''); 
-      }
-      $('.phone .empty').hide(); 
-      $('.phone .error').hide();
-    });
-  });
-</script>
-<script>
-  $(document).ready(function() {
-    $('#contact-form').validate({
-      rules: {
-        phone: {
-          required: false
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent page reload
+
+        // Clear previous errors
+        document.querySelectorAll(".error").forEach(el => el.style.display = "none");
+
+        // Get input values
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let phone = document.getElementById("phone").value.trim();
+        let message = document.getElementById("message").value.trim();
+        let hasError = false;
+
+        // Basic validation
+        if (name === "") {
+            document.getElementById("name-error").style.display = "block";
+            hasError = true;
         }
-      }
+        if (email === "" || !email.includes("@")) {
+            document.getElementById("email-error").style.display = "block";
+            hasError = true;
+        }
+        if (message === "") {
+            document.getElementById("message-error").style.display = "block";
+            hasError = true;
+        }
+
+        if (hasError) return; // Stop form submission if errors exist
+
+        // Prepare data
+        let formData = new FormData();
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("phone", phone);
+        formData.append("message", message);
+
+        // Send data via AJAX
+        fetch("https://tangible-studios.com/mctata/sendmessage.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("response-message").innerText = "Message sent successfully!";
+        })
+        .catch(error => {
+            document.getElementById("response-message").innerText = "Error sending message.";
+        });
     });
-  });
 </script>
+
 </body>
 </html>
