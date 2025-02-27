@@ -2,7 +2,6 @@
 _mm/
 _notes/
 test/
-bat/
 misc/
 # General ignores
 .DS_Store
