@@ -473,7 +473,7 @@ input[type="color"],
 .uneditable-input {
   display: inline-block;
   height: 20px;
-  padding: 4px 6px;
+  padding: 7px 12px;
   margin-bottom: 9px;
   font-size: 14px;
   line-height: 20px;
@@ -485,8 +485,16 @@ input[type="color"],
 input,
 textarea,
 .uneditable-input {
-  width: 206px;
+  width: 60%;
 }
+@media(max-width: 767px){
+  input,
+textarea,
+.uneditable-input {
+  width: 100%;
+}
+}
+
 textarea {
   height: auto;
 }
@@ -2760,4 +2768,14 @@ a.badge:hover {
 }
 .affix {
   position: fixed;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
