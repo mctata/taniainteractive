@@ -472,27 +472,13 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   display: inline-block;
-  height: 20px;
   padding: 7px 12px;
-  margin-bottom: 9px;
+  margin-bottom: 15px;
   font-size: 14px;
-  line-height: 20px;
   color: #7f7f7f;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-}
-input,
-textarea,
-.uneditable-input {
-  width: 60%;
-}
-@media(max-width: 767px){
-  input,
-textarea,
-.uneditable-input {
-  width: 100%;
-}
 }
 
 textarea {
@@ -596,6 +582,21 @@ input[type="checkbox"]:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
+}
+#form input#button {
+  background-color: #ee6557;
+  border: 1px solid #ee6557;;
+  padding: 7px 14px;
+  width: 25%;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  border-radius: 3px;
+  color: #fcfcfc;
+}
+#form input#button:hover {
+  background-color: #fcfcfc;
+  color: #ee6557;
 }
 .uneditable-input,
 .uneditable-textarea {
