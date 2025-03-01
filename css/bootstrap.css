@@ -2769,6 +2769,56 @@ a.badge:hover {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+.skip-link:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  clip: auto;
+  margin: 0;
+  padding: 10px;
+  background: #fff;
+  color: #000;
+}
+/* Scroll-to-top button styles */
+#scroll-to-top {
+  display: none; /* Hidden by default */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+#scroll-to-top:hover {
+  background-color: #555;
+}
+
+#scroll-to-top:active {
+  background-color: #222;
+}
+
+/* Dark theme adjustments */
+body.dark-theme #scroll-to-top {
+  background-color: #555;
+  color: #e0e0e0;
+}
+
+body.dark-theme #scroll-to-top:hover {
+  background-color: #777;
+}
+
+body.dark-theme #scroll-to-top:active {
+  background-color: #444;
+}
 /* Dark theme styles */
 body.dark-theme {
   background-color: #121212;
