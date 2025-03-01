@@ -113,6 +113,7 @@ generate_status_page() {
         body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
         .operational { color: green; }
         .disrupted { color: red; }
+        .incident { background-color: #f0f0f0; padding: 10px; margin: 5px 0; border-left: 4px solid orange; }
     </style>
 </head>
 <body>
@@ -147,7 +148,25 @@ EOF
 
     <h2>Incidents</h2>
     <div>
-        $([ -s "incidents.txt" ] && sed 's/^/<p>/' "incidents.txt" | sed 's/$/<\/p>/' || echo "<p>No active incidents</p>")
+EOF
+
+    # Process incidents
+    if [ -s "incidents.txt" ]; then
+        while IFS= read -r incident; do
+            cat >> "${output_file}" << EOF
+        <div class="incident">
+            <p>${incident}</p>
+        </div>
+EOF
+        done < incidents.txt
+    else
+        cat >> "${output_file}" << EOF
+        <p>No active incidents</p>
+EOF
+    fi
+
+    # Close HTML
+    cat >> "${output_file}" << EOF
     </div>
 </body>
 </html>
