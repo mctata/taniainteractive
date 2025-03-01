@@ -73,6 +73,8 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Theme toggle button -->
+                    <button id="theme-toggle" aria-label="Toggle dark mode">🌓</button>
                 </div>
             </div>
         </div>
@@ -137,7 +139,7 @@
                 
                 <p>Certified in Docker, DevOps, CSS with LESS & Sass, and proficient in Confluence & Jira. Whether it’s debugging code or navigating time zones, I bring a blend of technical expertise and project management skills to every project. </p>
                 
-                <p><strong>I thrive on tackling challenges with creativity and commitment.</strong></p>
+                <p>I thrive on tackling challenges with creativity and commitment.</p>
                 <p>If your business, organisation, or charity needs a tailored web solution, let’s connect. I’d love to bring your vision to life with expertise, passion, and maybe a few stories about my adventures across three countries.</p>
             </div>
         </section>
@@ -237,5 +239,31 @@
                 });
         });
     </script>
+    <!-- Add this script before the closing </body> tag -->
+<script>
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Check for saved theme preference in localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        body.classList.add(savedTheme);
+        updateToggleButton(savedTheme);
+    }
+
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-theme');
+        const isDark = body.classList.contains('dark-theme');
+        localStorage.setItem('theme', isDark ? 'dark-theme' : '');
+        updateToggleButton(isDark ? 'dark-theme' : '');
+    });
+
+    // Update the toggle button's appearance
+    function updateToggleButton(theme) {
+        themeToggle.textContent = theme === 'dark-theme' ? '☀️' : '🌓';
+    }
+</script>
 </body>
 </html>

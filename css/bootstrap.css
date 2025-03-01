@@ -34,6 +34,9 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 a:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
@@ -147,17 +150,16 @@ body {
   font-size: 16px;
   line-height: 1.5;
   color: #181818;
-    text-shadow: 0px 1px 1px #fff;
   background: #f5f5f5;
 }
 a {
   color: #181818;
-    border-bottom: 1px solid #16a6b6;
+    border-bottom: 1px solid #0093d2;
   text-decoration: none;
   outline:none;
 }
 a:hover {
-	color:#16a6b6;
+	color:#0093d2;
   text-decoration: none;
 }
 .row {
@@ -370,7 +372,7 @@ code,
 pre {
   padding: 0 3px 2px;
   font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
-  font-size: 12px;
+  font-size: 14px;
   color: #181818;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -378,9 +380,7 @@ pre {
 }
 code {
   padding: 2px 4px;
-  color: #ee6557;
-  background-color: #f7f7f9;
-  border: 1px solid #e1e1e8;
+  color: #e86100;
 }
 pre {
   display: block;
@@ -570,8 +570,8 @@ input[type="checkbox"]:focus {
   outline-offset: -2px;
 }
 #form input#button {
-  background-color: #ee6557;
-  border: 1px solid #ee6557;;
+  background-color: #e86100;
+  border: 1px solid #e86100;;
   padding: 17px 24px;
 
   text-align: center;
@@ -581,7 +581,7 @@ input[type="checkbox"]:focus {
 }
 #form input#button:hover {
   background-color: #fcfcfc;
-  color: #ee6557;
+  color: #e86100;
 }
 /* @media only screen and (max-width:768px){
   #form input#button {
@@ -1145,7 +1145,7 @@ button.close {
   vertical-align: middle;
   cursor: pointer;
   color: #181818;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  text-shadow: none;
   background-color: #f5f5f5;
   background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
@@ -1801,7 +1801,7 @@ input[type="submit"].btn.btn-mini {
   font-weight: bold;
   line-height: 20px;
   color: #a0a0a0;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-shadow: none;
   text-transform: uppercase;
 }
 .nav li + .nav-header {
@@ -1816,7 +1816,7 @@ input[type="submit"].btn.btn-mini {
 .nav-list .nav-header {
   margin-left: -15px;
   margin-right: -15px;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-shadow: none;
 }
 .nav-list > li > a {
   padding: 3px 15px;
@@ -1824,7 +1824,7 @@ input[type="submit"].btn.btn-mini {
 .nav-list > .active > a,
 .nav-list > .active > a:hover {
   color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  text-shadow: none;
   background-color: #e85356;
 }
 .nav-list [class^="icon-"] {
@@ -1933,7 +1933,6 @@ input[type="submit"].btn.btn-mini {
   font-size: 20px;
   font-weight: 200;
   color: #777777;
-  text-shadow: 0 1px 0 #ffffff;
 }
 .navbar .brand:hover {
   text-decoration: none;
@@ -1987,7 +1986,6 @@ input[type="submit"].btn.btn-mini {
   float: none;
   padding: 10px 15px 10px;
   text-decoration: none;
-  text-shadow: 0 1px 0 #ffffff;
 }
 .navbar .nav .dropdown-toggle .caret {
   margin-top: 8px;
@@ -2770,4 +2768,66 @@ a.badge:hover {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+/* Dark theme styles */
+body.dark-theme {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.dark-theme header {
+  background-color: #1e1e1e;
+  border-bottom: 1px solid #333;
+}
+
+.dark-theme .brand a {
+  color: #ffffff;
+}
+.dark-theme a,
+.dark-theme .navbar_ .nav a {
+  color: #e0e0e0;
+}
+.dark-theme a:hover,
+.dark-theme .brand a:hover,
+.dark-theme .navbar_ .nav a:hover {
+  color: #0093d2;
+}
+.dark-theme #form input,
+.dark-theme #form textarea,
+.dark-theme .block-slogan h1,
+.dark-theme .block-slogan p,
+.dark-theme h2,
+.dark-theme h5,
+.dark-theme p,
+.dark-theme ul li,
+.dark-theme address {
+  color: #e0e0e0;
+}
+
+.dark-theme .btn {
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #444;
+}
+
+.dark-theme .btn:hover {
+  background-color: #444;
+  color: #ffffff;
+}
+
+.dark-theme footer {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+/* Style for the theme toggle button */
+#theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
 }
