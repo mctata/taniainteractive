@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tania Interactive Status</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .status-header { display: flex; justify-content: space-between; align-items: center; }
+        .status-badge { padding: 10px; border-radius: 5px; }
+        .operational { background-color: #4CAF50; color: white; }
+        .disrupted { background-color: #F44336; color: white; }
+        .service-list { list-style-type: none; padding: 0; }
+        .service-item { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <div class="status-container">
+        <div class="status-header">
+            <h1>Tania Interactive Status</h1>
+            <span class="status-badge operational">
+                All Systems Operational
+            </span>
+        </div>
+
+        <h2>Services Status</h2>
+        <ul class="service-list">
+            <li class="service-item">
+                <span>Web Application</span>
+                <span class="status-badge operational">
+                    OK
+                </span>
+            </li>
+            <li class="service-item">
+                <span>API Service</span>
+                <span class="status-badge operational">
+                    OK
+                </span>
+            </li>
+            <li class="service-item">
+                <span>Database Server</span>
+                <span class="status-badge operational">
+                    OK
+                </span>
+            </li>
+            <li class="service-item">
+                <span>Documentation</span>
+                <span class="status-badge operational">
+                    OK
+                </span>
+            </li>
+        </ul>
+
+        <h2>Incidents</h2>
+        <p>No active incidents</p>
+    </div>
+</body>
+</html>
