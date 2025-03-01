@@ -213,77 +213,7 @@
     <script>if($(window).width()>1024){document.write("<"+"script src='js/jquery.preloader.js' defer></"+"script>");}</script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
-        const scrollToTopButton = document.getElementById('scroll-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 200) {
-                scrollToTopButton.style.display = 'block';
-            } else {
-                scrollToTopButton.style.display = 'none';
-            }
-        });
-        scrollToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
-    <script>
-        emailjs.init('2bzsFXyw3GC8NldiN');
 
-        const btn = document.getElementById('button');
-        const responseMessage = document.getElementById('response-message');
-
-        document.getElementById('form').addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            btn.value = 'Sending...';
-
-            const serviceID = 'default_service';
-            const templateID = 'template_mfbw77l';
-
-            emailjs.sendForm(serviceID, templateID, this)
-                .then(() => {
-                    btn.value = 'Send Email';
-                    responseMessage.textContent = "Thank you for your interest! I'll get back to you soon.";
-                    responseMessage.style.color = 'green';
-                    document.getElementById('form').reset();
-                })
-                .catch((err) => {
-                    btn.value = 'Send Email';
-                    responseMessage.textContent = 'Failed to send message. Please try again.';
-                    responseMessage.style.color = 'red';
-                    console.error(JSON.stringify(err));
-                });
-        });
-    </script>
-<script>
-    // Theme toggle functionality
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-
-    // Check for saved theme preference in localStorage
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        body.classList.add(savedTheme);
-        updateToggleButton(savedTheme);
-    }
-
-    // Toggle theme on button click
-    themeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-theme');
-        const isDark = body.classList.contains('dark-theme');
-        localStorage.setItem('theme', isDark ? 'dark-theme' : '');
-        updateToggleButton(isDark ? 'dark-theme' : '');
-    });
-
-    // Update the toggle button's appearance
-    function updateToggleButton(theme) {
-        themeToggle.textContent = theme === 'dark-theme' ? '☀️' : '🌓';
-    }
-</script>
-<script defer>
-    // Scroll-to-top functionality
     const scrollToTopButton = document.getElementById('scroll-to-top');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 200) {
