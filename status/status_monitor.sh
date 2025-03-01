@@ -2,24 +2,16 @@
 
 # Enhanced Status Monitoring Script for taniainteractive
 
-# Exit immediately if a command exits with a non-zero status
-set -e
+# Strict mode for better error handling
+set -euo pipefail
 
-# Print commands and their arguments as they are executed
-set -x
-
-# Ensure script is run from the correct directory
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd "${SCRIPT_DIR}"
-
-# Logging function with more verbose output
+# Logging function
 log() {
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a status_monitor_verbose.log
 }
 
 # Error handling function
 handle_error() {
-    echo "ERROR: $*" >&2
     log "ERROR: $*"
     exit 1
 }
@@ -45,6 +37,7 @@ check_service() {
     local expected_rc="${4}"
     local tmp_dir="${5}"
     local rc=0
+    local error_msg=""
 
     log "Checking service: ${name} (${host})"
 
@@ -54,8 +47,20 @@ check_service() {
 
     case "${check}" in
         http*)
-            # HTTP/HTTPS check
-            rc=$(curl -${ipversion}sSkLo /dev/null -H "User-Agent: taniainteractive Status Monitor" -m 10 -w "%{http_code}" "${host}" 2>"${tmp_dir}/${name}.error" || echo 0)
+            # HTTP/HTTPS check with full error handling
+            local response
+            response=$(curl -${ipversion}sSkL -o /dev/null -w "%{http_code}|%{http_connect}" \
+                -H "User-Agent: taniainteractive Status Monitor" \
+                -m 10 "${host}" 2>"${tmp_dir}/${name}.error" || echo "0|0")
+            
+            # Split response into status code and connection code
+            rc=$(echo "${response}" | cut -d'|' -f1)
+            local conn_code=$(echo "${response}" | cut -d'|' -f2)
+            
+            # Capture error details if any
+            if [ -s "${tmp_dir}/${name}.error" ]; then
+                error_msg=$(cat "${tmp_dir}/${name}.error}")
+            fi
             ;;
         ping*)
             # Ping check
@@ -79,8 +84,15 @@ check_service() {
         echo "OK" > "${tmp_dir}/${name}.status"
         log "Service ${name} is operational"
     else
-        echo "FAIL" > "${tmp_dir}/${name}.status"
+        echo "FAIL (HTTP ${rc})" > "${tmp_dir}/${name}.status"
         log "Service ${name} is disrupted (Return Code: ${rc})"
+        
+        # Log error details
+        if [ -n "${error_msg}" ]; then
+            echo "Error: ${error_msg}" >> "${tmp_dir}/${name}.error"
+        fi
+        
+        # Append to global error log
         cat "${tmp_dir}/${name}.error" >> status_errors.log
     fi
 }
@@ -95,12 +107,6 @@ generate_status_page() {
     mkdir -p "${history_dir}"
 
     log "Generating status page to ${output_file}"
-
-    # Check if any status files exist
-    if [ ! "$(find "${tmp_dir}" -name "*.status")" ]; then
-        log "WARNING: No status files found"
-        return 1
-    fi
 
     # Determine global status
     local global_status="operational"
@@ -119,47 +125,158 @@ generate_status_page() {
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>taniainteractive Status</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
-        .operational { color: green; }
-        .disrupted { color: red; }
-        .incident { background-color: #f0f0f0; padding: 10px; margin: 5px 0; border-left: 4px solid orange; }
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f4f4f4;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --operational-bg: #4CAF50;
+            --disrupted-bg: #F44336;
+            --border-color: #dddddd;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-primary: #121212;
+                --bg-secondary: #1e1e1e;
+                --text-primary: #ffffff;
+                --text-secondary: #b0b0b0;
+                --operational-bg: #2E7D32;
+                --disrupted-bg: #C62828;
+                --border-color: #333333;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .status-container {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .status-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .status-badge {
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .operational {
+            background-color: var(--operational-bg);
+            color: white;
+        }
+
+        .disrupted {
+            background-color: var(--disrupted-bg);
+            color: white;
+        }
+
+        .service-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .service-item:last-child {
+            border-bottom: none;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            padding: 10px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .status-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .incidents-section {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .incident {
+            background-color: var(--bg-primary);
+            border-left: 4px solid orange;
+            padding: 10px;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
-    <h1>taniainteractive Status</h1>
-    
-    <h2>Global Status</h2>
-    <p class="${global_status}">
-        ${global_message}
-    </p>
+    <div class="status-container">
+        <div class="status-header">
+            <h1>taniainteractive Status</h1>
+            <button class="theme-toggle" aria-label="Toggle dark/light mode" onclick="toggleTheme()">🌓</button>
+        </div>
 
-    <h2>Services Status</h2>
-    <ul>
+        <div id="global-status">
+            <span class="status-badge ${global_status}">${global_message}</span>
+        </div>
+
+        <h2>Services Status</h2>
+        <ul class="service-list">
 EOF
 
     # Add service statuses
     for status_file in "${tmp_dir}"/*.status; do
         name=$(basename "${status_file}" .status)
         status=$(cat "${status_file}")
-        status_class=$(echo "${status}" | tr '[:upper:]' '[:lower:]')
+        status_class=$(echo "${status}" | cut -d' ' -f1 | tr '[:upper:]' '[:lower:]')
         cat >> "${output_file}" << EOF
-        <li>
-            ${name}: 
-            <span class="${status_class}">
-                ${status}
-            </span>
-        </li>
+            <li class="service-item">
+                <span>${name}</span>
+                <span class="status-badge ${status_class}">
+                    ${status}
+                </span>
+            </li>
 EOF
     done
 
     # Add incidents section
     cat >> "${output_file}" << EOF
-    </ul>
+        </ul>
 
-    <h2>Incidents</h2>
-    <div>
+        <div class="incidents-section">
+            <h2>Incidents</h2>
+            <div id="incidents-content">
 EOF
 
     # Process incidents
@@ -167,21 +284,58 @@ EOF
         while IFS= read -r incident; do
             if [ -n "${incident}" ]; then
                 cat >> "${output_file}" << EOF
-        <div class="incident">
-            <p>${incident}</p>
-        </div>
+                <div class="incident">
+                    <p>${incident}</p>
+                </div>
 EOF
             fi
         done < incidents.txt
     else
         cat >> "${output_file}" << EOF
-        <p>No active incidents</p>
+                <p>No active incidents</p>
 EOF
     fi
 
     # Close HTML
     cat >> "${output_file}" << EOF
+            </div>
+        </div>
     </div>
+
+    <script>
+        function toggleTheme() {
+            const root = document.documentElement;
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            
+            if (currentTheme === 'light') {
+                root.style.setProperty('--bg-primary', '#121212');
+                root.style.setProperty('--bg-secondary', '#1e1e1e');
+                root.style.setProperty('--text-primary', '#ffffff');
+                root.style.setProperty('--text-secondary', '#b0b0b0');
+                root.style.setProperty('--operational-bg', '#2E7D32');
+                root.style.setProperty('--disrupted-bg', '#C62828');
+                root.style.setProperty('--border-color', '#333333');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                root.style.setProperty('--bg-primary', '#ffffff');
+                root.style.setProperty('--bg-secondary', '#f4f4f4');
+                root.style.setProperty('--text-primary', '#333333');
+                root.style.setProperty('--text-secondary', '#666666');
+                root.style.setProperty('--operational-bg', '#4CAF50');
+                root.style.setProperty('--disrupted-bg', '#F44336');
+                root.style.setProperty('--border-color', '#dddddd');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Persist theme preference
+        window.addEventListener('load', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                toggleTheme();
+            }
+        });
+    </script>
 </body>
 </html>
 EOF
