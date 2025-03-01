@@ -24,17 +24,17 @@ http_check() {
 
     # Use curl with max redirects and return last response code
     local response
-    response=$(curl -sS -L -o "${tmp_dir}/${name}.body" -w "%{http_code}" \
+    response=$(curl -sS -L -o "${tmp_dir}/${name// /_}.body" -w "%{http_code}" \
         -H "User-Agent: taniainteractive Status Monitor" \
-        -m 10 "${url}" 2>"${tmp_dir}/${name}.error")
+        -m 10 "${url}" 2>"${tmp_dir}/${name// /_}.error")
 
     log "Response Code for ${name}: ${response}"
 
     if [[ "${response}" -eq "${expected_code}" ]]; then
-        echo "OK" > "${tmp_dir}/${name}.status"
+        echo "OK" > "${tmp_dir}/${name// /_}.status"
         log "${name} is operational"
     else
-        echo "FAIL (HTTP ${response})" > "${tmp_dir}/${name}.status"
+        echo "FAIL (HTTP ${response})" > "${tmp_dir}/${name// /_}.status"
         log "${name} is disrupted (Return Code: ${response})"
     fi
 }
@@ -48,7 +48,7 @@ generate_status_page() {
     local global_status="operational"
     local global_message="All Systems Operational"
 
-    if find "${tmp_dir}" -name "*.status" | xargs grep -q "FAIL"; then
+    if find "${tmp_dir}" -name "*.status" -print0 | xargs -0 grep -q "FAIL"; then
         global_status="disrupted"
         global_message="Services Disrupted"
     fi
@@ -147,7 +147,7 @@ EOF
 
     # Add service statuses
     for status_file in "${tmp_dir}"/*.status; do
-        name=$(basename "${status_file}" .status)
+        name=$(basename "${status_file}" .status | sed 's/_/ /g')
         status=$(cat "${status_file}")
         status_class=$(echo "${status}" | cut -d' ' -f1 | tr '[:upper:]' '[:lower:]')
         
