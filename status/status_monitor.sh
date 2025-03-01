@@ -183,7 +183,7 @@ generate_status_page() {
         <ul class="service-list">
 EOF
 
-    # Ensure both services are displayed, even if they weren't checked
+    # Ensure both services are displayed
     services=("Web_Application" "Database")
     for service in "${services[@]}"; do
         status_file="${tmp_dir}/${service}.status"
@@ -275,7 +275,7 @@ EOF
 </html>
 EOF
 
-    log "Status page generated"
+    log "Status page generated at $(pwd)/index.html"
 }
 
 # Main Execution
@@ -298,7 +298,7 @@ main() {
     # Generate status page
     generate_status_page "${tmp_dir}"
 
-    # Cleanup
+    # Cleanup temporary directory
     rm -rf "${tmp_dir}"
 
     log "Status Monitoring Completed"
