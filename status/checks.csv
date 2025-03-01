@@ -1,0 +1,6 @@
+check,expected_code,name,host
+http4,200,Web Application,https://taniainteractive.co.uk
+http4,200,API Service,https://api.taniainteractive.co.uk
+ping4,0,Database Server,db.taniainteractive.co.uk
+port4,0,Database Port,db.taniainteractive.co.uk:3306
+http4,200,Documentation,https://docs.taniainteractive.co.uk
