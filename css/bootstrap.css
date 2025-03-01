@@ -435,21 +435,7 @@ legend small {
   font-size: 15px;
   color: #a0a0a0;
 }
-label,
-input,
-button,
-select,
-textarea {
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 20px;
-}
-input,
-button,
-select,
-textarea {
-  font-family: 'Open Sans', sans-serif;
-}
+
 label {
   display: block;
   margin-bottom: 5px;
@@ -586,8 +572,8 @@ input[type="checkbox"]:focus {
 #form input#button {
   background-color: #ee6557;
   border: 1px solid #ee6557;;
-  padding: 7px 14px;
-  width: 25%;
+  padding: 17px 24px;
+
   text-align: center;
   display: block;
   border-radius: 3px;
@@ -597,6 +583,11 @@ input[type="checkbox"]:focus {
   background-color: #fcfcfc;
   color: #ee6557;
 }
+/* @media only screen and (max-width:768px){
+  #form input#button {
+    width: 40%;
+  } 
+} */
 .uneditable-input,
 .uneditable-textarea {
   color: #a0a0a0;
@@ -1139,6 +1130,7 @@ button.close {
   -webkit-appearance: none;
 }
 .btn {
+  font-family:Roboto-Regular,sans-serif;
   display: inline-block;
   *display: inline;
   /* IE7 inline-block hack */
