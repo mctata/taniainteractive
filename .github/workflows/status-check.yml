@@ -1,0 +1,19 @@
+name: Status Page Monitor
+
+on:
+  schedule:
+    # Run every 15 minutes
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  status-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Run status check
+      run: |
+        cd status
+        chmod +x status_monitor.sh
+        ./status_monitor.sh
