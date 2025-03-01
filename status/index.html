@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><title>Status</title><style>
+body { font-family: segoe ui,Roboto,Oxygen-Sans,Ubuntu,Cantarell,helvetica neue,Verdana,sans-serif; }
+h1 { margin-top: 30px; }
+ul { padding: 0px; }
+li { list-style: none; margin-bottom: 2px; padding: 5px; border-bottom: 1px solid #ddd;  }
+.container { max-width: 600px; width: 100%; margin: 15px auto; }
+.panel { text-align: center; padding: 10px; border: 0px; border-radius: 5px; }
+.failed-bg  { color: white; background-color: #E25D6A; }
+.success-bg { color: white; background-color: #52B86A; }
+.failed  { color: #E25D6A; }
+.success { color: #52B86A; }
+.small { font-size: 80%; }
+.status { float: right; }
+</style></head>
+<body>
+<div class='container'>
+<h1>Global Status</h1>
+<ul><li class='panel failed-bg'>       1 Outage(s)</li></ul>
+<h1>Services</h1>
+<ul>
+<li>taniainteractive <span class='small failed'>(Status code: 404, expected: 200)</span><span class='status failed'>Disrupted</span></li>
+<li>taniainteractive <span class='status success'>Operational</span></li>
+<li>taniainteractive (IPv4) <span class='status success'>Operational</span></li>
+<li>taniainteractive (IPv6) <span class='status success'>Operational</span></li>
+<li>taniainteractive 404 <span class='status success'>Operational</span></li>
+<li>taniainteractive ping <span class='status success'>Operational</span></li>
+<li>taniainteractive DNS <span class='status success'>Operational</span></li>
+</ul>
+<p class=small> Last check: 2025-03-01T11:09:15+0700</p>
+<h1>Incidents</h1>
+<p>2025/02/01 08:00 - Site unavailable. Resolved after 5 minutes of downtime.</p>
+<p>2025/01/01 09:00 - API issue, incident resolved after 1 hour.</p>
+</div>
+</body></html>

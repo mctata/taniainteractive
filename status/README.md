@@ -1,6 +1,6 @@
-# Tinystatus
+# statusPage
 
-tinystatus generate an html status page via shell script.
+This statusPage generate an html status page via shell script.
 
 ## Features
 
@@ -14,16 +14,16 @@ tinystatus generate an html status page via shell script.
 
 ## Demo
 
-An example site is available [here](https://lab.bdro.fr/tinystatus/).
+An example site is available [here](https://taniainteractive.co.uk/status/).
 
 ## Setup
 
-To install tinystatus:
+To install statusPage:
 
 * Clone the repository and go to the created directory
 * Edit the checks file `checks.csv`
 * To add incidents or maintenance, edit `incidents.txt`
-* Generate status page `./tinystatus > index.html`
+* Generate status page `./status > index.html`
 * Serve the page with your favorite web server
 
 ## Configuration file
