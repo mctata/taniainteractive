@@ -1,28 +1,34 @@
 # taniainteractive
 
 ## Project Overview
-taniainteractive is a comprehensive web platform designed to provide innovative solutions.
+Innovative web platform with comprehensive service monitoring.
 
-## Key Components
-- Web Application
-- Database Services
-- Automated Status Monitoring
+## Status Monitoring System
 
-## Status Page
-We provide a real-time status monitoring system located in the `status/` directory.
-
-### Status Page Features
-- Automatic service health checks
-- Real-time incident reporting
+### Features
+- Real-time service health checks
+- Automated status page generation
+- Incident tracking
 - Dark/Light theme support
-- Accessibility-first design
 
-## Quick Links
-- [Status Page](status/index.html)
-- [Status Monitoring System](status/README.md)
+### Monitoring Details
+- **Location**: `/status` directory
+- **Checks Configuration**: `status/checks.csv`
+- **Incidents Log**: `status/incidents.txt`
+- **Status Page**: `status/index.html`
+
+### Monitoring Workflow
+1. Periodic service health checks
+2. Automatic status page updates
+3. Incident logging
+4. Responsive, accessible design
+
+### Quick Links
+- [Status Page](/status/index.html)
+- [Status Monitoring README](/status/README.md)
 
 ## Contributing
-Please read our contributing guidelines before submitting pull requests.
+Please review our contribution guidelines before submitting pull requests.
 
 ## License
 [Add your license information here]
