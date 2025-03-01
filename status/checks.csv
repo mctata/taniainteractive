@@ -1,4 +1,4 @@
 check,expected_code,name,host
 http4,200,Web Application,https://taniainteractive.co.uk
-http4,200,Dummy Test Site,https://dummy.taniainteractive.co.uk
+http4,400,Dummy Test Site,https://taniainteractive.co.uk/dummy-test-site
 port4,0,Web Application Port,taniainteractive.co.uk:443
