@@ -102,6 +102,17 @@ generate_status_page() {
         return 1
     fi
 
+    # Determine global status
+    local global_status="operational"
+    local global_message="All Systems Operational"
+    for status_file in "${tmp_dir}"/*.status; do
+        if grep -q "FAIL" "${status_file}"; then
+            global_status="disrupted"
+            global_message="Services Disrupted"
+            break
+        fi
+    done
+
     # Start HTML generation
     cat > "${output_file}" << EOF
 <!DOCTYPE html>
@@ -120,8 +131,8 @@ generate_status_page() {
     <h1>taniainteractive Status</h1>
     
     <h2>Global Status</h2>
-    <p class="$([ "$(find "${tmp_dir}" -name "*.status" | grep -c "FAIL") -eq 0" ] && echo "operational" || echo "disrupted")">
-        $([ "$(find "${tmp_dir}" -name "*.status" | grep -c "FAIL") -eq 0" ] && echo "All Systems Operational" || echo "Services Disrupted")
+    <p class="${global_status}">
+        ${global_message}
     </p>
 
     <h2>Services Status</h2>
@@ -132,10 +143,11 @@ EOF
     for status_file in "${tmp_dir}"/*.status; do
         name=$(basename "${status_file}" .status)
         status=$(cat "${status_file}")
+        status_class=$(echo "${status}" | tr '[:upper:]' '[:lower:]')
         cat >> "${output_file}" << EOF
         <li>
             ${name}: 
-            <span class="${status,,}">
+            <span class="${status_class}">
                 ${status}
             </span>
         </li>
@@ -153,11 +165,13 @@ EOF
     # Process incidents
     if [ -s "incidents.txt" ]; then
         while IFS= read -r incident; do
-            cat >> "${output_file}" << EOF
+            if [ -n "${incident}" ]; then
+                cat >> "${output_file}" << EOF
         <div class="incident">
             <p>${incident}</p>
         </div>
 EOF
+            fi
         done < incidents.txt
     else
         cat >> "${output_file}" << EOF
