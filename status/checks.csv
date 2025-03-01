@@ -1,7 +1,0 @@
-http,   200,  taniainteractive,         http://taniainteractive.co.uk
-https,   200,  taniainteractive,        https://taniainteractive.co.uk
-http4,  200,  taniainteractive (IPv4),  https://taniainteractive.co.uk
-http6,  200,  taniainteractive (IPv6),  https://taniainteractive.co.uk
-http,   404,  taniainteractive 404,     https://taniainteractive.co.uk/dummy
-ping,   0,    taniainteractive ping,    8.8.8.8
-port,   0,    taniainteractive DNS,     8.8.8.8 53

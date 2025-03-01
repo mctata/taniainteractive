@@ -1,2 +1,0 @@
-2025/02/01 08:00 - Site unavailable. Resolved after 5 minutes of downtime.
-2025/01/01 09:00 - API issue, incident resolved after 1 hour.
