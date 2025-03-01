@@ -217,13 +217,16 @@ EOF
 
     # Add incidents
     if [ -f "incidents.txt" ] && [ -s "incidents.txt" ]; then
-        while IFS= read -r incident; do
-            cat >> "${output_file}" << EOF
+        # Use `cat` without any filtering to preserve all newlines
+        cat incidents.txt | while IFS= read -r incident; do
+            if [ -n "${incident}" ]; then
+                cat >> "${output_file}" << EOF
                 <div class="incident">
                     <p>${incident}</p>
                 </div>
 EOF
-        done < incidents.txt
+            fi
+        done
     else
         cat >> "${output_file}" << EOF
                 <p>No active incidents</p>
