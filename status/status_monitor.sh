@@ -31,10 +31,10 @@ http_check() {
     log "Response Code for ${name}: ${response}"
 
     if [[ "${response}" -eq "${expected_code}" ]]; then
-        echo "OK" > "${tmp_dir}/${name// /_}.status"
+        echo "Operational" > "${tmp_dir}/${name// /_}.status"
         log "${name} is operational"
     else
-        echo "FAIL (HTTP ${response})" > "${tmp_dir}/${name// /_}.status"
+        echo "Disrupted (HTTP ${response})" > "${tmp_dir}/${name// /_}.status"
         log "${name} is disrupted (Return Code: ${response})"
     fi
 }
@@ -48,7 +48,7 @@ generate_status_page() {
     local global_status="operational"
     local global_message="All Systems Operational"
 
-    if find "${tmp_dir}" -name "*.status" -print0 | xargs -0 grep -q "FAIL"; then
+    if find "${tmp_dir}" -name "*.status" -print0 | xargs -0 grep -q "Disrupted"; then
         global_status="disrupted"
         global_message="Services Disrupted"
     fi
@@ -101,6 +101,15 @@ generate_status_page() {
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
+        .status-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
         .status-badge {
             padding: 8px 15px;
             border-radius: 4px;
@@ -126,15 +135,44 @@ generate_status_page() {
         .service-item {
             display: flex;
             justify-content: space-between;
-            padding: 10px;
+            align-items: center;
+            padding: 12px 0;
             border-bottom: 1px solid var(--border-color);
+        }
+
+        .service-item:last-child {
+            border-bottom: none;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            padding: 10px;
+        }
+
+        .incidents-section {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .incident {
+            background-color: var(--bg-primary);
+            border-left: 4px solid orange;
+            padding: 10px;
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
     <div class="status-container">
-        <h1>taniainteractive Status</h1>
-        
+        <div class="status-header">
+            <h1>taniainteractive Status</h1>
+            <button class="theme-toggle" aria-label="Toggle dark/light mode" onclick="toggleTheme()">🌓</button>
+        </div>
+
         <div>
             <span class="status-badge ${global_status}">
                 ${global_message}
@@ -145,9 +183,17 @@ generate_status_page() {
         <ul class="service-list">
 EOF
 
-    # Add service statuses
-    for status_file in "${tmp_dir}"/*.status; do
-        name=$(basename "${status_file}" .status | sed 's/_/ /g')
+    # Ensure both services are displayed, even if they weren't checked
+    services=("Web_Application" "Database")
+    for service in "${services[@]}"; do
+        status_file="${tmp_dir}/${service}.status"
+        
+        # Use a default status if file doesn't exist
+        if [ ! -f "${status_file}" ]; then
+            echo "Unknown" > "${status_file}"
+        fi
+
+        name=$(echo "${service}" | sed 's/_/ /g')
         status=$(cat "${status_file}")
         status_class=$(echo "${status}" | cut -d' ' -f1 | tr '[:upper:]' '[:lower:]')
         
@@ -163,7 +209,66 @@ EOF
 
     cat >> "${output_file}" << EOF
         </ul>
+
+        <div class="incidents-section">
+            <h2>Incidents</h2>
+            <div id="incidents-content">
+EOF
+
+    # Add incidents
+    if [ -f "incidents.txt" ] && [ -s "incidents.txt" ]; then
+        while IFS= read -r incident; do
+            cat >> "${output_file}" << EOF
+                <div class="incident">
+                    <p>${incident}</p>
+                </div>
+EOF
+        done < incidents.txt
+    else
+        cat >> "${output_file}" << EOF
+                <p>No active incidents</p>
+EOF
+    fi
+
+    cat >> "${output_file}" << EOF
+            </div>
+        </div>
     </div>
+
+    <script>
+        function toggleTheme() {
+            const root = document.documentElement;
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            
+            if (currentTheme === 'light') {
+                root.style.setProperty('--bg-primary', '#121212');
+                root.style.setProperty('--bg-secondary', '#1e1e1e');
+                root.style.setProperty('--text-primary', '#ffffff');
+                root.style.setProperty('--text-secondary', '#b0b0b0');
+                root.style.setProperty('--operational-bg', '#2E7D32');
+                root.style.setProperty('--disrupted-bg', '#C62828');
+                root.style.setProperty('--border-color', '#333333');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                root.style.setProperty('--bg-primary', '#ffffff');
+                root.style.setProperty('--bg-secondary', '#f4f4f4');
+                root.style.setProperty('--text-primary', '#333333');
+                root.style.setProperty('--text-secondary', '#666666');
+                root.style.setProperty('--operational-bg', '#4CAF50');
+                root.style.setProperty('--disrupted-bg', '#F44336');
+                root.style.setProperty('--border-color', '#dddddd');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Persist theme preference
+        window.addEventListener('load', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                toggleTheme();
+            }
+        });
+    </script>
 </body>
 </html>
 EOF
