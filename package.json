@@ -4,7 +4,7 @@
   "description": "Interactive projects and development files",
   "main": "index.js",
   "scripts": {
-    "optimize-css": "node optimize-css.js",
+    "combine-css": "node simple-css-combine.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,7 +13,7 @@
   },
   "keywords": [
     "css",
-    "optimization",
+    "optimisation",
     "web",
     "development"
   ],
@@ -23,11 +23,7 @@
     "url": "https://github.com/mctata/taniainteractive/issues"
   },
   "homepage": "https://github.com/mctata/taniainteractive#readme",
-  "devDependencies": {
-    "autoprefixer": "^10.4.18",
-    "cssnano": "^6.0.5",
-    "postcss": "^8.4.35",
-    "postcss-cli": "^11.0.0",
-    "postcss-merge-rules": "^6.0.3"
+  "engines": {
+    "node": ">=6.0.0"
   }
 }
