@@ -54,3 +54,36 @@ For team members with access to this private repository:
 1. Create a new branch for your feature
 2. Implement your changes
 3. Submit a pull request for review
+
+## 📦 CSS Optimisation
+
+This repository includes tools to optimise and combine CSS files for better performance.
+
+### Simple CSS Optimisation Method
+
+For quick CSS optimisation without Node.js version compatibility issues:
+
+1. **Manually combine CSS files**:
+   ```
+   cat css/bootstrap.css css/style.css > css/combined.css
+   ```
+
+2. **Use an online minifier**:
+   - Go to [CSS Minifier](https://cssminifier.com/)
+   - Paste the content of combined.css
+   - Copy the minified output to css/combined.min.css
+
+3. **Update HTML**:
+   ```html
+   <!-- Replace these two lines -->
+   <link rel="stylesheet" href="css/bootstrap.css">
+   <link rel="stylesheet" href="css/style.css">
+   
+   <!-- With this single line -->
+   <link rel="stylesheet" href="css/combined.min.css">
+   ```
+
+### Key Benefits
+- ⚡ Faster page loads (one request instead of two)
+- 📉 Reduced file size
+- 🔧 Easier maintenance with a single CSS file
