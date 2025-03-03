@@ -1,11 +1,11 @@
 {
   "name": "taniainteractive",
-  "version": "1.0.3",
+  "version": "1.0.0",
   "description": "Interactive projects and development files",
   "main": "index.js",
   "scripts": {
-    "optimise-css": "cleancss -o css/combined.min.css css/bootstrap.css css/style.css",
-    "optimise-js": "uglifyjs js/jquery.min.js js/bootstrap.min.js js/plugins.min.js js/jquery.flexslider-min.js js/touchTouch.jquery.js -o js/all.min.js",
+    "optimise-css": "cleancss -o css/combined.min.css css/bootstrap.css css/style.css && node scripts/optimise-css.js",
+    "optimise-js": "uglifyjs js/jquery.min.js js/bootstrap.min.js js/plugins.min.js js/jquery.flexslider-min.js js/touchTouch.jquery.js -o js/all.min.js && node scripts/optimise-js.js",
     "optimise": "npm run optimise-css && npm run optimise-js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
