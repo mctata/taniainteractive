@@ -10,8 +10,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
 
 audio, canvas, video {
   display: inline-block;
-  *display: inline;
-  *zoom: 1;
 }
 
 audio:not([controls]) {
@@ -36,13 +34,13 @@ body {
 
 a {
   color: #181818;
-  border-bottom: 1px solid #0093d2;
+  border-bottom: 1px solid #007bbd;
   text-decoration: none;
   outline: none;
 }
 
 a:hover {
-  color: #0093d2;
+  color: #007bbd;
   text-decoration: none;
 }
 
@@ -57,7 +55,6 @@ img {
 .container {
   margin-right: auto;
   margin-left: auto;
-  *zoom: 1;
   width: 940px;
 }
 
@@ -73,7 +70,6 @@ img {
 
 .row {
   margin-left: -20px;
-  *zoom: 1;
 }
 
 .row:before, .row:after {
@@ -174,23 +170,23 @@ textarea {
 
 .btn:hover {
   color: #ffffff;
-  background-color: #0093d2;
+  background-color: #007bbd;
 }
 
 .btn-1 {
-  background-color: #e86100;
-  border-color: #e86100;
+  background-color: #cc4d00;
+  border-color: #cc4d00;
   color: #fcfcfc;
 }
 
 .btn-1:hover {
   background-color: #fcfcfc;
-  color: #e86100;
+  color: #cc4d00;
 }
 
 #form .submit-btn {
-  background-color: #0093d2;
-  border: 1px solid #0093d2;
+  background-color: #007bbd;
+  border: 1px solid #007bbd;
   padding: 17px 24px;
   text-align: center;
   display: block;
@@ -203,7 +199,7 @@ textarea {
 
 #form .submit-btn:hover {
   background-color: #fcfcfc;
-  color: #0093d2;
+  color: #007bbd;
 }
 
 /* Navigation */
@@ -254,10 +250,6 @@ textarea {
   }
 }
 /* Utility Classes */
-.clearfix {
-  *zoom: 1;
-}
-
 .clearfix:before, .clearfix:after {
   display: table;
   content: "";
@@ -291,7 +283,7 @@ textarea {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip-path: inset(0, 0, 0, 0);
   border: 0;
 }
 
@@ -356,7 +348,7 @@ body.dark-theme {
 .dark-theme a:hover,
 .dark-theme .brand a:hover,
 .dark-theme .navbar_ .nav a:hover {
-  color: #0093d2;
+  color: #007bbd;
 }
 
 .dark-theme #form input,
