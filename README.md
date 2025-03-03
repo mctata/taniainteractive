@@ -55,35 +55,45 @@ For team members with access to this private repository:
 2. Implement your changes
 3. Submit a pull request for review
 
-## 📦 CSS Optimisation
+## 📦 CSS & JS Optimisation
 
-This repository includes tools to optimise and combine CSS files for better performance.
+This repository includes tools to optimise and combine CSS/JS files for better performance.
 
-### Simple CSS Optimisation Method
+### Using npm commands (Recommended)
 
-For quick CSS optimisation without Node.js version compatibility issues:
-
-1. **Manually combine CSS files**:
-   ```
-   cat css/bootstrap.css css/style.css > css/combined.css
+1. **One-time setup**:
+   ```bash
+   npm install
    ```
 
-2. **Use an online minifier**:
-   - Go to [CSS Minifier](https://cssminifier.com/)
-   - Paste the content of combined.css
-   - Copy the minified output to css/combined.min.css
+2. **To optimise CSS**:
+   ```bash
+   npm run optimise-css
+   ```
+   This combines bootstrap.css and style.css into a single minified file: combined.min.css
 
-3. **Update HTML**:
+3. **To optimise JavaScript**:
+   ```bash
+   npm run optimise-js
+   ```
+   This combines JS files into a single minified file: all.min.js
+
+4. **To optimise both**:
+   ```bash
+   npm run optimise
+   ```
+
+5. **Update your HTML**:
    ```html
-   <!-- Replace these two lines -->
-   <link rel="stylesheet" href="css/bootstrap.css">
-   <link rel="stylesheet" href="css/style.css">
-   
-   <!-- With this single line -->
+   <!-- Replace CSS links -->
    <link rel="stylesheet" href="css/combined.min.css">
+   
+   <!-- Replace JS scripts (at the bottom of the page) -->
+   <script src="js/all.min.js"></script>
    ```
 
 ### Key Benefits
-- ⚡ Faster page loads (one request instead of two)
-- 📉 Reduced file size
-- 🔧 Easier maintenance with a single CSS file
+- ⚡ Faster page loads with fewer HTTP requests
+- 📉 Reduced file sizes through minification
+- 🔧 Automated process through npm scripts
+- 🚀 Improved overall site performance
