@@ -4,7 +4,9 @@
   "description": "Interactive projects and development files",
   "main": "index.js",
   "scripts": {
-    "combine-css": "node simple-css-combine.js",
+    "optimise-css": "cleancss -o css/combined.min.css css/bootstrap.css css/style.css",
+    "optimise-js": "uglifyjs js/jquery.min.js js/bootstrap.min.js js/plugins.min.js js/jquery.flexslider-min.js js/touchTouch.jquery.js -o js/all.min.js",
+    "optimise": "npm run optimise-css && npm run optimise-js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,6 +25,10 @@
     "url": "https://github.com/mctata/taniainteractive/issues"
   },
   "homepage": "https://github.com/mctata/taniainteractive#readme",
+  "devDependencies": {
+    "clean-css-cli": "^4.3.0",
+    "uglify-js": "^3.14.5"
+  },
   "engines": {
     "node": ">=6.0.0"
   }
