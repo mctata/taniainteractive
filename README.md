@@ -18,8 +18,7 @@ This repository houses a diverse collection of interactive web projects and expe
 ## 🔗 Repository Information
 
 - **URL**: [github.com/mctata/taniainteractive](https://github.com/mctata/taniainteractive)
-- **Type**: Private Repository
-- **Owner**: mctata
+- **Owner**: mctata, taniainteractive, Tania Lopes
 
 ## 💻 Technologies
 
@@ -53,7 +52,7 @@ taniainteractive/
 
 ## 🔄 Contributing
 
-For team members with access to this private repository:
+For team members who want to contribute to this repository:
 
 1. Create a new branch for your feature
 2. Implement your changes
@@ -94,7 +93,7 @@ The repository includes a script to optimise images, convert them to WebP format
 
 To use the image optimisation and upload functionality, you need:
 
-1. AWS S3 bucket configured for web hosting
+1. AWS S3 bucket configured
 2. AWS credentials with permissions to write to the bucket
 
 #### Setup
