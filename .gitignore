@@ -1,3 +1,13 @@
+# Project-specific ignores
+_mm/
+_notes/
+test/
+misc/
+
+# Generated image folders
+img-optimised/
+img-webp/
+
 # General ignores
 .DS_Store
 node_modules/
@@ -12,8 +22,3 @@ node_modules/
 .vscode/
 *.sublime-project
 *.sublime-workspace
-
-status/history/
-status/logs/
-status/status_errors.log
-status/status_monitor_verbose.log
