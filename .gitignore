@@ -12,7 +12,10 @@ node_modules/
 .vscode/
 *.sublime-project
 *.sublime-workspace
-
+# Generated image folders
+img-optimised/
+img-webp/
+# Monitoring
 status/history/
 status/logs/
 status/status_errors.log
