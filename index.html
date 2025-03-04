@@ -341,6 +341,18 @@
     function updateToggleButton(theme) {
         themeToggle.textContent = theme === 'dark-theme' ? '☀️' : '🌓';
     }
+
+    const iframe = document.getElementById('embedded-badge-bf8e8a4f-35ee-405e-8f37-7a3d8af067c5');
+  iframe.onload = function() {
+    const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+    const style = iframeDocument.createElement('style');
+    style.textContent = `
+      #provided {
+        background-color: yellow;
+      }
+    `;
+    iframeDocument.head.appendChild(style);
+  };
 </script>
 </body>
 </html>
