@@ -44,7 +44,10 @@ cd taniainteractive
 taniainteractive/
 ├── .gitignore        # Git ignore file
 ├── README.md         # This documentation
-└── [project files]   # Various interactive components and projects
+├── css/              # CSS files
+├── js/               # JavaScript files
+├── img/              # Image files
+└── scripts/          # Build and optimisation scripts
 ```
 
 ## 🔄 Contributing
@@ -55,45 +58,72 @@ For team members with access to this private repository:
 2. Implement your changes
 3. Submit a pull request for review
 
-## 📦 CSS & JS Optimisation
+## 📦 Asset Optimisation
 
-This repository includes tools to optimise and combine CSS/JS files for better performance.
+This repository includes tools to optimise CSS, JavaScript, and images for better performance.
 
-### Using npm commands (Recommended)
+### Setup
 
-1. **One-time setup**:
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-2. **To optimise CSS**:
-   ```bash
-   npm run optimise-css
-   ```
-   This combines bootstrap.css and style.css into a single minified file: combined.min.css
+### CSS & JS Optimisation
 
-3. **To optimise JavaScript**:
-   ```bash
-   npm run optimise-js
-   ```
-   This combines JS files into a single minified file: all.min.js
+```bash
+npm run optimise-css  # Optimise CSS files
+npm run optimise-js   # Optimise JavaScript files
+npm run optimise      # Optimise both CSS and JS
+```
 
-4. **To optimise both**:
-   ```bash
-   npm run optimise
-   ```
+After optimisation, update your HTML to reference the minified files:
 
-5. **Update your HTML**:
-   ```html
-   <!-- Replace CSS links -->
-   <link rel="stylesheet" href="css/combined.min.css">
-   
-   <!-- Replace JS scripts (at the bottom of the page) -->
-   <script src="js/all.min.js"></script>
-   ```
+```html
+<!-- CSS -->
+<link rel="stylesheet" href="css/combined.min.css">
+
+<!-- JavaScript -->
+<script src="js/all.min.js"></script>
+```
+
+### Image Optimisation & S3 Upload
+
+This requires AWS credentials to be set as environment variables:
+
+```bash
+# Set AWS environment variables
+export AWS_BUCKET="your-bucket-name"
+export AWS_REGION="your-aws-region"
+export AWS_ACCESS_KEY_ID="your-access-key"
+export AWS_SECRET_ACCESS_KEY="your-secret-key"
+
+# Run image optimisation
+npm run optimise-images
+```
+
+This will:
+1. Optimise all images in the `img/` directory
+2. Convert images to WebP format
+3. Upload both optimised originals and WebP versions to S3
+
+After optimisation, use the `<picture>` element to leverage WebP with fallbacks:
+
+```html
+<picture>
+  <source srcset="img/webp/example.webp" type="image/webp">
+  <img src="img/optimised/example.jpg" alt="Example image">
+</picture>
+```
+
+### Run All Optimisations
+
+```bash
+npm run optimise-all
+```
 
 ### Key Benefits
 - ⚡ Faster page loads with fewer HTTP requests
 - 📉 Reduced file sizes through minification
+- 🖼️ Modern image formats (WebP) with fallbacks
 - 🔧 Automated process through npm scripts
 - 🚀 Improved overall site performance
