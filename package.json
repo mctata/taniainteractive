@@ -6,7 +6,9 @@
   "scripts": {
     "optimise-css": "cleancss -o css/combined.min.css css/bootstrap.css css/style.css && node scripts/optimise-css.js",
     "optimise-js": "uglifyjs js/jquery.min.js js/bootstrap.min.js js/plugins.min.js js/jquery.flexslider-min.js js/touchTouch.jquery.js -o js/all.min.js && node scripts/optimise-js.js",
+    "optimise-images": "node scripts/optimise-images.js",
     "optimise": "npm run optimise-css && npm run optimise-js",
+    "optimise-all": "npm run optimise-css && npm run optimise-js && npm run optimise-images",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,10 +28,14 @@
   },
   "homepage": "https://github.com/mctata/taniainteractive#readme",
   "devDependencies": {
+    "aws-sdk": "^2.1569.0",
+    "chalk": "^4.1.2",
     "clean-css-cli": "^4.3.0",
+    "glob": "^7.2.0",
+    "sharp": "^0.33.2",
     "uglify-js": "^3.14.5"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=10.0.0"
   }
 }
