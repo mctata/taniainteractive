@@ -12,3 +12,8 @@ node_modules/
 .vscode/
 *.sublime-project
 *.sublime-workspace
+
+status/history/
+status/logs/
+status/status_errors.log
+status/status_monitor_verbose.log

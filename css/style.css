@@ -982,6 +982,12 @@ footer {
 		margin: 22px 0 20px;
 		font-size: 20px
 }
+    h1 {
+        font-size: 40px;
+    }
+    h2 {
+        font-size: 32px;
+    }
 	.list-social {
 		width: 74px;
 		margin: 0 auto
