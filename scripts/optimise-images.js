@@ -67,8 +67,8 @@ async function processImage(imagePath) {
     const baseNameWithoutExt = path.basename(baseName, extension);
     
     // Create directories for optimised and WebP versions
-    const optimisedDir = path.join(OPTIMISED_DIR, dirName);
-    const webpDir = path.join(WEBP_DIR, dirName);
+    const optimisedDir = path.join(OPTIMISED_DIR, dirName === '.' ? '' : dirName);
+    const webpDir = path.join(WEBP_DIR, dirName === '.' ? '' : dirName);
     
     if (!fs.existsSync(optimisedDir)) {
       mkdirp.sync(optimisedDir);
@@ -134,8 +134,16 @@ async function processImage(imagePath) {
     }
     
     // Define S3 keys with preserved directory structure
+    // For root directory files, don't add a leading directory separator
     const optimisedS3Key = `optimised/${relativePath}`;
-    const webpS3Key = `webp/${dirName}/${baseNameWithoutExt}.webp`;
+    
+    // For WebP, use the correct path without './' prefix for root files
+    let webpS3Key;
+    if (dirName === '.') {
+      webpS3Key = `webp/${baseNameWithoutExt}.webp`;
+    } else {
+      webpS3Key = `webp/${dirName}/${baseNameWithoutExt}.webp`;
+    }
     
     return {
       original: imagePath,
@@ -315,8 +323,8 @@ async function main() {
     console.log('2. Add WebP support with the <picture> element:');
     console.log(`
     <picture>
-      <source srcset="https://${S3_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/webp/path/to/example.webp" type="image/webp">
-      <img src="https://${S3_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/optimised/path/to/example.jpg" alt="Example image">
+      <source srcset="https://${S3_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/webp/example.webp" type="image/webp">
+      <img src="https://${S3_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/optimised/example.jpg" alt="Example image">
     </picture>
     `);
     console.log('3. Your images are available at:');
