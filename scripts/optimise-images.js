@@ -2,251 +2,289 @@
  * Image Optimisation and S3 Upload Script
  * 
  * This script:
- * 1. Finds all images in the img directory
- * 2. Optimises them (reduces file size while maintaining quality)
- * 3. Converts them to WebP format
- * 4. Uploads both original and WebP versions to S3
- * 5. Generates a report of the process
+ * 1. Optimises all images in the img/ directory
+ * 2. Converts them to WebP format
+ * 3. Uploads both original and WebP versions to AWS S3
+ * 
+ * Requirements:
+ * - sharp: For image processing and WebP conversion
+ * - aws-sdk: For S3 uploads
+ * - glob: For finding image files
  */
 
 const fs = require('fs');
 const path = require('path');
-const { promisify } = require('util');
-const glob = promisify(require('glob'));
 const sharp = require('sharp');
-const AWS = require('aws-sdk');
-const chalk = require('chalk');
+const { S3 } = require('@aws-sdk/client-s3');
+const glob = require('glob');
 
-// Configuration
-const config = {
-  sourceDir: path.join(__dirname, '..', 'img'),
-  tempDir: path.join(__dirname, '..', 'img', '.tmp'),
-  s3Bucket: process.env.AWS_BUCKET,
-  s3Region: process.env.AWS_REGION,
-  s3Prefix: 'images/', // The folder in S3 where images will be stored
-  imageQuality: 85, // 0-100, higher is better quality but larger file size
-  webpQuality: 80, // 0-100, WebP quality setting
-  skipExisting: true, // Skip images that already exist in S3
-  dryRun: false // If true, doesn't actually upload to S3
-};
-
-// Initialize AWS S3
-const s3 = new AWS.S3({
-  region: config.s3Region,
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+// S3 Configuration - Using environment variables
+const s3 = new S3({
+  region: process.env.AWS_REGION,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  }
 });
 
-// Ensure temp directory exists
-if (!fs.existsSync(config.tempDir)) {
-  fs.mkdirSync(config.tempDir, { recursive: true });
+const S3_BUCKET = process.env.AWS_BUCKET;
+const IMAGE_DIR = path.join(__dirname, '..', 'img');
+const WEBP_DIR = path.join(__dirname, '..', 'img', 'webp');
+const OPTIMISED_DIR = path.join(__dirname, '..', 'img', 'optimised');
+
+// Ensure output directories exist
+if (!fs.existsSync(WEBP_DIR)) {
+  fs.mkdirSync(WEBP_DIR, { recursive: true });
 }
 
-// Statistics
+if (!fs.existsSync(OPTIMISED_DIR)) {
+  fs.mkdirSync(OPTIMISED_DIR, { recursive: true });
+}
+
+// Image optimisation settings
+const JPEG_OPTIONS = { quality: 80 };
+const PNG_OPTIONS = { 
+  quality: 80,
+  compressionLevel: 9,
+  palette: true
+};
+const WEBP_OPTIONS = { quality: 80 };
+
+// Track statistics
 const stats = {
-  totalImages: 0,
-  processed: 0,
-  skipped: 0,
-  errors: 0,
+  total: 0,
+  optimised: 0,
+  webpConverted: 0,
+  uploaded: 0,
   originalSize: 0,
   optimisedSize: 0,
   webpSize: 0,
-  uploadedOriginal: 0,
-  uploadedWebP: 0
+  errors: 0
 };
 
 /**
- * Get file size in KB
- */
-function getFileSizeInKB(filePath) {
-  const stats = fs.statSync(filePath);
-  return (stats.size / 1024).toFixed(2);
-}
-
-/**
- * Check if file exists in S3
- */
-async function checkFileExistsInS3(key) {
-  try {
-    if (!config.skipExisting) return false;
-    
-    await s3.headObject({
-      Bucket: config.s3Bucket,
-      Key: key
-    }).promise();
-    return true;
-  } catch (err) {
-    if (err.code === 'NotFound') {
-      return false;
-    }
-    throw err;
-  }
-}
-
-/**
- * Upload file to S3
- */
-async function uploadToS3(filePath, key, contentType) {
-  if (config.dryRun) {
-    console.log(chalk.yellow(`[DRY RUN] Would upload: ${key}`));
-    return `https://${config.s3Bucket}.s3.${config.s3Region}.amazonaws.com/${key}`;
-  }
-
-  const fileContent = fs.readFileSync(filePath);
-  
-  await s3.putObject({
-    Bucket: config.s3Bucket,
-    Key: key,
-    Body: fileContent,
-    ContentType: contentType,
-    CacheControl: 'max-age=31536000' // Cache for 1 year
-  }).promise();
-  
-  return `https://${config.s3Bucket}.s3.${config.s3Region}.amazonaws.com/${key}`;
-}
-
-/**
- * Process a single image
+ * Optimise an image and convert to WebP
+ * 
+ * @param {string} imagePath Path to the original image
+ * @returns {Promise<Object>} Paths to optimised and WebP versions
  */
 async function processImage(imagePath) {
   try {
     const filename = path.basename(imagePath);
-    const ext = path.extname(imagePath).toLowerCase();
-    const nameWithoutExt = path.basename(imagePath, ext);
+    const extension = path.extname(imagePath).toLowerCase();
+    const baseName = path.basename(imagePath, extension);
     
-    // Skip non-image files
-    if (!['.jpg', '.jpeg', '.png', '.gif'].includes(ext)) {
-      return;
+    // Define output paths
+    const optimisedPath = path.join(OPTIMISED_DIR, filename);
+    const webpPath = path.join(WEBP_DIR, `${baseName}.webp`);
+    
+    // Get original file size
+    const originalStats = fs.statSync(imagePath);
+    stats.originalSize += originalStats.size;
+    
+    // Process based on file type
+    let sharpInstance = sharp(imagePath);
+    
+    if (extension === '.jpg' || extension === '.jpeg') {
+      await sharpInstance.jpeg(JPEG_OPTIONS).toFile(optimisedPath);
+    } else if (extension === '.png') {
+      await sharpInstance.png(PNG_OPTIONS).toFile(optimisedPath);
+    } else {
+      // Just copy other file types
+      fs.copyFileSync(imagePath, optimisedPath);
     }
-    
-    console.log(chalk.cyan(`Processing: ${filename}`));
-    stats.totalImages++;
-    
-    // Original image info
-    const originalSize = getFileSizeInKB(imagePath);
-    stats.originalSize += parseFloat(originalSize);
-    
-    // Create paths for optimised files
-    const optimisedPath = path.join(config.tempDir, filename);
-    const webpPath = path.join(config.tempDir, `${nameWithoutExt}.webp`);
-    
-    // S3 paths
-    const s3OriginalKey = `${config.s3Prefix}${filename}`;
-    const s3WebpKey = `${config.s3Prefix}${nameWithoutExt}.webp`;
-    
-    // Check if files already exist in S3
-    const originalExistsInS3 = await checkFileExistsInS3(s3OriginalKey);
-    const webpExistsInS3 = await checkFileExistsInS3(s3WebpKey);
-    
-    if (originalExistsInS3 && webpExistsInS3) {
-      console.log(chalk.yellow(`Skipping: ${filename} (already exists in S3)`));
-      stats.skipped++;
-      return;
-    }
-    
-    // Optimise original image
-    await sharp(imagePath)
-      .jpeg({ quality: config.imageQuality, mozjpeg: true })
-      .png({ quality: config.imageQuality })
-      .toFile(optimisedPath);
     
     // Convert to WebP
-    await sharp(imagePath)
-      .webp({ quality: config.webpQuality })
-      .toFile(webpPath);
+    await sharp(imagePath).webp(WEBP_OPTIONS).toFile(webpPath);
     
-    // Get optimised file sizes
-    const optimisedSize = getFileSizeInKB(optimisedPath);
-    const webpSize = getFileSizeInKB(webpPath);
-    stats.optimisedSize += parseFloat(optimisedSize);
-    stats.webpSize += parseFloat(webpSize);
+    // Track sizes
+    const optimisedStats = fs.statSync(optimisedPath);
+    const webpStats = fs.statSync(webpPath);
+    stats.optimisedSize += optimisedStats.size;
+    stats.webpSize += webpStats.size;
     
-    // Upload to S3
-    if (!originalExistsInS3) {
-      const contentType = ext === '.jpg' || ext === '.jpeg' ? 'image/jpeg' : 
-                        ext === '.png' ? 'image/png' : 
-                        ext === '.gif' ? 'image/gif' : 'application/octet-stream';
-      
-      await uploadToS3(optimisedPath, s3OriginalKey, contentType);
-      stats.uploadedOriginal++;
-    }
+    stats.optimised++;
+    stats.webpConverted++;
     
-    if (!webpExistsInS3) {
-      await uploadToS3(webpPath, s3WebpKey, 'image/webp');
-      stats.uploadedWebP++;
-    }
-    
-    console.log(chalk.green(`✓ Optimised: ${filename}`));
-    console.log(`  Original: ${originalSize} KB → Optimised: ${optimisedSize} KB → WebP: ${webpSize} KB`);
-    console.log(`  Reduction: ${((1 - parseFloat(webpSize) / parseFloat(originalSize)) * 100).toFixed(2)}%`);
-    
-    stats.processed++;
-  } catch (err) {
-    console.error(chalk.red(`Error processing ${imagePath}: ${err.message}`));
+    return { 
+      original: imagePath,
+      optimised: optimisedPath,
+      webp: webpPath 
+    };
+  } catch (error) {
+    console.error(`Error processing ${imagePath}:`, error.message);
     stats.errors++;
+    return null;
   }
 }
 
 /**
- * Main function
+ * Upload a file to S3
+ * 
+ * @param {string} filePath Local file path
+ * @param {string} s3Key S3 destination key
+ * @returns {Promise<Object>} S3 upload result
+ */
+async function uploadToS3(filePath, s3Key) {
+  try {
+    const fileContent = fs.readFileSync(filePath);
+    const contentType = getContentType(filePath);
+    
+    const params = {
+      Bucket: S3_BUCKET,
+      Key: s3Key,
+      Body: fileContent,
+      ContentType: contentType,
+      CacheControl: 'max-age=31536000' // 1 year caching
+    };
+    
+    const result = await s3.putObject(params);
+    stats.uploaded++;
+    return result;
+  } catch (error) {
+    console.error(`Error uploading ${filePath} to S3:`, error.message);
+    stats.errors++;
+    return null;
+  }
+}
+
+/**
+ * Get the MIME type based on file extension
+ * 
+ * @param {string} filePath Path to file
+ * @returns {string} MIME type
+ */
+function getContentType(filePath) {
+  const extension = path.extname(filePath).toLowerCase();
+  
+  switch (extension) {
+    case '.jpg':
+    case '.jpeg':
+      return 'image/jpeg';
+    case '.png':
+      return 'image/png';
+    case '.gif':
+      return 'image/gif';
+    case '.webp':
+      return 'image/webp';
+    case '.svg':
+      return 'image/svg+xml';
+    default:
+      return 'application/octet-stream';
+  }
+}
+
+/**
+ * Format bytes to a human-readable string
+ * 
+ * @param {number} bytes Number of bytes
+ * @returns {string} Formatted string (e.g., "1.5 MB")
+ */
+function formatBytes(bytes) {
+  if (bytes === 0) return '0 Bytes';
+  
+  const k = 1024;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+
+/**
+ * Main function to process all images and upload to S3
  */
 async function main() {
   try {
-    console.log(chalk.blue.bold('\n🖼️  Image Optimisation and S3 Upload\n'));
+    console.log('🖼️  Starting image optimisation and S3 upload...');
     
-    // Validate environment variables
+    // Check if environment variables are set
     if (!process.env.AWS_BUCKET || !process.env.AWS_REGION || 
         !process.env.AWS_ACCESS_KEY_ID || !process.env.AWS_SECRET_ACCESS_KEY) {
-      console.error(chalk.red('Missing required environment variables. Make sure AWS_BUCKET, AWS_REGION, AWS_ACCESS_KEY_ID, and AWS_SECRET_ACCESS_KEY are set.'));
+      console.error('❌ Missing AWS environment variables. Make sure AWS_BUCKET, AWS_REGION, AWS_ACCESS_KEY_ID, and AWS_SECRET_ACCESS_KEY are set.');
       process.exit(1);
     }
     
-    console.log(chalk.cyan(`Source directory: ${config.sourceDir}`));
-    console.log(chalk.cyan(`S3 Bucket: ${config.s3Bucket} (${config.s3Region})`));
-    console.log(chalk.cyan(`S3 Prefix: ${config.s3Prefix}`));
+    // Find all images
+    const imagePatterns = ['**/*.jpg', '**/*.jpeg', '**/*.png', '**/*.gif'];
+    let imagePaths = [];
     
-    if (config.dryRun) {
-      console.log(chalk.yellow('DRY RUN MODE: No files will be uploaded to S3'));
+    for (const pattern of imagePatterns) {
+      const matches = glob.sync(pattern, { cwd: IMAGE_DIR, absolute: true });
+      imagePaths = [...imagePaths, ...matches];
     }
     
-    // Find all images
-    const imageFiles = await glob(path.join(config.sourceDir, '**/*.{jpg,jpeg,png,gif}'));
+    stats.total = imagePaths.length;
     
-    if (imageFiles.length === 0) {
-      console.log(chalk.yellow('No image files found in the source directory.'));
+    if (stats.total === 0) {
+      console.log('⚠️  No images found in the img/ directory.');
       return;
     }
     
-    console.log(chalk.blue(`Found ${imageFiles.length} image files to process.`));
+    console.log(`🔍 Found ${stats.total} images to process`);
     
-    // Process images
-    for (const imagePath of imageFiles) {
-      await processImage(imagePath);
+    // Process images in batches to avoid memory issues
+    const BATCH_SIZE = 5;
+    for (let i = 0; i < imagePaths.length; i += BATCH_SIZE) {
+      const batch = imagePaths.slice(i, i + BATCH_SIZE);
+      const promises = batch.map(async (imagePath) => {
+        const processedPaths = await processImage(imagePath);
+        
+        if (!processedPaths) return;
+        
+        // Determine S3 paths
+        const relativePath = path.relative(IMAGE_DIR, imagePath);
+        const optimisedRelativePath = `optimised/${relativePath}`;
+        const webpRelativePath = `webp/${path.basename(imagePath, path.extname(imagePath))}.webp`;
+        
+        // Upload to S3
+        await uploadToS3(processedPaths.optimised, optimisedRelativePath);
+        await uploadToS3(processedPaths.webp, webpRelativePath);
+        
+        // Log progress
+        console.log(`✅ Processed and uploaded: ${relativePath}`);
+      });
+      
+      await Promise.all(promises);
+      console.log(`📊 Progress: ${Math.min(i + BATCH_SIZE, imagePaths.length)}/${imagePaths.length}`);
     }
     
     // Print summary
-    console.log(chalk.blue.bold('\n📊 Summary\n'));
-    console.log(`Total images found: ${stats.totalImages}`);
-    console.log(`Successfully processed: ${stats.processed}`);
-    console.log(`Skipped (already in S3): ${stats.skipped}`);
-    console.log(`Errors: ${stats.errors}`);
-    console.log('\nSize comparison:');
-    console.log(`Original: ${stats.originalSize.toFixed(2)} KB`);
-    console.log(`Optimised: ${stats.optimisedSize.toFixed(2)} KB (${((1 - stats.optimisedSize / stats.originalSize) * 100).toFixed(2)}% reduction)`);
-    console.log(`WebP: ${stats.webpSize.toFixed(2)} KB (${((1 - stats.webpSize / stats.originalSize) * 100).toFixed(2)}% reduction)`);
-    console.log('\nFiles uploaded to S3:');
-    console.log(`Original format: ${stats.uploadedOriginal}`);
-    console.log(`WebP format: ${stats.uploadedWebP}`);
+    console.log('\n📈 Optimisation Summary:');
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    console.log(`🖼️  Total images processed: ${stats.total}`);
+    console.log(`✅ Images optimised: ${stats.optimised}`);
+    console.log(`🌐 WebP images created: ${stats.webpConverted}`);
+    console.log(`☁️  Files uploaded to S3: ${stats.uploaded}`);
+    console.log(`❌ Errors encountered: ${stats.errors}`);
+    console.log('');
+    console.log(`📦 Original size: ${formatBytes(stats.originalSize)}`);
+    console.log(`📦 Optimised size: ${formatBytes(stats.optimisedSize)} (${Math.round((1 - stats.optimisedSize / stats.originalSize) * 100)}% reduction)`);
+    console.log(`📦 WebP size: ${formatBytes(stats.webpSize)} (${Math.round((1 - stats.webpSize / stats.originalSize) * 100)}% reduction)`);
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
     
-    // Clean up temp directory
-    fs.rmdirSync(config.tempDir, { recursive: true });
-    console.log(chalk.green.bold('\n✅ Image optimisation completed!\n'));
+    if (stats.errors > 0) {
+      console.log('⚠️  Some errors occurred during processing. Check the logs above for details.');
+    }
     
-  } catch (err) {
-    console.error(chalk.red(`Error: ${err.message}`));
+    console.log('\n💡 Next steps:');
+    console.log('1. Update your HTML to use the optimised images');
+    console.log('2. Add WebP support with the <picture> element:');
+    console.log(`
+    <picture>
+      <source srcset="img/webp/example.webp" type="image/webp">
+      <img src="img/optimised/example.jpg" alt="Example image">
+    </picture>
+    `);
+    console.log('3. Your images are available at:');
+    console.log(`   - Original: https://${S3_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/original/{filename}`);
+    console.log(`   - Optimised: https://${S3_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/optimised/{filename}`);
+    console.log(`   - WebP: https://${S3_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/webp/{filename}.webp`);
+    
+  } catch (error) {
+    console.error('❌ An error occurred:', error.message);
     process.exit(1);
   }
 }
 
-// Run the script
+// Run the main function
 main();
