@@ -13,10 +13,6 @@ node_modules/
 *.sublime-project
 *.sublime-workspace
 
-# Generated image folders
-img-optimised/
-img-webp/
-
 status/history/
 status/logs/
 status/status_errors.log
