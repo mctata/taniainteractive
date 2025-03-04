@@ -30,6 +30,7 @@
   "devDependencies": {
     "aws-sdk": "^2.1078.0",
     "clean-css-cli": "^4.3.0",
+    "dotenv": "^8.6.0",
     "glob": "^7.2.0",
     "imagemin": "^7.0.1",
     "imagemin-jpegtran": "^6.0.0",
