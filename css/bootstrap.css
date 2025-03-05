@@ -24,7 +24,9 @@ html {
 
 body {
   margin: 0;
-  font-family: "Tiempos Text Regular", serif;
+  font-family: 'Tiempos Text';
+    font-weight: normal;
+    font-style: normal;
   font-size: 16px;
   line-height: 1.6;
   color: #181818;

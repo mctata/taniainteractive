@@ -1,10 +1,9 @@
 @charset "utf-8";
 .navbar_ .brand_,h1,h2,h3,h4,h5,h6 {
 	color: #181818;
-	font-family: Roboto-Black, sans-serif
 }
 .nav-collapse_ .nav li a,.navbar_ .brand_,h1,h2,h3,h4,h5,h6 {
-	font-family: Roboto-Black, sans-serif
+	font-family: Roboto-Black;
 }
 .clear,.clearfix:after {
 	clear: both
@@ -25,6 +24,14 @@
 	font-family: Roboto-Regular;
 	src: url('fonts/Roboto-Regular.eot');
 	src: url('fonts/Roboto-Regular.eot?iefix') format('eot'), url('fonts/Roboto-Regular.woff') format('woff'), url('fonts/Roboto-Regular.ttf') format('truetype'), url('fonts/Roboto-Regular.svg') format('svg')
+}
+@font-face {
+    font-family: 'Tiempos Text';
+    src: url('fonts/TiemposText-Regular.woff2') format('woff2'),
+        url('fonts/TiemposText-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 html {
 	scroll-behavior: smooth
