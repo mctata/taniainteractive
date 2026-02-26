@@ -1,3 +1,0 @@
-check,expected_code,name,host
-http4,200,Web Application,https://taniainteractive.co.uk
-http4,200,Database,https://db.taniainteractive.co.uk

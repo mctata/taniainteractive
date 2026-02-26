@@ -1,390 +1,1329 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tania Lopes - Web Dev Team Lead & Front-End Developer</title>
-    <meta name="description" content="Tania Lopes, Web Dev Team Lead & Senior Front-End Developer, specialises in responsive web applications, usability, and accessibility.">
-    <meta name="keywords" content="web dev, team lead, team manager, web dev team, web dev lead, front end developer, HTML5, HTML, CSS3, CSS, jQuery, usability, accessibility">
-    <meta name="author" content="Tania Lopes">
-    <link rel="icon" href="https://taniainteractive.co.uk/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/combined.min.css">
-    <link rel="canonical" href="https://taniainteractive.co.uk/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tata Lopes - Founder & CEO. Building AI-powered, accessibility-first digital products and platforms.">
+  <title>Tata Lopes - Founder & CEO | AI, Accessibility & Web Platforms</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    /* ===== CSS CUSTOM PROPERTIES ===== */
+    :root {
+      --font-heading: 'Manrope', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
 
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Tania Lopes - Web Dev Team Lead & Front-End Developer">
-    <meta property="og:description" content="Freelance Web Dev Team Lead & Senior Front-End Developer operating internationally.">
-    <meta property="og:image" content="https://www.freelancermap.com/profileimages/Tania-Lopes-33417-xxl_dpr2.jpg">
-    <meta property="og:url" content="https://taniainteractive.co.uk">
-    <meta name="twitter:card" content="summary_large_image">
-    <!-- Schema Markup -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Tania Lopes",
-            "jobTitle": "Web Dev Team Lead & Front-End Developer",
-            "url": "https://taniainteractive.co.uk",
-            "sameAs": [
-              "https://www.linkedin.com/in/taniainteractive",
-              "https://github.com/mctata",
-              "https://www.codementor.io/@mctata"
-            ],
-            "skills": ["HTML5", "CSS3", "JavaScript", "jQuery", "Accessibility", "Usability"]
-          }
-    </script>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5T7M3BJ');</script>
-    <!-- End Google Tag Manager -->
+      /* Light theme */
+      --color-bg: #FAFAF9;
+      --color-bg-alt: #F0EFED;
+      --color-surface: #FFFFFF;
+      --color-text: #0A0A0B;
+      --color-text-muted: #52525B;
+      --color-text-subtle: #71717A;
+      --color-accent: #1D4ED8;
+      --color-accent-hover: #1E40AF;
+      --color-border: #D4D4D8;
+      --color-border-subtle: #E4E4E7;
+      --color-code-bg: #F4F4F5;
+      --color-tag-bg: #EFF6FF;
+      --color-tag-text: #1D4ED8;
+      --color-card-shadow: rgba(0,0,0,0.04);
+      --color-nav-bg: rgba(250,250,249,0.88);
+      --color-focus: #2563EB;
+      --color-skip-bg: #1D4ED8;
+      --color-skip-text: #FFFFFF;
+      --color-green: #15803D;
+      --color-green-bg: #F0FDF4;
+      --color-amber: #B45309;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #0A0A0B;
+      --color-bg-alt: #141416;
+      --color-surface: #1A1A1E;
+      --color-text: #FAFAF9;
+      --color-text-muted: #A1A1AA;
+      --color-text-subtle: #71717A;
+      --color-accent: #60A5FA;
+      --color-accent-hover: #93C5FD;
+      --color-border: #27272A;
+      --color-border-subtle: #1E1E22;
+      --color-code-bg: #18181B;
+      --color-tag-bg: #172554;
+      --color-tag-text: #93C5FD;
+      --color-card-shadow: rgba(0,0,0,0.3);
+      --color-nav-bg: rgba(10,10,11,0.88);
+      --color-focus: #60A5FA;
+      --color-skip-bg: #60A5FA;
+      --color-skip-text: #0A0A0B;
+      --color-green: #4ADE80;
+      --color-green-bg: #052E16;
+      --color-amber: #F59E0B;
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+      font-size: 16px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.7;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ===== SKIP LINK ===== */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      z-index: 1000;
+      padding: 12px 24px;
+      background: var(--color-skip-bg);
+      color: var(--color-skip-text);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-decoration: none;
+      border-radius: 0 0 8px 8px;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus {
+      top: 0;
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+    }
+
+    /* ===== FOCUS STYLES ===== */
+    :focus-visible {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; }
+    h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); }
+    h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+    h4 { font-size: 1.125rem; }
+
+    p { max-width: 68ch; }
+
+    a {
+      color: var(--color-accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      transition: color 0.2s ease, text-decoration-color 0.2s ease;
+    }
+    a:hover { color: var(--color-accent-hover); }
+
+    /* ===== LAYOUT ===== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 5vw, 48px);
+    }
+
+    section {
+      padding: clamp(64px, 10vw, 120px) 0;
+    }
+
+    /* ===== NAVIGATION ===== */
+    .nav {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      z-index: 100;
+      background: var(--color-nav-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 14px;
+      padding: 0 24px;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--color-text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo:hover { color: var(--color-accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 8px 16px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      border-radius: 8px;
+      transition: color 0.2s ease, background-color 0.2s ease;
+      cursor: pointer;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--color-text);
+      background-color: var(--color-bg-alt);
+    }
+
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--color-bg-alt);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 10px;
+      cursor: pointer;
+      color: var(--color-text-muted);
+      transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+      font-size: 1.125rem;
+      line-height: 1;
+    }
+    .theme-toggle:hover {
+      color: var(--color-text);
+      border-color: var(--color-border);
+    }
+    .theme-toggle svg { width: 18px; height: 18px; }
+
+    /* Mobile nav */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      padding: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .nav-hamburger span {
+      display: block;
+      height: 2px;
+      background: var(--color-text);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 768px) {
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--color-nav-bg);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: 14px;
+        padding: 12px;
+        gap: 4px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 16px; font-size: 1rem; }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 100px;
+    }
+
+    .hero-content { max-width: 800px; }
+
+    .hero-label {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-accent);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 { margin-bottom: 24px; }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      max-width: 600px;
+      margin-bottom: 48px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--color-text);
+      color: var(--color-bg);
+    }
+    .btn-primary:hover {
+      background: var(--color-accent);
+      color: #FFFFFF;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-text);
+      border: 1.5px solid var(--color-border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--color-text);
+      background: var(--color-bg-alt);
+    }
+
+    /* ===== SECTION HEADERS ===== */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-accent);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      margin-bottom: 20px;
+    }
+
+    .section-intro {
+      font-size: clamp(1rem, 1.5vw, 1.125rem);
+      color: var(--color-text-muted);
+      max-width: 640px;
+      margin-bottom: 56px;
+    }
+
+    /* ===== WHAT I DO (Pillars) ===== */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .pillar-card {
+      padding: 36px 32px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 16px;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    }
+    .pillar-card:hover {
+      border-color: var(--color-border);
+      box-shadow: 0 8px 32px var(--color-card-shadow);
+      transform: translateY(-2px);
+    }
+
+    .pillar-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-tag-bg);
+      border-radius: 12px;
+      margin-bottom: 20px;
+      color: var(--color-accent);
+    }
+    .pillar-icon svg { width: 24px; height: 24px; }
+
+    .pillar-card h3 { margin-bottom: 12px; }
+
+    .pillar-card p {
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+
+    /* ===== FEATURED WORK ===== */
+    .case-study {
+      padding: 48px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 20px;
+      margin-bottom: 32px;
+      transition: border-color 0.25s ease;
+    }
+    .case-study:hover { border-color: var(--color-border); }
+
+    .case-study-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .case-study-meta { flex: 1; min-width: 200px; }
+
+    .case-study-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: var(--color-tag-bg);
+      color: var(--color-tag-text);
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+
+    .case-study h3 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: 8px;
+    }
+
+    .case-study-tagline {
+      font-size: 1.0625rem;
+      color: var(--color-text-muted);
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+
+    .case-study-body p {
+      color: var(--color-text-muted);
+      font-size: 0.9375rem;
+      margin-bottom: 16px;
+    }
+
+    .case-study-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      font-size: 0.9375rem;
+    }
+    .case-study-link svg { width: 16px; height: 16px; transition: transform 0.2s ease; }
+    .case-study-link:hover svg { transform: translateX(4px); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 28px 0;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    .feature-check {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-green-bg);
+      color: var(--color-green);
+      border-radius: 6px;
+      margin-top: 1px;
+    }
+    .feature-check svg { width: 12px; height: 12px; }
+
+    @media (max-width: 640px) {
+      .case-study { padding: 28px 24px; }
+    }
+
+    /* ===== PREVIOUS WORK ===== */
+    .prev-work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .prev-work-item {
+      padding: 28px 24px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 14px;
+      transition: border-color 0.2s ease;
+    }
+    .prev-work-item:hover { border-color: var(--color-border); }
+
+    .prev-work-item h4 { margin-bottom: 6px; }
+
+    .prev-work-item p {
+      font-size: 0.8125rem;
+      color: var(--color-text-subtle);
+      line-height: 1.6;
+    }
+
+    /* ===== VENTURES ===== */
+    .ventures-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .venture-card {
+      padding: 36px 32px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 16px;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .venture-card:hover {
+      border-color: var(--color-border);
+      box-shadow: 0 8px 32px var(--color-card-shadow);
+    }
+
+    .venture-role {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+
+    .venture-card h3 { margin-bottom: 8px; }
+
+    .venture-url {
+      font-size: 0.8125rem;
+      color: var(--color-text-subtle);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .venture-card p {
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+
+    .ventures-quote {
+      padding: 32px 0 32px 28px;
+      margin-top: 32px;
+      border-left: 3px solid var(--color-amber);
+      border-top: none;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .ventures-quote p {
+      font-family: var(--font-heading);
+      font-size: clamp(1.125rem, 2vw, 1.375rem);
+      font-weight: 600;
+      color: var(--color-text);
+      letter-spacing: -0.01em;
+      line-height: 1.5;
+      font-style: italic;
+      max-width: 600px;
+    }
+
+    /* ===== ABOUT ===== */
+    .about-text p {
+      font-size: 1rem;
+      color: var(--color-text-muted);
+      margin-bottom: 20px;
+      max-width: 720px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .value-card {
+      padding: 32px 28px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 16px;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .value-card:hover {
+      border-color: var(--color-border);
+      box-shadow: 0 8px 32px var(--color-card-shadow);
+    }
+
+    .value-card h3 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--color-text);
+      font-size: 1.0625rem;
+    }
+
+    .value-card p {
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+
+    /* ===== CONTACT ===== */
+    #contact {
+      background: var(--color-bg-alt);
+      border-top: 1px solid var(--color-border-subtle);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 8px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9375rem;
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 10px;
+      color: var(--color-accent);
+      flex-shrink: 0;
+    }
+    .contact-icon svg { width: 18px; height: 18px; }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+    .form-group label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 12px 16px;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      background: var(--color-surface);
+      color: var(--color-text);
+      border: 1.5px solid var(--color-border);
+      border-radius: 10px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--color-focus);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .form-error {
+      font-size: 0.8125rem;
+      color: #DC2626;
+      min-height: 1.2em;
+      display: block;
+    }
+    [data-theme="dark"] .form-error { color: #F87171; }
+
+    .form-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .form-status {
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    .form-status.success { color: #16A34A; }
+    .form-status.error { color: #DC2626; }
+    [data-theme="dark"] .form-status.success { color: #4ADE80; }
+    [data-theme="dark"] .form-status.error { color: #F87171; }
+
+    .form-group input.invalid,
+    .form-group textarea.invalid {
+      border-color: #DC2626;
+    }
+    [data-theme="dark"] .form-group input.invalid,
+    [data-theme="dark"] .form-group textarea.invalid {
+      border-color: #F87171;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--color-border-subtle);
+      background: var(--color-bg-alt);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-text {
+      font-size: 0.8125rem;
+      color: var(--color-text-subtle);
+    }
+
+    .footer-identity {
+      font-size: 0.75rem;
+      color: var(--color-text-subtle);
+      opacity: 0.7;
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 0.8125rem;
+      color: var(--color-text-subtle);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--color-accent); }
+
+    /* ===== DIVIDER ===== */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--color-border-subtle);
+      margin: 0;
+    }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ===== ACCESSIBLE TAGS ===== */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+  </style>
 </head>
-
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5T7M3BJ"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+  <!-- Skip navigation -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Skip to Content Link -->
-    <a href="#main-content" class="skip-link sr-only">Skip to main content</a>
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="Tata Lopes - Home">Tata Lopes</a>
+      <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-menu" role="list">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#ventures">Ventures</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <button class="theme-toggle" aria-label="Switch to dark mode" id="theme-toggle">
+            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/></svg>
+            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" style="display:none"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"/></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-    <!-- Header -->
-    <header>
-        <div class="container clearfix">
-            <div class="row">
-                <div class="span12">
-                    <div class="navbar navbar_">
-                        <div class="container">
-                            <div class="brand brand_"><a href="index.html">/* taniainteractive */</a></div>
-                            <a class="btn btn-navbar btn-navbar_" data-toggle="collapse" data-target=".nav-collapse_" aria-label="Toggle navigation"><small>Menu</small><span class="icon-bar"></span></a>
-                            <div class="nav-collapse nav-collapse_ collapse">
-                                <nav aria-label="Main navigation">
-                                    <ul class="nav sf-menu">
-                                        <li class="active"><a href="index.html" aria-current="page">Home</a></li>
-                                        <li><a href="#work">Work</a></li>
-                                        <li><a href="#about">About</a></li>
-                                        <li><a href="#contact">Contact</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Theme toggle button -->
-                    <button id="theme-toggle" aria-label="Toggle dark mode">🌓</button>
-                </div>
-            </div>
+  <!-- ===== MAIN CONTENT ===== -->
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-label reveal" aria-hidden="true">Founder & CEO</span>
+          <h1 id="hero-heading" class="reveal reveal-delay-1">AI, Accessibility & Web Platforms</h1>
+          <p class="hero-subtitle reveal reveal-delay-2">Building AI-powered, accessibility-first digital products and platforms. 20+ years of international experience leading teams and shipping products across Portugal, Scotland, and Thailand.</p>
+          <div class="hero-cta reveal reveal-delay-3">
+            <a href="#work" class="btn btn-primary">Explore my work</a>
+            <a href="#contact" class="btn btn-secondary">Get in touch</a>
+          </div>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <!-- Main Content -->
-    <main id="main-content">
-        <div class="bg-content">
-            <div class="container">
-                <div class="row">
-                    <div class="span12">
-                        <div class="block-slogan">
-                            <h1>Web Development Manager & Front-End Developer</h1>
-                            <p>Tania Lopes is <code>/* taniainteractive */</code>, a Web Development Manager and Front-End Developer operating internationally.<br>
-                            Tania specialises in designing and developing responsive, interactive web applications with expertise in HTML, CSS, JavaScript, jQuery, Usability, Accessibility, and <a href="https://validator.w3.org/check?uri=http%3A%2F%2Fwww.taniainteractive.co.uk%2F&amp;charset=utf-8&amp;doctype=HTML5&amp;group=0&amp;user-agent=W3C_Validator%2F1.3" target="_blank" title="This link goes to W3C Markup Validation Service">W3C Standards</a>. She also excels in leading development teams and optimising processes for efficient project delivery.</p>
-                        </div>
+    <!-- WHAT I DO -->
+    <section id="pillars" aria-labelledby="pillars-heading">
+      <div class="container">
+        <span class="section-label reveal">What I do</span>
+        <h2 class="section-title reveal" id="pillars-heading">Building at the intersection of AI, accessibility, and the modern web.</h2>
+        <p class="section-intro reveal">Every platform, product, and strategy I deliver is grounded in one principle: technology should be powerful, intelligent, and accessible to everyone.</p>
 
-                        <!-- Slider -->
-                        <div class="flexslider hide-sm">
-                            <ul class="slides">
-                                <li>
-                                    <picture>
-                                        <source srcset="https://taniainteractive.s3.us-east-1.amazonaws.com/webp/work/slider/visit.webp" type="image/webp">
-                                        <img src="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/slider/visit.jpg" alt="Visit Scotland website built with HTML5, CSS3, and jQuery">
-                                    </picture>
-                                </li>
-                                <li>
-                                    <picture>
-                                        <source srcset="https://taniainteractive.s3.us-east-1.amazonaws.com/webp/work/slider/crieff.webp" type="image/webp">
-                                        <img src="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/slider/crieff.jpg" alt="Crieff Hydro website built with HTML5, CSS3, and jQuery">
-                                    </picture>
-                                </li>
-                                <li>
-                                    <picture>
-                                        <source srcset="https://taniainteractive.s3.us-east-1.amazonaws.com/webp/work/slider/vue.webp" type="image/webp">
-                                        <img src="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/slider/vue.jpg" alt="Vue Cinemas website built with HTML5, CSS3, and jQuery">
-                                    </picture>
-                                </li>
-                                <li>
-                                    <picture>
-                                        <source srcset="https://taniainteractive.s3.us-east-1.amazonaws.com/webp/work/slider/awards.webp" type="image/webp">
-                                        <img src="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/slider/awards.jpg" alt="Scottish Thistle Awards website built with HTML5, CSS3, and jQuery">
-                                    </picture>
-                                </li>
-                                <li>
-                                    <picture>
-                                        <source srcset="https://taniainteractive.s3.us-east-1.amazonaws.com/webp/work/slider/vw.webp" type="image/webp">
-                                        <img src="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/slider/vw.jpg" alt="Western Volkswagen website built with HTML, CSS, jQuery, and PHP">
-                                    </picture>
-                                </li>
-                            </ul>
-                        </div>
-                        <span id="responsiveFlag"></span>
-                    </div>
-                </div>
+        <div class="pillars-grid">
+          <div class="pillar-card reveal">
+            <div class="pillar-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"/></svg>
             </div>
+            <h3>AI Product Development</h3>
+            <p>From concept to shipped SaaS. I design and build AI-powered tools that solve real problems: autonomous content generation, intelligent automation, and AI-first user experiences. Not strategy decks. Working products.</p>
+          </div>
+
+          <div class="pillar-card reveal reveal-delay-1">
+            <div class="pillar-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75 16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z"/></svg>
+            </div>
+            <h3>Web Platforms & No-Code</h3>
+            <p>Full-stack platform development focused on empowering non-technical users. Website builders, landing page tools, and integrated digital ecosystems: built for scale, designed for simplicity.</p>
+          </div>
+
+          <div class="pillar-card reveal reveal-delay-2">
+            <div class="pillar-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
+            </div>
+            <h3>Accessibility-First Development</h3>
+            <p>Accessibility is a foundation, not an afterthought. WCAG 2.1 AA compliance, semantic HTML, keyboard navigation, screen reader compatibility, and inclusive design are built into every product from day one.</p>
+          </div>
+
+          <div class="pillar-card reveal reveal-delay-3">
+            <div class="pillar-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/></svg>
+            </div>
+            <h3>Digital Marketing & SEO</h3>
+            <p>Data-driven marketing strategies, technical SEO, content architecture, and conversion optimisation. Hands-on technical knowledge combined with strategic thinking to deliver measurable results.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- FEATURED WORK -->
+    <section id="work" aria-labelledby="work-heading">
+      <div class="container">
+        <span class="section-label reveal">Featured work</span>
+        <h2 class="section-title reveal" id="work-heading">AI products, accessible platforms, strategic solutions.</h2>
+        <p class="section-intro reveal">Selected projects that represent where my work is today.</p>
+
+        <!-- Stepify -->
+        <article class="case-study reveal" aria-labelledby="cs-stepify">
+          <div class="case-study-header">
+            <div class="case-study-meta">
+              <span class="case-study-tag">AI SaaS Product</span>
+              <h3 id="cs-stepify">Stepify</h3>
+              <p class="case-study-tagline">AI that teaches your users.</p>
+            </div>
+          </div>
+          <div class="case-study-body">
+            <p>Stepify is an AI-powered SaaS platform that generates step-by-step tutorials autonomously. Give it a URL and a goal. It navigates the web application, captures real screenshots at every step, and delivers a polished tutorial with annotated images and video walkthrough. No recording. No manual work.</p>
+            <p>Documentation is one of the most neglected aspects of software. It is time-consuming, immediately outdated, and expensive to maintain. Stepify eliminates the manual work entirely using AI to autonomously browse any web application, perform each action, and capture the process in real time.</p>
+
+            <div class="features-grid">
+              <div class="feature-item"><span class="feature-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></span><span>Fully autonomous: no extensions, no recording</span></div>
+              <div class="feature-item"><span class="feature-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></span><span>130-point quality scoring pipeline</span></div>
+              <div class="feature-item"><span class="feature-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></span><span>WCAG 2.1 AA compliant by default</span></div>
+              <div class="feature-item"><span class="feature-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></span><span>SEO flywheel: tutorials become landing pages</span></div>
+              <div class="feature-item"><span class="feature-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></span><span>15+ platforms supported and growing</span></div>
+              <div class="feature-item"><span class="feature-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></span><span>Multi-format: web, screenshots, video</span></div>
+            </div>
+
+            <a href="https://stepify.it" class="case-study-link" target="_blank" rel="noopener noreferrer">Visit stepify.it <span class="sr-only">(opens in new tab)</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></a>
+          </div>
+        </article>
+
+        <!-- Landing Pad Builder -->
+        <article class="case-study reveal" aria-labelledby="cs-landingpad">
+          <div class="case-study-header">
+            <div class="case-study-meta">
+              <span class="case-study-tag">Platform</span>
+              <h3 id="cs-landingpad">Landing Pad Website and Landing Page Builder</h3>
+              <p class="case-study-tagline">Professional websites without writing code.</p>
+            </div>
+          </div>
+          <div class="case-study-body">
+            <p>Landing Pad Digital's core platform is a visual website and landing page builder that empowers individuals, agencies, and businesses to create professional websites without code. Available as a cloud-based solution and a self-hosted white-label option for agencies.</p>
+            <p>The platform sits within a broader integrated ecosystem I've architected and maintain: analytics (Matomo), cloud storage (Nextcloud), email marketing (Listmonk), customer support (Chatwoot), business operations (Odoo), and workflow automation (n8n). All self-hosted on Docker infrastructure with nginx-proxy, automatic SSL, and comprehensive backup systems.</p>
+
+            <div class="features-grid">
+              <div class="feature-item"><span class="feature-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></span><span>No-code visual builder with drag-and-drop</span></div>
+              <div class="feature-item"><span class="feature-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></span><span>Full Docker infrastructure with automated SSL</span></div>
+              <div class="feature-item"><span class="feature-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></span><span>Integrated analytics, email, and support tools</span></div>
+              <div class="feature-item"><span class="feature-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></span><span>White-label architecture for agency partners</span></div>
+              <div class="feature-item"><span class="feature-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></span><span>PDPA-compliant with Thai regulatory standards</span></div>
+              <div class="feature-item"><span class="feature-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg></span><span>AI-first positioning with conversational generation</span></div>
+            </div>
+
+            <a href="https://landingpad.digital" class="case-study-link" target="_blank" rel="noopener noreferrer">Visit landingpad.digital <span class="sr-only">(opens in new tab)</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></a>
+          </div>
+        </article>
+
+        <!-- Previous work -->
+        <div style="margin-top: 64px;">
+          <h3 class="reveal" style="margin-bottom: 8px;">Previous work</h3>
+          <p class="reveal" style="color: var(--color-text-muted); font-size: 0.9375rem; margin-bottom: 28px; max-width: 580px;">From a decade of front-end development with major UK brands to six years leading web development at CLBS in Thailand, collaborating with ebuero in Germany. This foundation in hands-on development, W3C standards, and international team leadership shaped the rigour I bring to everything today.</p>
+
+          <div class="prev-work-grid">
+            <div class="prev-work-item reveal">
+              <h4>CLBS / ebuero</h4>
+              <p>Web Development Manager and Team Lead. Six years leading cross-functional teams, collaborating with ebuero in Germany on web and desktop-app projects.</p>
+            </div>
+            <div class="prev-work-item reveal reveal-delay-1">
+              <h4>Iglu</h4>
+              <p>Senior Front-End Developer. Seven years building performant web solutions for international clients at one of Chiang Mai's leading digital agencies.</p>
+            </div>
+            <div class="prev-work-item reveal reveal-delay-2">
+              <h4>Visit Scotland</h4>
+              <p>Front-end development for Scotland's national tourism website. 13 million annual visits.</p>
+            </div>
+            <div class="prev-work-item reveal reveal-delay-3">
+              <h4>Vue Cinemas</h4>
+              <p>Responsive, high-traffic front-end build for one of the UK's largest cinema chains.</p>
+            </div>
+            <div class="prev-work-item reveal">
+              <h4>The Union</h4>
+              <p>Digital Designer at one of Edinburgh's top creative agencies. Web design, digital advertising, and rich media campaigns.</p>
+            </div>
+            <div class="prev-work-item reveal reveal-delay-1">
+              <h4>Dalmore & Jura Whisky</h4>
+              <p>Led front-end development for premium whisky brands under Whyte & Mackay.</p>
+            </div>
+            <div class="prev-work-item reveal reveal-delay-2">
+              <h4>Crieff Hydro</h4>
+              <p>Front-end build for one of Scotland's most established hospitality destinations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- VENTURES -->
+    <section id="ventures" aria-labelledby="ventures-heading">
+      <div class="container">
+        <span class="section-label reveal">Ventures</span>
+        <h2 class="section-title reveal" id="ventures-heading">Three ventures, one philosophy.</h2>
+
+        <div class="ventures-grid">
+          <article class="venture-card reveal" aria-labelledby="v-lpd">
+            <div class="venture-role">Co-Founder & CEO</div>
+            <h3 id="v-lpd">Landing Pad Digital</h3>
+            <a href="https://landingpad.digital" class="venture-url" target="_blank" rel="noopener noreferrer">landingpad.digital <span class="sr-only">(opens in new tab)</span></a>
+            <p>AI-powered website builder, landing page platform, and digital marketing services. BOI-approved tech startup based in Chiang Mai, Thailand.</p>
+          </article>
+
+          <article class="venture-card reveal reveal-delay-1" aria-labelledby="v-stepify">
+            <div class="venture-role">Product by Landing Pad Digital</div>
+            <h3 id="v-stepify">Stepify</h3>
+            <a href="https://stepify.it" class="venture-url" target="_blank" rel="noopener noreferrer">stepify.it <span class="sr-only">(opens in new tab)</span></a>
+            <p>AI-powered tutorial generation. Give it a URL and a goal: it navigates web applications autonomously, captures real screenshots, and delivers polished, accessible guides.</p>
+          </article>
+
+          <article class="venture-card reveal reveal-delay-2" aria-labelledby="v-tangible">
+            <div class="venture-role">Founder</div>
+            <h3 id="v-tangible">Tangible Studios</h3>
+            <a href="https://tangible-studios.com" class="venture-url" target="_blank" rel="noopener noreferrer">tangible-studios.com <span class="sr-only">(opens in new tab)</span></a>
+            <p>Accessibility-first digital agency. WCAG compliance audits, remediation, accessible design and development. Making the web usable for everyone. UK-based.</p>
+          </article>
         </div>
 
-        <!-- Work Section -->
-        <section id="work" aria-labelledby="work-heading">
-            <div class="container">
-                <h2 id="work-heading">Work</h2>
-                <ul class="portfolio clearfix">
-                    <li class="box">
-                        <a href="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/max/vs_max.jpg" class="magnifier" target="_blank" rel="noopener">
-                            <picture>
-                                <source srcset="https://taniainteractive.s3.us-east-1.amazonaws.com/webp/work/visit.webp" type="image/webp">
-                                <img src="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/visit.jpg" alt="Visit Scotland website built with HTML5, CSS3, and jQuery" loading="lazy">
-                            </picture>
-                        </a>
-                        <h5><a href="https://www.visitscotland.com" target="_blank" rel="noopener">Visit Scotland</a></h5>
-                        <p>HTML5, CSS3, jQuery</p>
-                    </li>
-                
-                    <li class="box">
-                        <a href="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/max/crieff_max.jpg" class="magnifier" target="_blank" rel="noopener">
-                            <picture>
-                                <source srcset="https://taniainteractive.s3.us-east-1.amazonaws.com/webp/work/crieff.webp" type="image/webp">
-                                <img src="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/crieff.jpg" alt="Crieff Hydro website built with HTML5, CSS3, and jQuery" loading="lazy">
-                            </picture>
-                        </a>
-                        <h5><a href="https://www.crieffhydro.com" target="_blank" rel="noopener">Crieff Hydro</a></h5>
-                        <p>HTML5, CSS3, jQuery</p>
-                    </li>
-                
-                    <li class="box">
-                        <a href="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/max/vue_max.jpg" class="magnifier" target="_blank" rel="noopener">
-                            <picture>
-                                <source srcset="https://taniainteractive.s3.us-east-1.amazonaws.com/webp/work/vue.webp" type="image/webp">
-                                <img src="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/vue.jpg" alt="Vue Cinemas website built with HTML5, CSS3, and jQuery" loading="lazy">
-                            </picture>
-                        </a>
-                        <h5><a href="https://www.myvue.com" target="_blank" rel="noopener">Vue Cinemas</a></h5>
-                        <p>HTML5, CSS3, jQuery</p>
-                    </li>
-                
-                    <li class="box">
-                        <a href="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/max/awards_max.jpg" class="magnifier" target="_blank" rel="noopener">
-                            <picture>
-                                <source srcset="https://taniainteractive.s3.us-east-1.amazonaws.com/webp/work/awards.webp" type="image/webp">
-                                <img src="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/awards.jpg" alt="Scottish Thistle Awards website built with HTML5, CSS3, and jQuery" loading="lazy">
-                            </picture>
-                        </a>
-                        <h5><a href="https://www.scottishthistleawards.co.uk" target="_blank" rel="noopener">Scottish Thistle Awards</a></h5>
-                        <p>HTML5, CSS3, jQuery</p>
-                    </li>
-                
-                    <li class="box">
-                        <a href="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/max/vw.png" class="magnifier" target="_blank" rel="noopener">
-                            <picture>
-                                <source srcset="https://taniainteractive.s3.us-east-1.amazonaws.com/webp/work/vw.webp" type="image/webp">
-                                <img src="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/vw.jpg" alt="Western Volkswagen website built with HTML, CSS, jQuery, and PHP" loading="lazy">
-                            </picture>
-                        </a>
-                        <h5><a href="https://www.westernvolkswagen.co.uk" target="_blank" rel="noopener">Western Volkswagen</a></h5>
-                        <p>HTML, CSS, jQuery, PHP</p>
-                    </li>
-                
-                    <li class="box">
-                        <a href="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/max/hmc.jpg" class="magnifier" target="_blank" rel="noopener">
-                            <picture>
-                                <source srcset="https://taniainteractive.s3.us-east-1.amazonaws.com/webp/work/heated.webp" type="image/webp">
-                                <img src="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/heated.jpg" alt="Heated Motorcycle Clothing website built with HTML, CSS, jQuery, and e-Commerce" loading="lazy">
-                            </picture>
-                        </a>
-                        <h5><a href="https://www.heatedmotorcycleclothing.com" target="_blank" rel="noopener">Heated Motorcycle Clothing</a></h5>
-                        <p>HTML, CSS, jQuery, e-Commerce</p>
-                    </li>
-                
-                    <li class="box">
-                        <a href="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/max/warmthru.png" class="magnifier" target="_blank" rel="noopener">
-                            <picture>
-                                <source srcset="https://taniainteractive.s3.us-east-1.amazonaws.com/webp/work/warmthru.webp" type="image/webp">
-                                <img src="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/warmthru.jpg" alt="Warmthru website built with HTML, CSS, jQuery, and e-Commerce" loading="lazy">
-                            </picture>
-                        </a>
-                        <h5><a href="https://www.warmthru.com" target="_blank" rel="noopener">Warmthru</a></h5>
-                        <p>HTML, CSS, jQuery, e-Commerce</p>
-                    </li>
-                
-                    <li class="box">
-                        <a href="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/max/garry.png" class="magnifier" target="_blank" rel="noopener">
-                            <picture>
-                                <source srcset="https://taniainteractive.s3.us-east-1.amazonaws.com/webp/work/garry.webp" type="image/webp">
-                                <img src="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/work/garry.jpg" alt="Garry Torrance website built with HTML5, CSS3, and jQuery" loading="lazy">
-                            </picture>
-                        </a>
-                        <h5><a href="https://www.garrytorrance.co.uk" target="_blank" rel="noopener">Garry Torrance</a></h5>
-                        <p>HTML5, CSS3, jQuery</p>
-                    </li>
-                </ul>
-            </div>
-        </section>
+        <blockquote class="ventures-quote reveal" aria-label="Philosophy statement">
+          <p>The web should be powerful, intelligent, and accessible to everyone.</p>
+        </blockquote>
+      </div>
+    </section>
 
-        <!-- About Section -->
-        <section id="about" aria-labelledby="about-heading">
-            <div class="container">
-                <h2 id="about-heading">About</h2>
-                <p>As a seasoned freelance Front-End Developer & Web Development Manager with over 20 years of international experience, I specialise in crafting high-performance, user-centric web solutions that drive results. From the <em>pastéis de nata</em> of Portugal to the <em>haggis</em> of Scotland, and now the <em>pad Thai</em> of Thailand, I’ve been coding my way around the globe, proving that great websites can come from anywhere.</p>
-                <p>With a strong focus on front-end development, I’ve spent the past six years leading the web dev team at Chiang Mai Lanna Business Services Ltd. in Thailand, ensuring projects are delivered on time, within budget, and aligned with strategic goals. My role involves collaborating with global teams (including a remote team in Germany), mentoring developers, and optimising processes for efficiency.</p>
-                <ul>
-                  <li>Developing VisitScotland’s cutting-edge website, contributing to 13 million annual visits (yes, I helped make Scotland even more irresistible).</li>
-                  <li>Leading high-profile projects for brands like Dalmore Distillery, Jura Whisky, and Whyte & Mackay (whisky & web development —> what a combo!).</li>
-                  <li>Mastering technologies such as HTML, CSS, JavaScript/jQuery, SCSS, LESS, PHP & WordPress.</li>
-                </ul>
-                
-                <p>Certified in Docker, DevOps, CSS with LESS & Sass, and proficient in Confluence & Jira. Whether it’s debugging code or navigating time zones, I bring a blend of technical expertise and project management skills to every project. </p>
-                
-                <p>I thrive on tackling challenges with creativity and commitment.</p>
-                <p>If your business, organisation, or charity needs a tailored web solution, let’s connect. I’d love to bring your vision to life with expertise, passion, and maybe a few stories about my adventures across three countries.</p>
-            </div>
-        </section>
+    <hr class="section-divider">
 
-        <!-- Contact Section -->
-        <section id="contact" aria-labelledby="contact-heading">
-            <div class="container">
-                <h2 id="contact-heading">Contact</h2>
-                <div class="row">
-                    <article class="span8">
-                        <h3>Get in Touch</h3>
-                        <form id="form">
-                            <div class="field">
-                                <label for="from_name">Name</label>
-                                <input type="text" name="from_name" id="from_name" required aria-describedby="name-help">
-                                <span id="name-help" class="sr-only">Please enter your name.</span>
-                            </div>
-                            <div class="field">
-                                <label for="to_name">Email</label>
-                                <input type="email" name="to_name" id="to_name" required aria-describedby="email-help">
-                                <span id="email-help" class="sr-only">Please enter a valid email address.</span>
-                            </div>
-                            <div class="field">
-                                <label for="message">Message</label>
-                                <textarea name="message" id="message" required aria-describedby="message-help"></textarea>
-                                <span id="message-help" class="sr-only">Please enter your message.</span>
-                            </div>
-                            <div class="field">
-                                 <input type="submit" id="button" class="submit-btn" value="Send Email">
-                            </div>
-                           
-                        </form>
-                        <p id="response-message" aria-live="polite"></p>
-                    </article>
-                    <article class="span4">
-                        <h3>Let’s Connect</h3>
-                        <div class="map hide-sm">
-                            <picture>
-                                <source srcset="https://taniainteractive.s3.us-east-1.amazonaws.com/webp/map.webp" type="image/webp">
-                                <img src="https://taniainteractive.s3.us-east-1.amazonaws.com/optimised/map.png" alt="Location of taniainteractive on a map">
-                              </picture>
-                        </div>
-                        <div itemscope itemtype="https://schema.org/Person">
-                            <address class="address-1">
-                                <div itemprop="additionalName"><code>/* taniainteractive */</code></div>
-                                <div itemprop="name" class="full"><strong>Tania Lopes</strong></div>
-                                <div itemprop="jobTitle" class="full"><strong>Web Dev Team Lead & Front-End Developer</strong></div>
-                                <div itemprop="email" class="full"><strong><span itemprop="email">E-mail:</span> <a href="mailto:taniainteractive@gmail.com"  aria-label="GmailLinkedIn" class="mail-1">taniainteractive@gmail.com</a></strong></div>
-                                <div itemprop="availability" class="full"><strong><span itemprop="availability">LinkedIn:</span> <a href="https://www.linkedin.com/in/taniainteractive" aria-label="LinkedIn" class="mail-1">@taniainteractive</a></strong></div>
-                            </address>
-                            <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="bf8e8a4f-35ee-405e-8f37-7a3d8af067c5" data-share-badge-host="https://www.credly.com"></div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-    </main>
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <span class="section-label reveal">About</span>
+        <h2 class="section-title reveal" id="about-heading">20+ years. Three countries. From developer to CEO.</h2>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container clearfix">
-            <div class="privacy block-slogan">
-                &copy; 2004 - 2025 <code>/* taniainteractive */</code>
-            </div>
-        </div>  
-    </footer>
-<!-- Add this before the closing </body> tag -->
-<button id="scroll-to-top" aria-label="Scroll to top" title="Scroll to top">↑</button>
-    <!-- Scripts -->
-    <script src="js/all.min.js"></script>
-    <script async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-    <script>if($(window).width()>1024){document.write("<"+"script src='js/jquery.preloader.js' defer></"+"script>");}</script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script>
+        <div class="about-text reveal">
+          <p>I started in Portugal, moved to Scotland where I spent a decade as a front-end developer working with brands like Visit Scotland, Vue Cinemas, and Dalmore Distillery, then relocated to Chiang Mai, Thailand, where I've been based for the past ten years.</p>
+          <p>In Thailand, I spent six years at Chiang Mai Lanna Business Services (CLBS) as Web Development Manager and Team Lead, collaborating closely with ebuero in Germany to deliver web and desktop-app projects across international teams. I led development processes, mentored developers, and ensured projects were delivered on strategy, on time, and within budget.</p>
+          <p>In parallel, I co-founded Landing Pad Digital, a BOI-approved tech startup building AI-powered web platforms and tools. My path has taken me from writing CSS by hand in 2004 to running a company that ships AI products in 2026. What hasn't changed is the standard I hold myself to: clean code, accessible interfaces, and technology that serves people.</p>
+          <p>Today, I lead a remote team of developers and designers, architect cloud infrastructure, build AI tools, and develop the marketing strategies that bring them to market. I'm equally comfortable in a Docker terminal, a Figma file, or a boardroom. Certified in Docker, DevOps, and CSS preprocessors (LESS and Sass), with extensive experience in Confluence, Jira, and end-to-end project delivery.</p>
+        </div>
 
-    const scrollToTopButton = document.getElementById('scroll-to-top');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 200) {
-            scrollToTopButton.style.display = 'block';
-        } else {
-            scrollToTopButton.style.display = 'none';
-        }
+        <div class="values-grid">
+          <div class="value-card reveal">
+            <h3>Accessibility is not optional.</h3>
+            <p>Every product, platform, and website I build meets WCAG standards. Inclusive design is a technical discipline, not a checkbox exercise.</p>
+          </div>
+          <div class="value-card reveal reveal-delay-1">
+            <h3>Ship products, not slide decks.</h3>
+            <p>I believe in working software over extensive documentation. Strategy matters, but execution matters more.</p>
+          </div>
+          <div class="value-card reveal reveal-delay-2">
+            <h3>AI should do the repetitive work.</h3>
+            <p>So humans can focus on the creative, strategic, and meaningful work that technology cannot replace.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <span class="section-label reveal">Contact</span>
+        <h2 class="section-title reveal" id="contact-heading">Let's talk.</h2>
+        <p class="section-intro reveal">Whether you're looking for a strategic partner, exploring accessibility compliance, or have a project in mind: I'm keen to hear from you.</p>
+
+        <div class="contact-grid">
+          <div class="contact-details reveal">
+            <div class="contact-item">
+              <span class="contact-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+              </span>
+              <a href="#" id="email-link" data-name="tata" data-domain="landingpad.digital">Loading email...</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"/></svg>
+              </span>
+              <a href="https://www.linkedin.com/in/taniainteractive" target="_blank" rel="noopener noreferrer">linkedin.com/in/taniainteractive <span class="sr-only">(opens in new tab)</span></a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+              </span>
+              <span>Chiang Mai, Thailand</span>
+            </div>
+          </div>
+
+          <form class="contact-form reveal reveal-delay-1" id="contact-form" action="https://formspree.io/f/mpqjblrb" method="POST" novalidate>
+            <div class="form-group">
+              <label for="contact-name">Name</label>
+              <input type="text" id="contact-name" name="name" required autocomplete="name" placeholder="Your name" aria-required="true" aria-describedby="name-error">
+              <span class="form-error" id="name-error" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" name="email" required autocomplete="email" placeholder="your@email.com" aria-required="true" aria-describedby="email-error">
+              <span class="form-error" id="email-error" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" required placeholder="Tell me about your project or question" aria-required="true" aria-describedby="message-error"></textarea>
+              <span class="form-error" id="message-error" role="alert" aria-live="polite"></span>
+            </div>
+            <!-- Honeypot for spam -->
+            <div aria-hidden="true" style="position:absolute;left:-9999px;height:0;overflow:hidden">
+              <label for="gotcha">Do not fill this out</label>
+              <input type="text" id="gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary" id="submit-btn">Send message</button>
+              <span class="form-status" id="form-status" role="status" aria-live="polite"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <p class="footer-text">&copy; 2004 - 2026 Tata Lopes. Founder & CEO, Landing Pad Digital.</p>
+          <p class="footer-identity">taniainteractive is T&acirc;nia Lopes, known as Tata.</p>
+        </div>
+        <ul class="footer-links" role="list">
+          <li><a href="https://landingpad.digital" target="_blank" rel="noopener noreferrer">Landing Pad Digital <span class="sr-only">(opens in new tab)</span></a></li>
+          <li><a href="https://stepify.it" target="_blank" rel="noopener noreferrer">Stepify <span class="sr-only">(opens in new tab)</span></a></li>
+          <li><a href="https://tangible-studios.com" target="_blank" rel="noopener noreferrer">Tangible Studios <span class="sr-only">(opens in new tab)</span></a></li>
+          <li><a href="https://www.linkedin.com/in/taniainteractive" target="_blank" rel="noopener noreferrer">LinkedIn <span class="sr-only">(opens in new tab)</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Theme toggle
+    const toggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    const sunIcon = toggle.querySelector('.icon-sun');
+    const moonIcon = toggle.querySelector('.icon-moon');
+
+    function setTheme(theme) {
+      html.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      if (theme === 'dark') {
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+        toggle.setAttribute('aria-label', 'Switch to light mode');
+      } else {
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+        toggle.setAttribute('aria-label', 'Switch to dark mode');
+      }
+    }
+
+    // Check saved preference or system preference
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      setTheme(saved);
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setTheme('dark');
+    }
+
+    toggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      setTheme(current === 'dark' ? 'light' : 'dark');
     });
-    scrollToTopButton.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+
+    // Mobile hamburger
+    const hamburger = document.querySelector('.nav-hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', !isOpen);
+      navMenu.classList.toggle('open');
+    });
+
+    // Close mobile menu on link click
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.setAttribute('aria-expanded', 'false');
+        navMenu.classList.remove('open');
+      });
+    });
+
+    // Scroll reveal with Intersection Observer
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
         });
-    });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    // EmailJS functionality
-    emailjs.init('2bzsFXyw3GC8NldiN');
-
-    const btn = document.getElementById('button');
-    const responseMessage = document.getElementById('response-message');
-
-    document.getElementById('form').addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        btn.value = 'Sending...';
-
-        const serviceID = 'default_service';
-        const templateID = 'template_mfbw77l';
-
-        emailjs.sendForm(serviceID, templateID, this)
-            .then(() => {
-                btn.value = 'Send Email';
-                responseMessage.textContent = "Thank you for your interest! I'll get back to you soon.";
-                responseMessage.style.color = 'green';
-                document.getElementById('form').reset();
-            })
-            .catch((err) => {
-                btn.value = 'Send Email';
-                responseMessage.textContent = 'Failed to send message. Please try again.';
-                responseMessage.style.color = 'red';
-                console.error(JSON.stringify(err));
-            });
-    });
-
-    // Theme toggle functionality
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-
-    // Check for saved theme preference in localStorage
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        body.classList.add(savedTheme);
-        updateToggleButton(savedTheme);
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
     }
 
-    // Toggle theme on button click
-    themeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-theme');
-        const isDark = body.classList.contains('dark-theme');
-        localStorage.setItem('theme', isDark ? 'dark-theme' : '');
-        updateToggleButton(isDark ? 'dark-theme' : '');
-    });
+    // Email obfuscation: assemble email from data attributes at runtime
+    (function() {
+      const el = document.getElementById('email-link');
+      if (el) {
+        const name = el.getAttribute('data-name');
+        const domain = el.getAttribute('data-domain');
+        const addr = name + '@' + domain;
+        el.href = 'mai' + 'lto:' + addr;
+        el.textContent = addr;
+        el.removeAttribute('data-name');
+        el.removeAttribute('data-domain');
+      }
+    })();
 
-    // Update the toggle button's appearance
-    function updateToggleButton(theme) {
-        themeToggle.textContent = theme === 'dark-theme' ? '☀️' : '🌓';
-    }
-</script>
+    // Contact form: client-side validation + async Formspree submission
+    (function() {
+      const form = document.getElementById('contact-form');
+      const submitBtn = document.getElementById('submit-btn');
+      const statusEl = document.getElementById('form-status');
+      if (!form) return;
+
+      function validateField(input, errorId) {
+        const error = document.getElementById(errorId);
+        let msg = '';
+
+        if (!input.value.trim()) {
+          msg = input.name.charAt(0).toUpperCase() + input.name.slice(1) + ' is required.';
+        } else if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
+          msg = 'Please enter a valid email address.';
+        }
+
+        error.textContent = msg;
+        input.classList.toggle('invalid', !!msg);
+        input.setAttribute('aria-invalid', !!msg);
+        return !msg;
+      }
+
+      // Validate on blur
+      ['contact-name', 'contact-email', 'contact-message'].forEach(id => {
+        const input = document.getElementById(id);
+        const errorId = id.replace('contact-', '') + '-error';
+        input.addEventListener('blur', () => validateField(input, errorId));
+        input.addEventListener('input', () => {
+          if (input.classList.contains('invalid')) validateField(input, errorId);
+        });
+      });
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Validate all fields
+        const nameValid = validateField(document.getElementById('contact-name'), 'name-error');
+        const emailValid = validateField(document.getElementById('contact-email'), 'email-error');
+        const msgValid = validateField(document.getElementById('contact-message'), 'message-error');
+
+        if (!nameValid || !emailValid || !msgValid) {
+          // Focus first invalid field
+          const firstInvalid = form.querySelector('.invalid');
+          if (firstInvalid) firstInvalid.focus();
+          return;
+        }
+
+        // Submit
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        statusEl.textContent = '';
+        statusEl.className = 'form-status';
+
+        try {
+          const data = new FormData(form);
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            statusEl.textContent = 'Message sent. Thank you!';
+            statusEl.className = 'form-status success';
+            form.reset();
+            // Clear any lingering invalid states
+            form.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+            form.querySelectorAll('.form-error').forEach(el => el.textContent = '');
+          } else {
+            throw new Error('Server error');
+          }
+        } catch (err) {
+          statusEl.textContent = 'Something went wrong. Please try again or email me directly.';
+          statusEl.className = 'form-status error';
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send message';
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
