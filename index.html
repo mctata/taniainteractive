@@ -2,14 +2,13 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GRJ057N866"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-GRJ057N866');
-  </script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5T7M3BJ');</script>
+  <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Tata Lopes - Founder & CEO. Building AI-powered, accessibility-first digital products and platforms.">
   <title>Tata Lopes - Founder & CEO | AI, Accessibility & Web Platforms</title>
@@ -972,6 +971,10 @@
   </script>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5T7M3BJ"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <!-- Skip navigation -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -1337,7 +1340,10 @@
 
     toggle.addEventListener('click', () => {
       const current = html.getAttribute('data-theme');
-      setTheme(current === 'dark' ? 'light' : 'dark');
+      const newTheme = current === 'dark' ? 'light' : 'dark';
+      setTheme(newTheme);
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ 'event': 'theme_toggle', 'theme': newTheme });
     });
 
     // Mobile hamburger
@@ -1455,6 +1461,8 @@
           if (response.ok) {
             statusEl.textContent = 'Message sent. Thank you!';
             statusEl.className = 'form-status success';
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ 'event': 'form_submit', 'form_name': 'contact' });
             form.reset();
             // Clear any lingering invalid states
             form.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
@@ -1471,6 +1479,60 @@
         }
       });
     })();
+
+    // === GTM dataLayer Events ===
+    window.dataLayer = window.dataLayer || [];
+
+    // Outbound link clicks
+    document.querySelectorAll('a[href^="http"]').forEach(link => {
+      if (!link.href.includes('taniainteractive.co.uk')) {
+        link.addEventListener('click', () => {
+          window.dataLayer.push({
+            'event': 'outbound_click',
+            'link_url': link.href,
+            'link_text': link.textContent.trim().substring(0, 100)
+          });
+        });
+      }
+    });
+
+    // Email link click
+    (function() {
+      const emailLink = document.getElementById('email-link');
+      if (emailLink) {
+        emailLink.addEventListener('click', () => {
+          window.dataLayer.push({ 'event': 'email_click' });
+        });
+      }
+    })();
+
+    // Section visibility tracking
+    (function() {
+      const sections = document.querySelectorAll('section[id]');
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            window.dataLayer.push({
+              'event': 'section_view',
+              'section_id': entry.target.id
+            });
+            sectionObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      sections.forEach(section => sectionObserver.observe(section));
+    })();
+
+    // CTA button clicks (hero buttons and nav CTAs)
+    document.querySelectorAll('.btn, .nav-cta').forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.dataLayer.push({
+          'event': 'cta_click',
+          'cta_text': btn.textContent.trim(),
+          'cta_url': btn.href || btn.closest('a')?.href || ''
+        });
+      });
+    });
   </script>
 </body>
 </html>
