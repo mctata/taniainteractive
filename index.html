@@ -516,12 +516,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .work-link:hover .arrow { transform: translateX(4px); }
   
   /* Video in work-visual */
-  .work-visual--video { padding: 0; background: var(--bg-dark-section); }
-  .work-visual--video video {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
-    border-radius: 12px;
-  }
+  /* Video in work-visual */
+.work-visual--video { padding: 0; background: var(--bg-dark-section); position: relative; cursor: pointer; }
+.work-visual--video video {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  border-radius: 12px;
+}
+.video-play-btn {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.35);
+  border: none; border-radius: 12px; cursor: pointer;
+  transition: background 0.25s var(--ease-out);
+}
+.video-play-btn svg {
+  width: 48px; height: 48px; color: #FFFFFF;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+  transition: transform 0.2s var(--ease-out);
+}
+.video-play-btn:hover { background: rgba(0,0,0,0.45); }
+.video-play-btn:hover svg { transform: scale(1.1); }
+.video-play-btn.hidden { display: none; }
   .work-visual--video .poster-fallback {
     width: 100%; height: 100%;
     object-fit: cover; display: none;
@@ -1109,24 +1125,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="work-meta reveal">
           <span class="work-type">Platform</span>
           <h3>Landing Pad Website and Landing Page Builder</h3>
-          <p>Visual website and landing page builder empowering businesses to create professional sites without code. Cloud-based with a free AI-powered CRO analyser. Part of a broader self-hosted ecosystem: analytics, email marketing, support, and automation.</p>
+          <p>Visual website and landing page builder empowering businesses to create professional sites without code. Cloud-based, and a free AI-powered CRO analyser. Part of a broader self-hosted ecosystem: analytics, email marketing, support, and automation.</p>
           <ul class="work-features" role="list">
             <li>No-code visual builder with drag-and-drop</li>
             <li>Full Docker infrastructure with automated SSL</li>
-            <li>Built-in CRO analyser for conversion optimisation</li>
+            <li><a href="https://www.landingpad.digital/landing-page-analyser" title="Free AI-powered CRO analyser" target="_blank">CRO analyser</a> for conversion optimisation</li>
             <li>AI-first conversational site generation</li>
           </ul>
           <a href="https://landingpad.digital" class="work-link" target="_blank" rel="noopener noreferrer">Visit landingpad.digital <span class="arrow" aria-hidden="true">&rarr;</span></a>
         </div>
         <div class="work-visual work-visual--video reveal reveal-d2">
-          <video autoplay loop muted playsinline
+          <video muted playsinline preload="metadata"
                  poster="assets/landingpad-poster.jpg"
                  aria-label="Landing Pad Website Builder: drag-and-drop interface demonstration"
                  id="landingpad-video">
             <source src="assets/how-it-works-hero.mp4" type="video/mp4">
             <img src="assets/landingpad-poster.jpg" alt="Landing Pad Website Builder interface" loading="lazy">
           </video>
-          <img class="poster-fallback" src="assets/landingpad-poster.jpg" alt="Landing Pad Website Builder interface" loading="lazy">
+          <button class="video-play-btn" aria-label="Play video" id="landingpad-play">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6,3 20,12 6,21"/></svg>
+          </button>
         </div>
         <!-- <div class="work-visual reveal reveal-d2" role="img" aria-label="Landing Pad Digital: Website and landing page builder platform">
           <div class="work-visual-inner">
@@ -1606,26 +1624,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   });
 
-  // ============================================
-  // VIDEO: Respect prefers-reduced-motion
-  // ============================================
-  (function() {
-    const video = document.getElementById('landingpad-video');
-    if (!video) return;
+// ============================================
+// VIDEO: Click to play/pause
+// ============================================
+(function() {
+  const video = document.getElementById('landingpad-video');
+  const playBtn = document.getElementById('landingpad-play');
+  if (!video || !playBtn) return;
 
-    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function play() {
+    video.play().catch(() => {});
+    playBtn.classList.add('hidden');
+    playBtn.setAttribute('aria-label', 'Pause video');
+  }
 
-    function handleMotionPreference(e) {
-      if (e.matches) {
-        video.pause();
-      } else {
-        video.play().catch(() => {});
-      }
-    }
+  function pause() {
+    video.pause();
+    playBtn.classList.remove('hidden');
+    playBtn.setAttribute('aria-label', 'Play video');
+  }
 
-    handleMotionPreference(motionQuery);
-    motionQuery.addEventListener('change', handleMotionPreference);
-  })();
+  playBtn.addEventListener('click', play);
+
+  video.addEventListener('click', () => {
+    video.paused ? play() : pause();
+  });
+
+  video.addEventListener('ended', pause);
+})();
 </script>
 
 </body>
