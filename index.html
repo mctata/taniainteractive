@@ -2,13 +2,13 @@
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5T7M3BJ');</script>
-    <!-- End Google Tag Manager -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5T7M3BJ');</script>
+<!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Tânia Lopes - Founder & CEO. Building AI-powered, accessibility-first digital products and platforms. 20+ years of international experience across Portugal, Scotland, and Thailand.">
 <meta name="author" content="Tânia Lopes">
@@ -20,14 +20,13 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-  <link rel="manifest" href="assets/site.webmanifest">
+<link rel="manifest" href="assets/site.webmanifest">
 <!-- Open Graph -->
 <meta property="og:title" content="Tânia Lopes - Founder & CEO | AI, Accessibility & Web Platforms">
 <meta property="og:description" content="Building AI-powered, accessibility-first digital products and platforms. 20+ years shipping software from Portugal to Scotland to Thailand.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.taniainteractive.co.uk/">
 <meta property="og:locale" content="en_GB">
-
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Tânia Lopes - Founder & CEO">
@@ -236,8 +235,8 @@
     line-height: 1.15;
     transition: color 0.3s var(--ease-out);
   }
-  h1 { font-size: clamp(2.6rem, 5.5vw, 4.2rem); letter-spacing: -0.02em; }
-  h2 { font-size: clamp(1.9rem, 3.5vw, 2.8rem); letter-spacing: -0.015em; }
+  h1 { font-size: clamp(2.6rem, 5.5vw, 4.2rem); }
+  h2 { font-size: clamp(1.9rem, 3.5vw, 2.8rem); }
   h3 { font-size: clamp(1.3rem, 2vw, 1.8rem); }
   
   p { font-size: 1rem; max-width: 65ch; line-height: 1.75; }
@@ -271,7 +270,6 @@
     font-size: 1.2rem;
     color: var(--text-primary);
     text-decoration: none;
-    letter-spacing: -0.01em;
   }
   .nav-name:hover { color: var(--text-primary); }
   
@@ -608,10 +606,10 @@
   .about-text p:first-child { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.8; }
   .about-aside { position: sticky; top: calc(var(--nav-height) + 40px); }
   
-  /* Stats: 4-column grid on desktop */
+  /* Stats: */
   .about-stats {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 0;
     background: var(--bg-secondary);
     border-radius: 12px;
@@ -677,6 +675,19 @@
   .form-group input::placeholder,
   .form-group textarea::placeholder { color: var(--text-muted); }
   
+  /* Invalid state */
+  .form-group input.invalid,
+  .form-group textarea.invalid {
+    border-color: #E53E3E;
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.08);
+  }
+  .form-error {
+    font-size: 0.78rem;
+    color: #E53E3E;
+    min-height: 0;
+    line-height: 1.4;
+  }
+  
   .form-hp {
     position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; overflow: hidden;
   }
@@ -701,7 +712,7 @@
     transition: border-color 0.3s var(--ease-out);
   }
   .footer .container {
-    display: flex; justify-content: space-between; align-items: center;
+    display: flex; justify-content: space-between; align-items: baseline;
     flex-wrap: wrap; gap: var(--space-sm);
   }
   .footer p { font-size: 0.78rem; color: var(--text-muted); }
@@ -711,12 +722,13 @@
   }
   .footer-links a:hover { color: var(--text-primary); }
   .footer-identity {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      opacity: 0.7;
-      margin-top: 4px;
-      font-style: italic;
-    }
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    opacity: 0.7;
+    margin-top: 4px;
+    font-style: italic;
+  }
+  
   /* ============================================
      REVEAL ANIMATIONS
      ============================================ */
@@ -748,7 +760,6 @@
     .about-content { grid-template-columns: 1fr; }
     .about-aside { position: static; }
     
-    /* Stats: still 4 columns on tablet */
     .about-stats { grid-template-columns: repeat(4, 1fr); }
     
     .contact-layout { grid-template-columns: 1fr; gap: var(--space-xl); }
@@ -784,8 +795,9 @@
       z-index: 99;
     }
     .nav-links.open { transform: translateX(0); }
+    .nav-links li {margin-bottom: 1rem; }
     .nav-links a {
-      font-size: 0.9rem; padding: 16px 0;
+      font-size: 0.9rem;
       border-bottom: 1px solid var(--border-primary);
       color: var(--text-secondary);
     }
@@ -793,6 +805,7 @@
     .nav-links a::after { display: none; }
     .nav-overlay { display: block; pointer-events: none; }
     .nav-overlay.active { pointer-events: auto; }
+    
     /* Timeline: stacked */
     .timeline-item {
       grid-template-columns: 1fr; gap: 0;
@@ -821,151 +834,151 @@
   }
 </style>
 
-  <!-- Structured Data: JSON-LD -->
+<!-- Structured Data: JSON-LD -->
 <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "ProfilePage",
-        "@id": "https://www.taniainteractive.co.uk/#profilepage",
-        "url": "https://www.taniainteractive.co.uk",
-        "name": "Tânia Lopes - Founder & CEO | AI, Accessibility & Web Platforms",
-        "description": "Personal portfolio of Tânia Lopes (Tata). Founder & CEO of Landing Pad Digital, building AI-powered, accessibility-first digital products and platforms.",
-        "dateCreated": "2004-01-01",
-        "dateModified": "2026-02-26",
-        "mainEntity": {
-          "@id": "https://www.taniainteractive.co.uk/#person"
-        },
-        "inLanguage": "en"
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "@id": "https://www.taniainteractive.co.uk/#profilepage",
+      "url": "https://www.taniainteractive.co.uk",
+      "name": "Tânia Lopes - Founder & CEO | AI, Accessibility & Web Platforms",
+      "description": "Personal portfolio of Tânia Lopes (Tata). Founder & CEO of Landing Pad Digital, building AI-powered, accessibility-first digital products and platforms.",
+      "dateCreated": "2004-01-01",
+      "dateModified": "2026-02-26",
+      "mainEntity": {
+        "@id": "https://www.taniainteractive.co.uk/#person"
       },
-      {
-        "@type": "WebSite",
-        "@id": "https://www.taniainteractive.co.uk/#website",
-        "url": "https://www.taniainteractive.co.uk",
-        "name": "Tata Lopes - taniainteractive",
-        "publisher": {
-          "@id": "https://www.taniainteractive.co.uk/#person"
-        },
-        "inLanguage": "en"
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.taniainteractive.co.uk/#website",
+      "url": "https://www.taniainteractive.co.uk",
+      "name": "Tata Lopes - taniainteractive",
+      "publisher": {
+        "@id": "https://www.taniainteractive.co.uk/#person"
       },
-      {
-        "@type": "Person",
-        "@id": "https://www.taniainteractive.co.uk/#person",
-        "name": "Tânia Lopes",
-        "alternateName": ["Tania Lopes", "Tata", "taniainteractive"],
-        "url": "https://www.taniainteractive.co.uk",
-        "jobTitle": "Founder & CEO",
-        "description": "Founder & CEO building AI-powered, accessibility-first digital products and platforms. 20+ years of international experience across Portugal, Scotland, and Thailand.",
-        "knowsAbout": [
-          "Artificial Intelligence",
-          "Web Accessibility",
-          "WCAG 2.1",
-          "Web Development",
-          "No-Code Platforms",
-          "Digital Marketing",
-          "SEO",
-          "UX Design",
-          "Docker",
-          "DevOps",
-          "SaaS Product Development",
-          "Front-End Development",
-          "CSS",
-          "HTML",
-          "JavaScript"
-        ],
-        "knowsLanguage": ["en", "pt"],
-        "nationality": {
-          "@type": "Country",
-          "name": "Portugal"
-        },
-        "workLocation": {
-          "@type": "Place",
-          "name": "Chiang Mai, Thailand",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Chiang Mai",
-            "addressCountry": "TH"
-          }
-        },
-        "sameAs": [
-          "https://www.linkedin.com/in/taniainteractive"
-        ],
-        "worksFor": {
-          "@id": "https://www.taniainteractive.co.uk/#landingpad"
-        },
-        "founder": [
-          {
-            "@id": "https://www.taniainteractive.co.uk/#landingpad"
-          },
-          {
-            "@id": "https://www.taniainteractive.co.uk/#tangible"
-          }
-        ]
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.taniainteractive.co.uk/#person",
+      "name": "Tânia Lopes",
+      "alternateName": ["Tania Lopes", "Tata", "taniainteractive"],
+      "url": "https://www.taniainteractive.co.uk",
+      "jobTitle": "Founder & CEO",
+      "description": "Founder & CEO building AI-powered, accessibility-first digital products and platforms. 20+ years of international experience across Portugal, Scotland, and Thailand.",
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Web Accessibility",
+        "WCAG 2.1",
+        "Web Development",
+        "No-Code Platforms",
+        "Digital Marketing",
+        "SEO",
+        "UX Design",
+        "Docker",
+        "DevOps",
+        "SaaS Product Development",
+        "Front-End Development",
+        "CSS",
+        "HTML",
+        "JavaScript"
+      ],
+      "knowsLanguage": ["en", "pt"],
+      "nationality": {
+        "@type": "Country",
+        "name": "Portugal"
       },
-      {
-        "@type": "Organization",
-        "@id": "https://www.taniainteractive.co.uk/#landingpad",
-        "name": "Landing Pad Digital",
-        "url": "https://landingpad.digital",
-        "description": "BOI-approved tech startup in Thailand building an AI-powered website and landing page builder platform.",
-        "foundingDate": "2024",
-        "foundingLocation": {
-          "@type": "Place",
-          "name": "Chiang Mai, Thailand"
-        },
-        "founder": {
-          "@id": "https://www.taniainteractive.co.uk/#person"
-        },
-        "knowsAbout": ["Website Builder", "Landing Page Builder", "AI", "No-Code Platforms"]
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://www.taniainteractive.co.uk/#tangible",
-        "name": "Tangible Studios",
-        "url": "https://tangible-studios.com",
-        "description": "Accessibility-first web agency delivering inclusive digital experiences.",
-        "founder": {
-          "@id": "https://www.taniainteractive.co.uk/#person"
+      "workLocation": {
+        "@type": "Place",
+        "name": "Chiang Mai, Thailand",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Chiang Mai",
+          "addressCountry": "TH"
         }
       },
-      {
-        "@type": "SoftwareApplication",
-        "@id": "https://www.taniainteractive.co.uk/#stepify",
-        "name": "Stepify",
-        "url": "https://stepify.it",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web",
-        "description": "AI-powered tutorial and documentation generator. Navigates web apps autonomously, captures screenshots, and generates step-by-step guides with WCAG 2.1 AA compliance.",
-        "offers": [
-          {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD",
-            "description": "Free plan"
-          },
-          {
-            "@type": "Offer",
-            "price": "39",
-            "priceCurrency": "USD",
-            "description": "Pro plan - monthly"
-          }
-        ],
-        "creator": {
+      "sameAs": [
+        "https://www.linkedin.com/in/taniainteractive"
+      ],
+      "worksFor": {
+        "@id": "https://www.taniainteractive.co.uk/#landingpad"
+      },
+      "founder": [
+        {
           "@id": "https://www.taniainteractive.co.uk/#landingpad"
         },
-        "featureList": "AI-powered navigation, automatic screenshot capture, 130-point quality pipeline, WCAG 2.1 AA compliance, SEO-optimised output, 15+ platform integrations"
+        {
+          "@id": "https://www.taniainteractive.co.uk/#tangible"
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.taniainteractive.co.uk/#landingpad",
+      "name": "Landing Pad Digital",
+      "url": "https://landingpad.digital",
+      "description": "BOI-approved tech startup in Thailand building an AI-powered website and landing page builder platform.",
+      "foundingDate": "2024",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Chiang Mai, Thailand"
+      },
+      "founder": {
+        "@id": "https://www.taniainteractive.co.uk/#person"
+      },
+      "knowsAbout": ["Website Builder", "Landing Page Builder", "AI", "No-Code Platforms"]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.taniainteractive.co.uk/#tangible",
+      "name": "Tangible Studios",
+      "url": "https://tangible-studios.com",
+      "description": "Accessibility-first web agency delivering inclusive digital experiences.",
+      "founder": {
+        "@id": "https://www.taniainteractive.co.uk/#person"
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.taniainteractive.co.uk/#stepify",
+      "name": "Stepify",
+      "url": "https://stepify.it",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "AI-powered tutorial and documentation generator. Navigates web apps autonomously, captures screenshots, and generates step-by-step guides with WCAG 2.1 AA compliance.",
+      "offers": [
+        {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Free plan"
+        },
+        {
+          "@type": "Offer",
+          "price": "39",
+          "priceCurrency": "USD",
+          "description": "Pro plan - monthly"
+        }
+      ],
+      "creator": {
+        "@id": "https://www.taniainteractive.co.uk/#landingpad"
+      },
+      "featureList": "AI-powered navigation, automatic screenshot capture, 130-point quality pipeline, WCAG 2.1 AA compliance, SEO-optimised output, 15+ platform integrations"
+    }
+  ]
+}
+</script>
 
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5T7M3BJ"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5T7M3BJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- Navigation -->
@@ -1244,7 +1257,7 @@
           <div class="contact-detail">
             <div class="contact-row">
               <span class="contact-row-label">Email</span>
-              <a href="mailto:hello@taniainteractive.co.uk">hello@taniainteractive.co.uk</a>
+              <a href="#" id="email-link" data-name="tania" data-domain="landingpad.digital">Loading email...</a>
             </div>
             <div class="contact-row">
               <span class="contact-row-label">LinkedIn</span>
@@ -1256,25 +1269,28 @@
             </div>
           </div>
         </div>
-        <form class="contact-form reveal reveal-d2" action="#" method="POST" aria-label="Contact form" novalidate>
+        <form id="contact-form" class="contact-form reveal reveal-d2" action="https://formspree.io/f/mpqjblrb" method="POST" aria-label="Contact form" novalidate>
           <div class="form-group">
-            <label for="c-name">Name</label>
-            <input type="text" id="c-name" name="name" required autocomplete="name" placeholder="Your name">
+            <label for="contact-name">Name</label>
+            <input type="text" id="contact-name" name="name" required autocomplete="name" placeholder="Your name" aria-describedby="name-error">
+            <span class="form-error" id="name-error" role="alert"></span>
           </div>
           <div class="form-group">
-            <label for="c-email">Email</label>
-            <input type="email" id="c-email" name="email" required autocomplete="email" placeholder="your@email.com">
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" name="email" required autocomplete="email" placeholder="your@email.com" aria-describedby="email-error">
+            <span class="form-error" id="email-error" role="alert"></span>
           </div>
           <div class="form-group">
-            <label for="c-message">Message</label>
-            <textarea id="c-message" name="message" required placeholder="Tell me about your project or idea"></textarea>
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" required placeholder="Tell me about your project or idea" aria-describedby="message-error"></textarea>
+            <span class="form-error" id="message-error" role="alert"></span>
           </div>
           <div class="form-hp" aria-hidden="true">
             <label for="c-website">Do not fill this out</label>
             <input type="text" id="c-website" name="website" tabindex="-1" autocomplete="off">
           </div>
-          <button type="submit" class="btn btn-primary">Send message</button>
-          <div class="form-status" role="alert" aria-live="polite"></div>
+          <button type="submit" id="submit-btn" class="btn btn-primary">Send message</button>
+          <div class="form-status" id="form-status" role="alert" aria-live="polite"></div>
         </form>
       </div>
     </div>
@@ -1285,8 +1301,8 @@
 <!-- Footer -->
 <footer class="footer" role="contentinfo">
   <div class="container">
-    <p>&copy; 2004 - 2026 Tânia Lopes. Founder & CEO, Landing Pad Digital.</p>
-    <p class="footer-identity">taniainteractive is T&acirc;nia Lopes, known as Tata.</p>
+    <p>&copy; 2004 - 2026 Tânia Lopes. Founder & CEO, Landing Pad Digital.<br>
+    <span class="footer-identity">taniainteractive is T&acirc;nia Lopes, known as Tata.</span></p>
     <ul class="footer-links" role="list" aria-label="External links">
       <li><a href="https://landingpad.digital" target="_blank" rel="noopener noreferrer">Landing Pad Digital</a></li>
       <li><a href="https://stepify.it" target="_blank" rel="noopener noreferrer">Stepify</a></li>
@@ -1299,54 +1315,63 @@
 <script>
   // ============================================
   // THEME TOGGLE
-  // Respects OS preference, persists choice
+  // CSS handles icon visibility via [data-theme]
+  // JS handles persistence, aria-label, and dataLayer
   // ============================================
   const themeToggle = document.querySelector('.theme-toggle');
-  
+
   function setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
-    themeToggle.setAttribute('aria-label', 
+    themeToggle.setAttribute('aria-label',
       theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
     );
-    // Update theme-color meta for browser chrome
     document.querySelector('meta[name="theme-color"]').setAttribute('content',
       theme === 'dark' ? '#0D0D0D' : '#FFFFFF'
     );
   }
-  
+
   themeToggle.addEventListener('click', () => {
     const current = document.documentElement.getAttribute('data-theme');
-    setTheme(current === 'dark' ? 'light' : 'dark');
+    const newTheme = current === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'event': 'theme_toggle', 'theme': newTheme });
   });
-  
+
   // Listen for OS preference changes (if no manual override)
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
     if (!localStorage.getItem('theme')) {
       setTheme(e.matches ? 'dark' : 'light');
     }
   });
-  
+
   // Set initial aria-label
   const initTheme = document.documentElement.getAttribute('data-theme');
   themeToggle.setAttribute('aria-label',
     initTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
   );
-  
+
   // ============================================
   // SCROLL REVEALS
   // ============================================
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-  
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-  
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }
+
   // ============================================
   // NAV: Scroll border
   // ============================================
@@ -1354,14 +1379,14 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
-  
+
   // ============================================
   // NAV: Mobile hamburger
   // ============================================
   const navToggle = document.querySelector('.nav-toggle');
   const navMenu = document.querySelector('.nav-links');
   const navOverlay = document.querySelector('.nav-overlay');
-  
+
   function openNav() {
     navToggle.setAttribute('aria-expanded', 'true');
     navToggle.setAttribute('aria-label', 'Close navigation menu');
@@ -1369,7 +1394,7 @@
     navOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
-  
+
   function closeNav() {
     navToggle.setAttribute('aria-expanded', 'false');
     navToggle.setAttribute('aria-label', 'Open navigation menu');
@@ -1377,51 +1402,181 @@
     navOverlay.classList.remove('active');
     document.body.style.overflow = '';
   }
-  
+
   navToggle.addEventListener('click', () => {
     const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
     isOpen ? closeNav() : openNav();
   });
-  
+
   navOverlay.addEventListener('click', closeNav);
   navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNav));
-  
+
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
       closeNav();
       navToggle.focus();
     }
   });
-  
+
   // ============================================
-  // FORM: Validation
+  // EMAIL OBFUSCATION
+  // Assemble email from data attributes at runtime
   // ============================================
-  const form = document.querySelector('.contact-form');
-  const formStatus = document.querySelector('.form-status');
-  
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (document.getElementById('c-website').value) return;
-    
-    const name = document.getElementById('c-name');
-    const email = document.getElementById('c-email');
-    const message = document.getElementById('c-message');
-    
-    let errors = [];
-    if (!name.value.trim()) errors.push('Please enter your name.');
-    if (!email.value.trim() || !email.validity.valid) errors.push('Please enter a valid email address.');
-    if (!message.value.trim()) errors.push('Please enter a message.');
-    
-    if (errors.length > 0) {
-      formStatus.className = 'form-status error';
-      formStatus.textContent = errors.join(' ');
-      return;
+  (function() {
+    const el = document.getElementById('email-link');
+    if (el) {
+      const name = el.getAttribute('data-name');
+      const domain = el.getAttribute('data-domain');
+      const addr = name + '@' + domain;
+      el.href = 'mai' + 'lto:' + addr;
+      el.textContent = addr;
+      el.removeAttribute('data-name');
+      el.removeAttribute('data-domain');
     }
-    
-    // Production: replace with fetch() to your form handler
-    formStatus.className = 'form-status success';
-    formStatus.textContent = 'Thank you. Your message has been sent. I will be in touch soon.';
-    form.reset();
+  })();
+
+  // ============================================
+  // CONTACT FORM
+  // Per-field validation + async Formspree submission
+  // ============================================
+  (function() {
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const statusEl = document.getElementById('form-status');
+    if (!form) return;
+
+    function validateField(input, errorId) {
+      const error = document.getElementById(errorId);
+      let msg = '';
+
+      if (!input.value.trim()) {
+        msg = input.name.charAt(0).toUpperCase() + input.name.slice(1) + ' is required.';
+      } else if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
+        msg = 'Please enter a valid email address.';
+      }
+
+      error.textContent = msg;
+      input.classList.toggle('invalid', !!msg);
+      input.setAttribute('aria-invalid', !!msg);
+      return !msg;
+    }
+
+    // Validate on blur
+    ['contact-name', 'contact-email', 'contact-message'].forEach(id => {
+      const input = document.getElementById(id);
+      const errorId = id.replace('contact-', '') + '-error';
+      input.addEventListener('blur', () => validateField(input, errorId));
+      input.addEventListener('input', () => {
+        if (input.classList.contains('invalid')) validateField(input, errorId);
+      });
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Honeypot check
+      if (document.getElementById('c-website').value) return;
+
+      // Validate all fields
+      const nameValid = validateField(document.getElementById('contact-name'), 'name-error');
+      const emailValid = validateField(document.getElementById('contact-email'), 'email-error');
+      const msgValid = validateField(document.getElementById('contact-message'), 'message-error');
+
+      if (!nameValid || !emailValid || !msgValid) {
+        const firstInvalid = form.querySelector('.invalid');
+        if (firstInvalid) firstInvalid.focus();
+        return;
+      }
+
+      // Submit
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      statusEl.textContent = '';
+      statusEl.className = 'form-status';
+
+      try {
+        const data = new FormData(form);
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          statusEl.textContent = 'Message sent. Thank you!';
+          statusEl.className = 'form-status success';
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ 'event': 'form_submit', 'form_name': 'contact' });
+          form.reset();
+          form.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+          form.querySelectorAll('.form-error').forEach(el => el.textContent = '');
+        } else {
+          throw new Error('Server error');
+        }
+      } catch (err) {
+        statusEl.textContent = 'Something went wrong. Please try again or email me directly.';
+        statusEl.className = 'form-status error';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send message';
+      }
+    });
+  })();
+
+  // ============================================
+  // GTM dataLayer EVENTS
+  // ============================================
+  window.dataLayer = window.dataLayer || [];
+
+  // Outbound link clicks
+  document.querySelectorAll('a[href^="http"]').forEach(link => {
+    if (!link.href.includes('taniainteractive.co.uk')) {
+      link.addEventListener('click', () => {
+        window.dataLayer.push({
+          'event': 'outbound_click',
+          'link_url': link.href,
+          'link_text': link.textContent.trim().substring(0, 100)
+        });
+      });
+    }
+  });
+
+  // Email link click
+  (function() {
+    const emailLink = document.getElementById('email-link');
+    if (emailLink) {
+      emailLink.addEventListener('click', () => {
+        window.dataLayer.push({ 'event': 'email_click' });
+      });
+    }
+  })();
+
+  // Section visibility tracking
+  (function() {
+    const sections = document.querySelectorAll('section[id]');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          window.dataLayer.push({
+            'event': 'section_view',
+            'section_id': entry.target.id
+          });
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    sections.forEach(section => sectionObserver.observe(section));
+  })();
+
+  // CTA button clicks
+  document.querySelectorAll('.btn, .nav-cta').forEach(btn => {
+    btn.addEventListener('click', () => {
+      window.dataLayer.push({
+        'event': 'cta_click',
+        'cta_text': btn.textContent.trim(),
+        'cta_url': btn.href || btn.closest('a')?.href || ''
+      });
+    });
   });
 </script>
 
