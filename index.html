@@ -2,12 +2,18 @@
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5T7M3BJ');</script>
+<!-- Google Tag Manager - deferred for performance -->
+<script>
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5T7M3BJ');
+    }, 1500);
+  });
+</script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Tânia Lopes - Founder & CEO. Building AI-powered, accessibility-first digital products and platforms. 20+ years of international experience across Portugal, Scotland, and Thailand.">
@@ -36,7 +42,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Critical font: Instrument Serif (hero heading) - preload -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" media="print" onload="this.media='all'">
+<!-- Secondary fonts: non-blocking -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+</noscript>
 <link rel="canonical" href="https://www.taniainteractive.co.uk/">
 
 <!-- Prevent flash: apply saved theme before render -->
@@ -69,9 +83,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     --text-primary: #0D0D0D;
     --text-secondary: #4A4A4A;
     --text-tertiary: #6B6B6B;
-    --text-muted: #888888;
+    --text-muted: #767676;
     --text-on-dark: #FFFFFF;
-    --text-on-dark-muted: rgba(255,255,255,0.45);
+    --text-on-dark-muted: rgba(255,255,255,0.55);
     
     --border-primary: #EBEBEB;
     --border-secondary: #D4D4D4;
@@ -128,9 +142,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     --text-primary: #F0F0F0;
     --text-secondary: #B0B0B0;
     --text-tertiary: #888888;
-    --text-muted: #666666;
+    --text-muted: #999999;
     --text-on-dark: #F0F0F0;
-    --text-on-dark-muted: rgba(255,255,255,0.4);
+    --text-on-dark-muted: rgba(255,255,255,0.55);
     
     --border-primary: #2A2A2A;
     --border-secondary: #333333;
@@ -248,7 +262,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
      LAYOUT
      ============================================ */
   .container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-lg); }
-  section { padding: var(--space-3xl) 0; }
+  section { padding: var(--space-3xl) 0; content-visibility: auto; contain-intrinsic-size: auto 800px; }
   
   /* ============================================
      NAV
@@ -358,6 +372,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     padding-top: calc(var(--nav-height) + 40px);
     padding-bottom: var(--space-3xl);
     position: relative; overflow: hidden;
+    content-visibility: visible;
   }
   .hero::before {
     content: ''; position: absolute; top: -200px; right: -200px;
@@ -545,6 +560,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   @media (prefers-reduced-motion: reduce) {
     .work-visual--video video { display: none; }
+    .work-visual--video .video-play-btn { display: none; }
+    .work-visual--video .poster-fallback { display: block; }
+  }
+  @media (max-width: 680px) {
+    .work-visual--video video { display: none; }
+    .work-visual--video .video-play-btn { display: none; }
     .work-visual--video .poster-fallback { display: block; }
   }
   
@@ -1135,16 +1156,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a href="https://landingpad.digital" class="work-link" target="_blank" rel="noopener noreferrer">Visit landingpad.digital <span class="arrow" aria-hidden="true">&rarr;</span></a>
         </div>
         <div class="work-visual work-visual--video reveal reveal-d2">
-          <video muted playsinline preload="metadata"
+          <video muted playsinline preload="none"
                  poster="assets/landingpad-poster.jpg"
                  aria-label="Landing Pad Website Builder: drag-and-drop interface demonstration"
                  id="landingpad-video">
-            <source src="assets/how-it-works-hero.mp4" type="video/mp4">
+            <source data-src="assets/how-it-works-hero.mp4" type="video/mp4">
             <img src="assets/landingpad-poster.jpg" alt="Landing Pad Website Builder interface" loading="lazy">
           </video>
           <button class="video-play-btn" aria-label="Play video" id="landingpad-play">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6,3 20,12 6,21"/></svg>
           </button>
+          <img class="poster-fallback" src="assets/landingpad-poster.jpg" alt="Landing Pad Website Builder interface" loading="lazy">
         </div>
         <!-- <div class="work-visual reveal reveal-d2" role="img" aria-label="Landing Pad Digital: Website and landing page builder platform">
           <div class="work-visual-inner">
@@ -1481,10 +1503,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   })();
 
   // ============================================
-  // CONTACT FORM
+  // CONTACT FORM (deferred - below fold)
   // Per-field validation + async Formspree submission
   // ============================================
-  (function() {
+  function initContactForm() {
     const form = document.getElementById('contact-form');
     const submitBtn = document.getElementById('submit-btn');
     const statusEl = document.getElementById('form-status');
@@ -1566,38 +1588,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         submitBtn.textContent = 'Send message';
       }
     });
-  })();
+  }
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(initContactForm);
+  } else {
+    setTimeout(initContactForm, 1000);
+  }
 
   // ============================================
-  // GTM dataLayer EVENTS
+  // GTM dataLayer EVENTS (deferred to idle)
   // ============================================
   window.dataLayer = window.dataLayer || [];
 
-  // Outbound link clicks
-  document.querySelectorAll('a[href^="http"]').forEach(link => {
-    if (!link.href.includes('taniainteractive.co.uk')) {
-      link.addEventListener('click', () => {
-        window.dataLayer.push({
-          'event': 'outbound_click',
-          'link_url': link.href,
-          'link_text': link.textContent.trim().substring(0, 100)
+  function initTracking() {
+    // Outbound link clicks
+    document.querySelectorAll('a[href^="http"]').forEach(link => {
+      if (!link.href.includes('taniainteractive.co.uk')) {
+        link.addEventListener('click', () => {
+          window.dataLayer.push({
+            'event': 'outbound_click',
+            'link_url': link.href,
+            'link_text': link.textContent.trim().substring(0, 100)
+          });
         });
-      });
-    }
-  });
+      }
+    });
 
-  // Email link click
-  (function() {
+    // Email link click
     const emailLink = document.getElementById('email-link');
     if (emailLink) {
       emailLink.addEventListener('click', () => {
         window.dataLayer.push({ 'event': 'email_click' });
       });
     }
-  })();
 
-  // Section visibility tracking
-  (function() {
+    // Section visibility tracking
     const sections = document.querySelectorAll('section[id]');
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1611,27 +1636,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     }, { threshold: 0.3 });
     sections.forEach(section => sectionObserver.observe(section));
-  })();
 
-  // CTA button clicks
-  document.querySelectorAll('.btn, .nav-cta').forEach(btn => {
-    btn.addEventListener('click', () => {
-      window.dataLayer.push({
-        'event': 'cta_click',
-        'cta_text': btn.textContent.trim(),
-        'cta_url': btn.href || btn.closest('a')?.href || ''
+    // CTA button clicks
+    document.querySelectorAll('.btn, .nav-cta').forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.dataLayer.push({
+          'event': 'cta_click',
+          'cta_text': btn.textContent.trim(),
+          'cta_url': btn.href || btn.closest('a')?.href || ''
+        });
       });
     });
-  });
+  }
+
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(initTracking);
+  } else {
+    setTimeout(initTracking, 2000);
+  }
 // ============================================
-// VIDEO: Click to play/pause + dataLayer
+// VIDEO: Lazy load + click to play/pause + dataLayer
 // ============================================
 (function() {
   const video = document.getElementById('landingpad-video');
   const playBtn = document.getElementById('landingpad-play');
   if (!video || !playBtn) return;
 
+  // Skip on mobile or reduced-motion (CSS hides video, shows poster)
+  const isMobile = window.innerWidth <= 680;
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (isMobile || prefersReduced) return;
+
+  // Lazy-load video source when scrolled near
+  let videoLoaded = false;
+  function loadVideo() {
+    if (videoLoaded) return;
+    const source = video.querySelector('source[data-src]');
+    if (source) {
+      source.src = source.getAttribute('data-src');
+      source.removeAttribute('data-src');
+      video.load();
+      videoLoaded = true;
+    }
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        loadVideo();
+        observer.unobserve(video);
+      }
+    });
+  }, { rootMargin: '200px' });
+  observer.observe(video);
+
   function play() {
+    loadVideo();
     video.play().catch(() => {});
     playBtn.classList.add('hidden');
     playBtn.setAttribute('aria-label', 'Pause video');
