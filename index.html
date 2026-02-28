@@ -1623,9 +1623,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     });
   });
-
 // ============================================
-// VIDEO: Click to play/pause
+// VIDEO: Click to play/pause + dataLayer
 // ============================================
 (function() {
   const video = document.getElementById('landingpad-video');
@@ -1636,12 +1635,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     video.play().catch(() => {});
     playBtn.classList.add('hidden');
     playBtn.setAttribute('aria-label', 'Pause video');
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'event': 'video_play', 'video_name': 'landingpad-builder-demo' });
   }
 
   function pause() {
     video.pause();
     playBtn.classList.remove('hidden');
     playBtn.setAttribute('aria-label', 'Play video');
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'event': 'video_pause', 'video_name': 'landingpad-builder-demo' });
   }
 
   playBtn.addEventListener('click', play);
@@ -1650,7 +1653,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     video.paused ? play() : pause();
   });
 
-  video.addEventListener('ended', pause);
+  video.addEventListener('ended', () => {
+    playBtn.classList.remove('hidden');
+    playBtn.setAttribute('aria-label', 'Play video');
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'event': 'video_complete', 'video_name': 'landingpad-builder-demo' });
+  });
 })();
 </script>
 
