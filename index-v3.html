@@ -515,23 +515,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .work-link .arrow { transition: transform 0.2s var(--ease-out); display: inline-block; }
   .work-link:hover .arrow { transform: translateX(4px); }
   
-  /* Video in work-visual */
-  .work-visual--video { padding: 0; background: var(--bg-dark-section); }
-  .work-visual--video video {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
-    border-radius: 12px;
-  }
-  .work-visual--video .poster-fallback {
-    width: 100%; height: 100%;
-    object-fit: cover; display: none;
-    border-radius: 12px;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .work-visual--video video { display: none; }
-    .work-visual--video .poster-fallback { display: block; }
-  }
-  
   /* ============================================
      EXPERIENCE TIMELINE
      ============================================ */
@@ -1118,15 +1101,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </ul>
           <a href="https://landingpad.digital" class="work-link" target="_blank" rel="noopener noreferrer">Visit landingpad.digital <span class="arrow" aria-hidden="true">&rarr;</span></a>
         </div>
-        <div class="work-visual work-visual--video reveal reveal-d2">
+        <div class="work-visual reveal reveal-d">
           <video autoplay loop muted playsinline
                  poster="assets/landingpad-poster.jpg"
-                 aria-label="Landing Pad Website Builder: drag-and-drop interface demonstration"
-                 id="landingpad-video">
+                 aria-label="Landing Pad Website Builder: drag-and-drop interface demonstration">
+            <source src="assets/how-it-works-hero.webm" type="video/webm">
             <source src="assets/how-it-works-hero.mp4" type="video/mp4">
-            <img src="assets/landingpad-poster.jpg" alt="Landing Pad Website Builder interface" loading="lazy">
+            <img src="assets/landingpad-poster.jpg" alt="Landing Pad Website Builder interface">
           </video>
-          <img class="poster-fallback" src="assets/landingpad-poster.jpg" alt="Landing Pad Website Builder interface" loading="lazy">
         </div>
         <!-- <div class="work-visual reveal reveal-d2" role="img" aria-label="Landing Pad Digital: Website and landing page builder platform">
           <div class="work-visual-inner">
@@ -1605,27 +1587,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     });
   });
-
-  // ============================================
-  // VIDEO: Respect prefers-reduced-motion
-  // ============================================
-  (function() {
-    const video = document.getElementById('landingpad-video');
-    if (!video) return;
-
-    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    function handleMotionPreference(e) {
-      if (e.matches) {
-        video.pause();
-      } else {
-        video.play().catch(() => {});
-      }
-    }
-
-    handleMotionPreference(motionQuery);
-    motionQuery.addEventListener('change', handleMotionPreference);
-  })();
 </script>
 
 </body>
