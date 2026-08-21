@@ -124,6 +124,9 @@
 
   @media print{
     body{ background: none; padding: 0; }
+    a[href]::after {
+      content: " (" attr(href) ")";
+    }
     .export-note{ display:none; }
     .page{ box-shadow:none; margin:0; width:auto; min-height:auto; page-break-after: always; break-after: page; }
     .page:last-child{ page-break-after: auto; break-after: auto; }
