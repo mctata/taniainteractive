@@ -6,6 +6,16 @@
 <meta name="description" content="Field-tested AI prompt guides for small business owners: marketing, sales, finance, and automation. Twelve prompts per guide, each with a real small-business example.">
 <meta name="author" content="Tânia Lopes">
 <meta name="theme-color" content="#0D0D0D">
+<meta property="og:title" content="Prompt Guides by Tânia Lopes | taniAInteractive">
+<meta property="og:description" content="Field-tested AI prompt guides for small business owners. Twelve prompts per guide, each with a real small-business example, not just theory.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://taniainteractive.co.uk/prompt-guides/">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Prompt Guides by Tânia Lopes">
+<meta name="twitter:description" content="Field-tested AI prompt guides for small business owners, built from real client work.">
+<link rel="canonical" href="https://taniainteractive.co.uk/prompt-guides/">
+<title>Prompt Guides by Tânia Lopes | taniainteractive</title>
 <!-- Favicon -->
 <link rel="icon" href="../assets/favicon.ico" sizes="48x48">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
@@ -13,17 +23,6 @@
 <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
 <link rel="manifest" href="../assets/site.webmanifest">
-<meta property="og:title" content="Prompt Guides by Tânia Lopes | taniAInteractive">
-<meta property="og:description" content="Field-tested AI prompt guides for small business owners. Twelve prompts per guide, each with a real small-business example, not just theory.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.taniainteractive.co.uk/prompt-guides/">
-<meta property="og:locale" content="en_GB">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Prompt Guides by Tânia Lopes">
-<meta name="twitter:description" content="Field-tested AI prompt guides for small business owners, built from real client work.">
-<link rel="canonical" href="https://www.taniainteractive.co.uk/prompt-guides/">
-<title>Prompt Guides by Tânia Lopes | taniAInteractive</title>
-
 <!-- Umami analytics: REUSED your personal site's ID as a placeholder so tracking works today.
      Create a separate site entry in your Umami dashboard for this page specifically,
      then swap the data-website-id below, so guide-page traffic doesn't mix with your portfolio traffic. -->
@@ -87,13 +86,17 @@
     --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
   }
   *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
   body{ background: var(--bg); font-family: var(--font-body); color: var(--text); }
   .wrap{ max-width: 880px; margin: 0 auto; padding: 0 24px; }
 
-  header{ padding: 28px 0; border-bottom: 1px solid var(--border); }
+  header{ padding: 20px 0; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 10; }
+  header .wrap{ display:flex; align-items:center; justify-content:space-between; gap: 16px; flex-wrap: wrap; }
   .brand-mark{ font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
   .brand-mark span{ color: var(--accent); font-weight:600; }
   .brand-mark .sep{ color: var(--border); margin: 0 6px; }
+  .bundle-badge{ font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; text-decoration:none; background: var(--accent); color: var(--bg); border: 1px solid var(--accent); padding: 10px 18px; border-radius: 20px; white-space: nowrap; }
+  .bundle-badge:hover{ background: var(--bg); color: var(--accent); }
 
   .hero{ padding: 64px 0 48px; }
   .hero-eyebrow{ font-family: var(--font-mono); font-size: 12px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px; }
@@ -107,8 +110,7 @@
   .guide-card.soon{ opacity: 0.55; }
   .guide-head{ display:flex; align-items:center; gap: 10px; padding: 10px 16px; background: var(--surface-2); border-bottom: 1px solid var(--border); }
   .dot{ width:8px; height:8px; border-radius:50%; background: var(--dot); }
-  .guide-vol{ font-family: var(--font-mono); font-size: 11px; color: var(--accent); margin-left: auto; }
-  .soon .guide-vol {color: var(--text-muted);}
+  .guide-vol{ font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); margin-left: auto; }
   .guide-body{ padding: 20px; display:flex; flex-direction:column; flex:1; }
   .guide-body h3{ font-family: var(--font-display); font-size: 21px; margin-bottom: 8px; }
   .guide-body p{ font-size: 13.5px; color: var(--text-muted); line-height:1.6; margin-bottom: 16px; flex:1; }
@@ -116,14 +118,24 @@
   .price{ font-family: var(--font-display); font-size: 22px; font-weight: 700; }
   .buy-row{ display:flex; justify-content: space-between; align-items:center; }
   .btn{ font-family: var(--font-mono); font-size: 12px; text-decoration:none; border: 1px solid var(--accent); color: var(--accent); padding: 10px 18px; border-radius: 30px; display:inline-block; }
+  .btn.bundle,
   .btn:hover{ background: var(--accent); color: var(--bg); }
-  .btn.stock{ background: var(--accent); color: var(--bg); }
-  .btn.stock:hover { background: var(--bg); color: var(--accent); }
+  .btn.bundle:hover{ background: var(--bg); color: var(--accent); }
   .btn.disabled{ border-color: var(--border); color: var(--text-muted); pointer-events:none; }
   .badge{ font-family: var(--font-mono); font-size: 10px; text-transform:uppercase; letter-spacing:0.06em; color: var(--text-muted); border: 1px solid var(--border); padding: 3px 9px; border-radius: 20px; }
 
   footer{ border-top: 1px solid var(--border); padding: 28px 0 60px; font-size: 12.5px; color: var(--text-muted); }
   footer a{ color: var(--text-muted); }
+
+  .objection{ border: 1px solid var(--border); border-radius: 14px; background: var(--surface); padding: 28px 30px; margin-bottom: 60px; }
+  .objection p{ font-size: 15px; line-height: 1.6; }
+  .objection strong{ color: var(--accent); }
+
+  .closing{ text-align: center; padding: 20px 0 64px; }
+  .closing h2{ font-family: var(--font-display); font-size: 28px; margin-bottom: 12px; }
+  .closing p{ color: var(--text-muted); font-size: 14.5px; margin-bottom: 22px; }
+  .closing .btn{ font-size: 13px; padding: 13px 28px; }
+  .closing .single-note{ margin-top: 22px; padding-top: 22px; border-top: 1px dashed var(--border); font-size: 13px; color: var(--text-muted); }
 </style>
 </head>
 <body>
@@ -131,14 +143,15 @@
 <header>
   <div class="wrap">
     <div class="brand-mark">TANI<span>AI</span>NTERACTIVE<span class="sep">·</span>PROMPT GUIDES</div>
+    <a href="#bundle-cta" class="bundle-badge">BUNDLE OFFER &middot; 25% OFF</a>
   </div>
 </header>
 
 <section class="hero">
   <div class="wrap">
-    <p class="hero-eyebrow">Field-tested, not theoretical</p>
-    <h1>Prompt guides built from real client work, not theory.</h1>
-    <p>Twelve prompts per guide. Each one comes with a real small-business example, hairdresser, dentist, physiotherapist, and more, so you see exactly how to adapt it to your own business.</p>
+    <p class="hero-eyebrow">Made for real small businesses</p>
+    <h1>The exact words to copy and paste into AI. No tech skills needed.</h1>
+    <p>Prompt guides for hairdressers, dentists, physiotherapists, and other small business owners who don't have time to become AI experts, just the results.</p>
   </div>
 </section>
 
@@ -149,50 +162,50 @@
       <div class="guide-head"><div class="dot"></div><div class="dot"></div><div class="dot"></div><span class="guide-vol">VOL. 01</span></div>
       <div class="guide-body">
         <h3>Marketing</h3>
-        <p>Positioning, content, ad angles, and campaign reviews. Real examples from a hair salon, a vet clinic, a physiotherapist, and more.</p>
+        <p>Get people finding and choosing you. Covers positioning, content, and ad angles, with real examples from a hair salon, a dentist, and more.</p>
         <div class="guide-meta">12 PROMPTS &middot; 12 REAL EXAMPLES</div>
         <div class="buy-row">
           <span class="price">$9.99</span>
-          <a href="https://buy.stripe.com/bJe3cx9ku3Rs1Fe5RM8g000" class="btn stock" data-umami-event="buy-marketing-guide">Buy now</a>
+          <a href="#" class="btn" data-umami-event="buy-marketing-guide">Buy now</a>
         </div>
       </div>
     </div>
 
-    <div class="guide-card soon">
+    <div class="guide-card">
       <div class="guide-head"><div class="dot"></div><div class="dot"></div><div class="dot"></div><span class="guide-vol">VOL. 02</span></div>
       <div class="guide-body">
         <h3>Sales</h3>
-        <p>Outreach, objection handling, follow-ups, and closing. Coming soon.</p>
+        <p>The right words for the awkward parts. Covers outreach, objections, and follow-ups, with real examples from a vet clinic, a real estate agent, and more.</p>
         <div class="guide-meta">12 PROMPTS &middot; 12 REAL EXAMPLES</div>
         <div class="buy-row">
-          <span class="badge">Coming soon</span>
-          <a href="#" class="btn disabled" data-umami-event="buy-sales-guide">Buy now</a>
+          <span class="price">$9.99</span>
+          <a href="#" class="btn" data-umami-event="buy-sales-guide">Buy now</a>
         </div>
       </div>
     </div>
 
-    <div class="guide-card soon">
+    <div class="guide-card">
       <div class="guide-head"><div class="dot"></div><div class="dot"></div><div class="dot"></div><span class="guide-vol">VOL. 03</span></div>
       <div class="guide-body">
         <h3>Finance</h3>
-        <p>Pricing, cash flow clarity, and client-facing money conversations. Coming soon.</p>
+        <p>Pricing and money conversations, made easier. Covers invoicing, cash flow, and client chats, with real examples from a physiotherapist, an accountant, and more.</p>
         <div class="guide-meta">12 PROMPTS &middot; 12 REAL EXAMPLES</div>
         <div class="buy-row">
-          <span class="badge">Coming soon</span>
-          <a href="#" class="btn disabled" data-umami-event="buy-finance-guide">Buy now</a>
+          <span class="price">$9.99</span>
+          <a href="#" class="btn" data-umami-event="buy-finance-guide">Buy now</a>
         </div>
       </div>
     </div>
 
-    <div class="guide-card soon">
+    <div class="guide-card">
       <div class="guide-head"><div class="dot"></div><div class="dot"></div><div class="dot"></div><span class="guide-vol">VOL. 04</span></div>
       <div class="guide-body">
         <h3>Automation</h3>
-        <p>Everyday workflows worth automating first, and how to brief them properly. Coming soon.</p>
+        <p>The everyday jobs worth handing to AI first. Covers workflows and briefing, with real examples from a yoga studio, a pet groomer, and more.</p>
         <div class="guide-meta">12 PROMPTS &middot; 12 REAL EXAMPLES</div>
         <div class="buy-row">
-          <span class="badge">Coming soon</span>
-          <a href="#" class="btn disabled" data-umami-event="buy-automation-guide">Buy now</a>
+          <span class="price">$9.99</span>
+          <a href="#" class="btn" data-umami-event="buy-automation-guide">Buy now</a>
         </div>
       </div>
     </div>
@@ -200,9 +213,22 @@
   </div>
 </section>
 
+<section class="wrap">
+  <div class="objection">
+    <p><strong>Worried this isn't for you because you're "not techy"?</strong> Every prompt is copy-paste ready. If you can type an email, you can use these.</p>
+  </div>
+</section>
+
+<section class="wrap closing" id="bundle-cta">
+  <h2>Get all four, save 25%.</h2>
+  <p>$9.99 each on their own, or all four together for $29.99. No subscription, no login, just paste, and go.</p>
+  <a href="#" class="btn bundle" data-umami-event="buy-bundle">Get the bundle &ndash; $29.99</a>
+  <div class="single-note">Only need one for now? Pick it up individually above, no obligation to buy the rest.</div>
+</section>
+
 <footer>
   <div class="wrap">
-    Built by <a href="https://www.taniainteractive.co.uk/" target="_blank">taniainteractive</a>, who is Tânia Lopes, also known as Tata. Bundle pricing available once all four guides are live.
+    Built by <a href="https://taniainteractive.co.uk/" target="_blank">taniainteractive</a>, who is Tânia Lopes, also known as Tata.
   </div>
 </footer>
 
