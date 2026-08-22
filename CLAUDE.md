@@ -9,6 +9,7 @@ Personal freelance site and product line for Tânia Lopes ("Tata"), front-end de
 - No emojis unless Tata uses them first.
 - Encouraging, plain, concrete. Avoid jargon and consultant-speak, especially anywhere aimed at small business owners who don't come from a tech or marketing background. Prefer "copy and paste" over "leverage," "if you can type an email" over "no technical skills required."
 - Tone is personal and direct, this is Tata's own name and voice, not an agency's.
+- No AI attribution anywhere, ever. No `Co-Authored-By: Claude` trailers in commit messages, no "Generated with Claude Code" footers in PR descriptions, no "written by Claude" comments in code. Plain commit messages, plain PR bodies.
 
 ## Site structure
 
