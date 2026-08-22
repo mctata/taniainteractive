@@ -9,14 +9,14 @@ Personal freelance site and product line for Tânia Lopes ("Tata"), front-end de
 - No emojis unless Tata uses them first.
 - Encouraging, plain, concrete. Avoid jargon and consultant-speak, especially anywhere aimed at small business owners who don't come from a tech or marketing background. Prefer "copy and paste" over "leverage," "if you can type an email" over "no technical skills required."
 - Tone is personal and direct, this is Tata's own name and voice, not an agency's.
-- No AI attribution anywhere, ever. No `Co-Authored-By: Claude` trailers in commit messages, no "Generated with Claude Code" footers in PR descriptions, no "written by Claude" comments in code. Plain commit messages, plain PR bodies.
 
 ## Site structure
 
 - Single-page portfolio (`index.html`): hero, disciplines, work, experience sections.
 - Fonts: Ubuntu (body and headings) and JetBrains Mono (code, labels, mono accents). PT Serif was dropped from the design system, headings now run in Ubuntu.
 - Brand accent colour: `#0B7A5F`.
-- Footer identity line, use consistently anywhere the brand needs introducing: "taniainteractive is Tânia Lopes, known as Tata."
+- Footer identity line, use consistently anywhere the brand needs introducing: "tanianteractive is Tânia Lopes, known as Tata."
+
 
 ## Known deployment gotchas (learned the hard way)
 
@@ -34,4 +34,6 @@ A set of small-business AI prompt guides sold as PDFs, hosted at `/prompt-guides
 
 Umami analytics website ID is shared with the main portfolio site for now (`b9159426-aeb9-4ff4-bdb9-2cbb214a82f1`). Goals and funnels for the guides are path-scoped within that same website, not a separate site entry, see the `Marketing Guide Purchase` goal and `Marketing Guide Purchase Funnel` as the reference pattern for any new guide's conversion tracking.
 
-Each product needs its own Stripe Payment Link, its own thank-you page (`thank-you-sales.html`, `thank-you-finance.html`, etc., following the pattern of the existing `thank-you.html`), and its own PDF at an obscured filename under `/prompt-guides/pdf/`. The bundle is a `.zip` of all four PDFs, delivered the same way. Nothing dynamic decides which file goes with which purchase, the pairing is fixed once at setup: each Payment Link's "after payment" redirect points at its own specific thank-you page, which links to its own specific file.
+Each product's PDF and its free bonus Skill ship together in a single zip, not as two separate downloads. `mkt-e99db5.zip`, `sls-5e6254.zip`, `fin-59d3d0.zip`, and `aut-69abcc.zip` each contain one guide PDF and one Skill zip as sibling files (no nesting, one extraction gets both). `bundle-34a5f4.zip` is flattened the same way but with all eight items, four PDFs and four Skill zips, not four sub-zips, so a bundle buyer only extracts once too. Each thank-you page has exactly one download button pointing at its own combined zip. Each product's own Skill also folder-lives in the repo for reference: `ad-writer/`, `outreach-writer/`, `pricing-strategy/`, `repeat-message-writer/`.
+
+Each product needs its own Stripe Payment Link, its own thank-you page (`thank-you-sales.html`, `thank-you-finance.html`, etc., following the pattern of the existing `thank-you.html`), and its own combined zip at an obscured filename under `/prompt-guides/pdf/`. Nothing dynamic decides which file goes with which purchase, the pairing is fixed once at setup: each Payment Link's "after payment" redirect points at its own specific thank-you page, which links to its own specific zip.
