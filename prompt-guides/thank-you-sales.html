@@ -78,6 +78,12 @@
   .download-btn{ font-family:var(--font-mono); font-size:14px; background:var(--accent); color:#fff; text-decoration:none; padding:16px 32px; border-radius:30px; display:inline-block; }
   .fallback{ margin-top:20px; font-size:12.5px; color:var(--text-muted); }
   .fallback a{ color:var(--accent); }
+  .bonus-skill{ margin-top: 32px; padding-top: 28px; border-top: 1px dashed var(--border); text-align: left; }
+  .bonus-label{ font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 8px; }
+  .bonus-text{ font-size: 13.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px; }
+  .download-btn.secondary{ background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  .bonus-help{ margin-top: 10px; font-size: 12px; color: var(--text-muted); }
+  .bonus-help a{ color: var(--accent); }
   footer{ border-top:1px solid var(--border); padding:24px 0; font-size:12px; color:var(--text-muted); text-align:center; }
 </style>
 </head>
@@ -92,6 +98,12 @@
     <p>Thank you for buying the Sales prompt guide. Your download is ready below, and a receipt is on its way to your inbox.</p>
     <a href="/prompt-guides/pdf/sls-5e6254.pdf" class="download-btn" data-umami-event="download-sales-guide" onclick="return forceDownload(this, '12-sales-prompts-guide.pdf')">Download your guide</a>
     <p class="fallback">Trouble downloading? Reply to your receipt email and it'll be sent to you directly.</p>
+    <div class="bonus-skill">
+      <p class="bonus-label">Free bonus</p>
+      <p class="bonus-text">The <strong>Outreach Writer</strong> Skill for Claude and ChatGPT, teaches your AI tool to write first messages and follow-ups in your voice.</p>
+      <a href="/prompt-guides/skills/outreach-writer-skill.zip" class="download-btn secondary" data-umami-event="download-skill-sales" onclick="return forceDownload(this, 'outreach-writer-skill.zip')">Download your free skill</a>
+      <p class="bonus-help">New to Skills? <a href="https://support.claude.com/en/articles/12512180-use-skills-in-claude" target="_blank">here's how to add it, takes under a minute</a>.</p>
+    </div>
   </div>
 </main>
 
