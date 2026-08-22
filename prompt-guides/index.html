@@ -133,16 +133,16 @@
 
   footer{ border-top: 1px solid var(--border); padding: 28px 0 60px; font-size: 12.5px; color: var(--text-muted); }
   footer a{ color: var(--text-muted); }
-
+  @media only screen and (max-width: 767px) {footer .wrap {text-align: center;}}
   .objection{ border: 1px solid var(--border); border-radius: 14px; background: var(--surface); padding: 28px 30px; margin-bottom: 60px; }
   .objection p{ font-size: 15px; line-height: 1.6; }
   .objection strong{ color: var(--accent); }
 
-  .closing{ text-align: center; padding: 20px 0 64px; }
+  .closing{ text-align: center; padding: 20px 0 44px; }
   .closing h2{ font-family: var(--font-display); font-size: 28px; margin-bottom: 12px; }
   .closing p{ color: var(--text-muted); font-size: 14.5px; margin-bottom: 22px; }
   .closing .btn{ font-size: 13px; padding: 13px 28px; }
-  .closing .single-note{ margin-top: 22px; padding-top: 22px; border-top: 1px dashed var(--border); font-size: 13px; color: var(--text-muted); }
+  .closing .single-note{ margin-top: 22px; padding: 24px 24px 0 24px; border-top: 1px dashed var(--border); font-size: 13px; color: var(--text-muted); }
   .bundle-list{ list-style: none; text-align: center; margin: 0 auto 26px; display: flex; flex-direction: column; gap: 10px; }
   .bundle-list li{ font-size: 14px; color: var(--text-muted); padding-left: 24px; position: relative; }
   .bundle-list li::before{ content: "✓"; padding-right: 5px; color: var(--accent); font-family: var(--font-mono); font-weight: 600; }
