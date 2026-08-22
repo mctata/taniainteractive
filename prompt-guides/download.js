@@ -19,3 +19,8 @@ function forceDownload(link, filename) {
     });
   return false;
 }
+
+function obfuscateEmail(id, user, domain) {
+  var el = document.getElementById(id);
+  if (el) { el.href = 'mailto:' + user + '@' + domain; }
+}
