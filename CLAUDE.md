@@ -26,6 +26,7 @@ Personal freelance site and product line for Tânia Lopes ("Tata"), front-end de
 - GitHub Pages does not support custom HTTP response headers of any kind, no `.htaccess`, no `_headers` file, nothing. Any behaviour that needs a server header (forced downloads, security headers) has to be solved client-side instead.
 - The `download` HTML attribute is unreliable specifically for PDFs in some browsers, the built-in PDF viewer can intercept the click before the attribute applies. The reliable fix is a small JS helper that fetches the file as a blob and triggers the save programmatically, see `/prompt-guides/thank-you.html` for the working pattern.
 - `noindex` keeps a page out of search results but does not restrict access, anyone with the direct link can still open it.
+- Contact email addresses must be JS-obfuscated on any public page, never sitting as a plain `mailto:` in the raw HTML, since there's no backend to hide behind and basic scrapers regex-scan source regardless of the visible link text. Use the shared `obfuscateEmail(id, user, domain)` helper in `/prompt-guides/download.js`: put `<a href="#" id="unique-id">Get in touch</a>` in the markup, then `<script>obfuscateEmail('unique-id', 'taniainteractive', 'gmail.com')</script>` **after** the `download.js` include, otherwise the function isn't defined yet and the link stays broken. Every contact link on the site should use its own unique `id`, see the `custom-contact-*` pattern already in the shop and thank-you pages.
 
 ## Prompt Guides product line
 
