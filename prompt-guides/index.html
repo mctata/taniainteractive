@@ -101,7 +101,7 @@
   .brand-mark{ font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
   .brand-mark span{ color: var(--accent); font-weight:600; }
   .brand-mark .sep{ color: var(--border); margin: 0 6px; }
-  .bundle-badge{ font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; text-decoration:none; background: var(--accent); color: var(--bg); border: 1px solid var(--accent); padding: 10px 18px; border-radius: 20px; white-space: nowrap; }
+  .bundle-badge{ font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; text-decoration:none; background: var(--accent); color: var(--bg); border: 1px solid var(--accent); padding: 10px 18px; border-radius: 20px; white-space: nowrap; }
   .bundle-badge:hover{ background: var(--bg); color: var(--accent); }
 
   .hero{ padding: 64px 0 48px; }
@@ -118,11 +118,11 @@
   .dot{ width:8px; height:8px; border-radius:50%; background: var(--dot); }
   .guide-vol{ font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); margin-left: auto; }
   .guide-body{ padding: 20px; display:flex; flex-direction:column; flex:1; }
-  .guide-body h3{ font-family: var(--font-display); font-size: 21px; margin-bottom: 8px; }
-  .guide-body p{ font-size: 13.5px; color: var(--text-muted); line-height:1.6; margin-bottom: 16px; flex:1; }
-  .guide-meta{ font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); margin-bottom: 16px; }
+  .guide-body h3{ font-family: var(--font-display); font-size: 22px; margin-bottom: 8px; }
+  .guide-body p{ font-size: 14px; color: var(--text-muted); line-height:1.6; margin-bottom: 16px; flex:1; }
+  .guide-meta{ font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
   .price{ font-family: var(--font-display); font-size: 22px; font-weight: 700; }
-  .bonus-badge{ font-family: var(--font-mono); font-size: 10.5px; color: var(--accent); font-weight: 600; margin-bottom: 16px; }
+  .bonus-badge{ font-family: var(--font-mono); font-size: 12px; color: var(--accent); font-weight: 600; margin-bottom: 16px; }
   .buy-row{ display:flex; justify-content: space-between; align-items:center; }
   .btn{ font-family: var(--font-mono); font-size: 12px; text-decoration:none; border: 1px solid var(--accent); color: var(--accent); padding: 10px 18px; border-radius: 30px; display:inline-block; }
   .btn.bundle,
@@ -135,17 +135,19 @@
   footer a{ color: var(--text-muted); }
   @media only screen and (max-width: 767px) {footer .wrap {text-align: center;}}
   .objection{ border: 1px solid var(--border); border-radius: 14px; background: var(--surface); padding: 28px 30px; margin-bottom: 60px; }
-  .objection p{ font-size: 15px; line-height: 1.6; }
+  .objection p{ font-size: 14px; line-height: 1.6; }
   .objection strong{ color: var(--accent); }
 
   .closing{ text-align: center; padding: 20px 0 44px; }
   .closing h2{ font-family: var(--font-display); font-size: 28px; margin-bottom: 12px; }
-  .closing p{ color: var(--text-muted); font-size: 14.5px; margin-bottom: 22px; }
+  .closing p{ color: var(--text-muted); font-size: 14px; margin-bottom: 22px; }
   .closing .btn{ font-size: 13px; padding: 13px 28px; }
   .closing .single-note{ margin-top: 22px; padding: 24px 24px 0 24px; border-top: 1px dashed var(--border); font-size: 13px; color: var(--text-muted); }
   .bundle-list{ list-style: none; text-align: center; margin: 0 auto 26px; display: flex; flex-direction: column; gap: 10px; }
   .bundle-list li{ font-size: 14px; color: var(--text-muted); padding-left: 24px; position: relative; }
   .bundle-list li::before{ content: "✓"; padding-right: 5px; color: var(--accent); font-family: var(--font-mono); font-weight: 600; }
+  .custom-note{ text-align: center; padding: 0 0 48px; font-size: 13.5px; color: var(--text-muted); }
+  .custom-note a{ color: var(--accent); font-weight: 600; }
 </style>
 <script type="application/ld+json">
 {
@@ -311,7 +313,7 @@
 
 <section class="wrap">
   <div class="objection">
-    <p><strong>Worried this isn't for you because you're "not techy"?</strong> Every prompt is copy-paste ready. If you can type an email, you can use these.</p>
+    <p><strong>Worried this will be too techy for you?</strong> Every prompt comes fully written, you just swap in your own details.</p>
   </div>
 </section>
 
@@ -326,6 +328,10 @@
   </ul>
   <a href="https://buy.stripe.com/eVq5kF9kuafQ0Baeoi8g004" class="btn bundle" data-umami-event="buy-bundle">Get the bundle &ndash; $29.99</a>
   <div class="single-note">Only need one for now? Pick it up individually above, no obligation to buy the rest.</div>
+</section>
+
+<section class="wrap custom-note">
+  <p>Need something built around your exact business rather than a template? <a href="mailto:taniainteractive@gmail.com">Get in touch</a>, happy to help with custom prompts or automation.</p>
 </section>
 
 <footer>
