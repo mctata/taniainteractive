@@ -138,15 +138,15 @@
   .objection p{ font-size: 14px; line-height: 1.6; }
   .objection strong{ color: var(--accent); }
 
-  .closing{ text-align: center; padding: 22px 22px 44px; }
+  .closing{ max-width: 640px; text-align: center; padding: 22px 22px 44px; }
   .closing h2{ font-family: var(--font-display); font-size: 28px; margin-bottom: 12px; }
   .closing p{ color: var(--text-muted); font-size: 14px; margin-bottom: 22px; }
   .closing .btn{ font-size: 13px; padding: 13px 28px; }
-  .closing .single-note{ margin-top: 22px; padding: 24px 24px 0 24px; border-top: 1px dashed var(--border); font-size: 13px; color: var(--text-muted); }
+  .closing .single-note{ margin-top: 22px; padding: 24px; border-top: 1px dashed var(--border); font-size: 13px; color: var(--text-muted); }
   .bundle-list{ list-style: none; text-align: center; margin: 0 auto 26px; display: flex; flex-direction: column; gap: 10px; }
   .bundle-list li{ font-size: 14px; color: var(--text-muted); padding-left: 24px; position: relative; }
   .bundle-list li::before{ content: "✓"; padding-right: 5px; color: var(--accent); font-family: var(--font-mono); font-weight: 600; }
-  .custom-note{ text-align: center; padding: 0 0 48px; font-size: 13.5px; color: var(--text-muted); }
+  .custom-note{ text-align: center; padding: 0 0 48px; font-size: 14px; color: var(--text-muted); }
   .custom-note a{ color: var(--accent); font-weight: 600; }
 </style>
 <script type="application/ld+json">
@@ -328,11 +328,9 @@
   </ul>
   <a href="https://buy.stripe.com/eVq5kF9kuafQ0Baeoi8g004" class="btn bundle" data-umami-event="buy-bundle">Get the bundle &ndash; $29.99</a>
   <div class="single-note">Only need one for now? Pick it up individually above, no obligation to buy the rest.</div>
+  <div class="custom-note">Need something more personalised, built around your specific business goals? <a href="#" id="custom-contact-shop">Get in touch</a>, happy to help with custom prompts or automation.</div>
 </section>
 
-<section class="wrap custom-note">
-  <p>Need something built around your exact business rather than a template? <a href="#" id="custom-contact-shop">Get in touch</a>, happy to help with custom prompts or automation.</p>
-</section>
 <script src="download.js"></script>
 <script>obfuscateEmail('custom-contact-shop', 'taniainteractive', 'gmail.com');</script>
 
