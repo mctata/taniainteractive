@@ -97,6 +97,7 @@
 
   header{ padding: 20px 0; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 10; }
   header .wrap{ display:flex; align-items:center; justify-content:space-between; gap: 16px; flex-wrap: wrap; }
+  @media only screen and (max-width: 767px) {header .wrap {justify-content: center;}}
   .brand-mark{ font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
   .brand-mark span{ color: var(--accent); font-weight:600; }
   .brand-mark .sep{ color: var(--border); margin: 0 6px; }
