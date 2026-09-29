@@ -15,6 +15,7 @@ status/history/
 status/logs/
 status/status_errors.log
 status/status_monitor_verbose.log
+# Personal assets kept out of the public repo
 CV_Tania_Lopes.docx
 CV_Tania_Lopes.pdf
 profile.jpg
@@ -25,3 +26,14 @@ guides/
 assets/og-default_prompt.png
 assets/og-default.webp
 assets/og-default-bak.png
+# Local working notes and tooling, not for public repo
+CLAUDE.md
+.claude/
+# Dead weight (GitHub Pages ignores .htaccess; files.zip was an unused favicon bundle)
+.htaccess
+files.zip
+# Paid product zips are now delivered via the Cloudflare Worker from R2, not from the repo
+prompt-guides/pdf/*.zip
+# Local scratch copies of the product files
+prompt-guides/pdf/skills/
+prompt-guides/zip/
