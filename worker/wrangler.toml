@@ -1,0 +1,11 @@
+name = "taniainteractive-guides"
+main = "src/worker.js"
+compatibility_date = "2026-09-29"
+
+[[r2_buckets]]
+binding = "GUIDES"
+bucket_name = "prompt-guides"
+
+[[routes]]
+pattern = "taniainteractive.co.uk/api/*"
+zone_name = "taniainteractive.co.uk"
